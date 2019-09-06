@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Main NerlSuite]">
+  <test name="NerlAll(failed)">
+    <classes>
+      <class name="withdrawal_pkg.PledgeeRedemption_main">
+        <methods>
+          <include name="Pledgee_creation1" invocation-numbers="0"/>
+          <include name="Befour"/>
+        </methods>
+      </class> <!-- withdrawal_pkg.PledgeeRedemption_main -->
+    </classes>
+  </test> <!-- NerlAll(failed) -->
+</suite> <!-- Failed suite [Main NerlSuite] -->

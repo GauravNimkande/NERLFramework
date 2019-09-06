@@ -1,0 +1,58 @@
+package NERL;
+
+
+
+	import org.openqa.selenium.JavascriptException;
+import org.openqa.selenium.JavascriptExecutor;
+
+import java.awt.List;
+	import java.io.IOException;
+	import java.util.concurrent.TimeUnit;
+
+	import library.Exceldataconfig;
+	import library.Utility;
+
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+	import org.testng.Assert;
+	import org.testng.annotations.BeforeMethod;
+	import org.testng.annotations.DataProvider;
+	import org.testng.annotations.Test;
+
+import jdk.nashorn.internal.runtime.regexp.joni.constants.Arguments;
+	public class Sample {
+		private static WebDriver driver;
+    
+		 
+		@Test
+		public void Sample() throws InterruptedException{
+		
+			System.out.println("Benf To Benf Test Case Execution Started");
+			System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+        
+			
+			  driver = new ChromeDriver();
+			  
+			  JavascriptExecutor jse=(JavascriptExecutor)driver;
+			driver.get("https://nerltest.erepository.in/");
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+			WebElement button=driver.findElement(By.xpath(".//*[@id='l-login']/form/a"));
+			
+			
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+			 //Password Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+				
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+				//Click On Login Button
+			//driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();
+			
+			jse.executeScript("arguments[0].dblclick;",button);
+			Thread.sleep(3000);
+			jse.executeScript("alert('Welcome To NERL');");
+
+		}
+	}

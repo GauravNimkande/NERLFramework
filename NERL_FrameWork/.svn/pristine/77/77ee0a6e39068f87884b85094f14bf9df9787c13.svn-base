@@ -1,0 +1,23 @@
+package NERL;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+public class Pagetitle{
+	
+public static void main(String[] args) throws IOException{
+	
+	 FileInputStream fis = new FileInputStream("C:/Users/gauravn/workspace/Test/TestData/TestData.xlsx");
+      XSSFWorkbook workbook = new XSSFWorkbook(fis);
+      XSSFSheet sheet = workbook.getSheetAt(1);	 
+     sheet.getRow(1).createCell(7).setCellValue("Pass");
+     //sheet.getRow(0).createCell(2).setCellValue("Fail");
+     
+     FileOutputStream Fout=new FileOutputStream("C:/Users/gauravn/workspace/Test/TestData/TestData.xlsx");
+workbook.write(Fout);
+workbook.close();
+}
+}

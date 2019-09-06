@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Deposit-PledgeeInitiation]">
+  <test name="PledgeeInitiation(failed)">
+    <classes>
+      <class name="NERL.Pledgee_Initiation_Main">
+        <methods>
+          <include name="Pledgee_Initiation_Submit" invocation-numbers="0"/>
+          <include name="Befour"/>
+        </methods>
+      </class> <!-- NERL.Pledgee_Initiation_Main -->
+    </classes>
+  </test> <!-- PledgeeInitiation(failed) -->
+</suite> <!-- Failed suite [Deposit-PledgeeInitiation] -->

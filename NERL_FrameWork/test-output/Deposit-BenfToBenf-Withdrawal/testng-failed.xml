@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Deposit-BenfToBenf-Withdrawal]">
+  <test name="Deposit-BenfToBenf-Withdrawal(failed)">
+    <classes>
+      <class name="NERL.Benf_To_Benf_Main">
+        <methods>
+          <include name="Befour"/>
+          <include name="Benf_To_Benf_Submitt" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- NERL.Benf_To_Benf_Main -->
+      <class name="NERL.ENWR_Deposit_Exchange_NMCE">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="EWR_creation_Approval"/>
+        </methods>
+      </class> <!-- NERL.ENWR_Deposit_Exchange_NMCE -->
+    </classes>
+  </test> <!-- Deposit-BenfToBenf-Withdrawal(failed) -->
+</suite> <!-- Failed suite [Deposit-BenfToBenf-Withdrawal] -->

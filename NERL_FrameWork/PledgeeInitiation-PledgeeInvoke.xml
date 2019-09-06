@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PledgeeInitiation-PledgeeInvoke">
+  <test name="PledgeeInitiation-PledgeeInvoke">
+    <classes>
+    
+          <class name="NERL.Pledgee_Initiation_Main"/>
+           <class name="withdrawal_pkg.Pledgeeinvoke_apprval"/>
+      
+     
+    </classes>
+  </test> <!-- PledgeeInitiation-PledgeeInvoke -->
+</suite> <!-- PledgeeInitiation-PledgeeInvoke -->

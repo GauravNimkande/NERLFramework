@@ -1,0 +1,403 @@
+package withdrawal_pkg;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import library.Utility;
+import library.Exceldataconfig;
+
+// CHANGES IN THIS CODE
+public class Quantity_Deduction_Main {
+
+	public String part2;
+	public String part4;
+	public String part3;
+	public String part5;
+	
+	public Exceldataconfig config;
+	private static WebDriver driver;
+	private Utility utility;
+	private final static Logger logger = LoggerFactory.getLogger(Quantity_Deduction_Main.class);
+
+	@BeforeMethod
+	
+	public void Befour() throws InterruptedException 
+	{
+		System.out.println("Withdrawal Test Case Execution Started");
+		
+		System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+		
+		Thread.sleep(2000);
+		driver = new ChromeDriver();
+		
+		driver.get("https://nerltest.erepository.in/");
+		logger.info("Web application launched");
+		
+       driver.manage().window().maximize();	
+       utility=new Utility(driver);
+}
+
+	//++++++++++++++++++++++++Test case -1 DOW Initiation/Submit by RP Maker++++++++++++++++++++++++++++++++++++++++++++++++++
+
+	@Test (priority=1,description ="To verify initation/submit of DOW Transaction by RP MAKER",dataProvider="Withdrawal")
+	    public void Withdrawal_creation(String WHCode,String Comm_ID,String Benf_Code,String EWR_No,String Input_no_of_begs1,String RP_Maker,String RP1_PW,String RP_Checker,String RP2_PW,String WSP_Maker,String WSP1_PW,String WSP_Checker,String WSP2_PW) throws InterruptedException, EncryptedDocumentException, InvalidFormatException, IOException{
+		System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "+RP1_PW+" "+RP_Checker+" "+RP2_PW+" "+WSP_Maker+" ");
+		
+			System.out.println("Test Case-1 RP-Maker Add Withdrawal");
+		
+			utility.Login1(RP_Maker, RP1_PW);
+			
+			logger.info("Click action performed on login key RP Maker");
+			
+	       //Thread.sleep(4000);
+	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
+	        
+	        logger.info("Implicit wait applied on the driver for 20 seconds");
+	      
+	      // driver.findElement(By.xpath(Withdrawal_Cons.Menu_List_icon)).click(); //Click on menu list icon
+	      utility.clickOnWebElement(Withdrawal_Cons.Menu_List_icon, driver);
+	      
+	      //driver.findElement(By.xpath()).click();   
+	      utility.clickOnWebElement(Withdrawal_Cons.Quantity_Deduction_menu, driver);//Click on Quantity Deduction menu
+	    
+	      
+	       //driver.findElement(By.xpath()).click();
+	       utility.clickOnWebElement(Withdrawal_Cons.Quantity_Deduction_Submenu, driver); //Click on submenu (Quantity Deduction)
+	       Thread.sleep(2000);
+	    
+	       // Click on left arrow key 
+	      driver.findElement(By.xpath(Withdrawal_Cons.Left_arrow_key1)).click();
+	      
+	      Thread.sleep(4000);
+	       
+	      // Click on Warehouse toggle
+	      driver.findElement(By.xpath(Withdrawal_Cons.Click_Warehouse_Toggle)).click();
+	      Thread.sleep(2000);
+	      
+	      //Enter warehouse code from list
+	      driver.findElement(By.xpath(Withdrawal_Cons.Enter_Warehouse_code)).sendKeys(WHCode);
+	      
+	      //Select check box
+	      driver.findElement(By.xpath(Withdrawal_Cons.Select_Checkbox1)).click();
+	      
+	      Thread.sleep(2000);
+	      
+	     // Select commodity toggle
+	      driver.findElement(By.xpath(Withdrawal_Cons.Click_Commodity_toggle)).click();
+	      
+	      Thread.sleep(2000);
+	      
+	      //Enter commodity id
+	      driver.findElement(By.xpath(Withdrawal_Cons.Enter_Commodity_id)).sendKeys(Comm_ID);
+	      
+	      //Select checkbox
+	      driver.findElement(By.xpath(Withdrawal_Cons.Select_checkbox2)).click();
+	     
+	      Thread.sleep(2000);
+	      
+	      //Click toggle of Beneficiary Id
+	      driver.findElement(By.xpath(Withdrawal_Cons.Toggle_Beneficiaryid)).click();
+	      //Enter Beneficiary id
+	      driver.findElement(By.xpath(Withdrawal_Cons.Enter_Beneficiary_ID)).sendKeys(Benf_Code);
+		  // Select checkbox
+	      driver.findElement(By.xpath(Withdrawal_Cons.Select_checkbox3)).click();
+	      Thread.sleep(3000);
+	     
+	      //click on fetch button 
+	      driver.findElement(By.xpath(Withdrawal_Cons.Fetch_button)).click();
+	      logger.info("Click on Fetch button");
+	      Thread.sleep(2000);
+	    //Enter EWR NO
+	      driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR_NO)).sendKeys(EWR_No);
+	  
+	      Thread.sleep(2000);
+	      
+	      //Select checkbox4
+	      driver.findElement(By.xpath(Withdrawal_Cons.Select_checkbox4)).click();
+	      
+	      Thread.sleep(2000);
+	      
+	    //To scroll down web page by 500 pixels In x(vertical) 'direction.
+	      
+	      utility.scrolldown1();
+	 
+	      //Click on select button
+	      driver.findElement(By.xpath(Withdrawal_Cons.Select_button)).click();
+	      logger.info("Click on select button");
+	      Thread.sleep(2000);
+			String Actual_Validation = driver.findElement(By.xpath(Withdrawal_Cons.EWR_Add_Validation_Message)).getText();
+			Assert.assertEquals(Actual_Validation,"Selected EWR has been added susccessfully...","Please Select Valid EWR");
+			
+	       utility.scrolldown1();
+	        Thread.sleep(3000);
+	     
+	     //No of Begs
+	     String No_of_Begs=driver.findElement(By.xpath(Withdrawal_Cons.No_of_Begs)).getText();
+	  
+	    //System.out.println(No_of_Begs);
+	    Thread.sleep(2000);
+	     driver.findElement(By.xpath(Withdrawal_Cons.Input_no_of_begs)).clear();
+	   
+	    //Enter input no of begs
+	    driver.findElement(By.xpath(Withdrawal_Cons.Input_no_of_begs)).sendKeys(Input_no_of_begs1);
+	    Thread.sleep(2000);
+	   //Storage cherge till date 
+	    driver.findElement(By.xpath(Withdrawal_Cons.Storage_cherge_till_date)).sendKeys("09/10/2017");
+	    Thread.sleep(2000);
+		//Click on save button 
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath(Withdrawal_Cons.Save_button)).click();
+	    Thread.sleep(3000);
+	  //Validation message for save button 
+	    String actual_result=driver.findElement(By.xpath(Withdrawal_Cons.Validation_Message1)).getText();
+	   
+		System.out.println("Actual validation message is " +actual_result);
+	       
+	     Assert.assertEquals(actual_result,"Qty Deduction Transaction has been saved successfully.");
+	     
+	     Thread.sleep(3000);
+	    
+	     //Now click on Submit button 
+		    driver.findElement(By.xpath(Withdrawal_Cons.Submit_Button)).click();
+		    Thread.sleep(2000);
+		    String DOW_no=driver.findElement(By.xpath(Withdrawal_Cons.DOW_No_Capture2)).getText();
+			// System.out.println(DOW_no); 		
+		       String string = DOW_no; 		
+		      String[] parts = string.split(":-      ");
+		     
+		     this.part2 = parts[1]; 		
+		     
+		      System.out.println("DOW NO IS : " +part2);
+		    Thread.sleep(3000);
+	//Validation message for submit button
+	String actual_result1=driver.findElement(By.cssSelector(Withdrawal_Cons.Validation_Message2)).getText();
+
+	System.out.println("Actual validation message is " +actual_result1);
+
+	Assert.assertEquals(actual_result1,"Qty Deduction Transaction has been submitted successfully.");
+	Thread.sleep(2000);
+		utility.logout1();
+		Thread.sleep(3000);
+		driver.close();
+	
+	//.............Test case-2 DOW Approve by Checker....
+
+	System.out.println("Test Case-2 Approverd by RP-checker");
+
+	utility.Login1(RP_Checker,RP2_PW);
+
+	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
+	  //Click on toggle for select pending transaction
+	  driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
+	  Thread.sleep(2000);
+	  //Click on Pending transaction
+	  driver.findElement(By.xpath(Withdrawal_Cons.Click_Pending_transaction)).click();
+	  Thread.sleep(2000);
+	  //Enter Transaction ref no.
+	  driver.findElement(By.xpath(Withdrawal_Cons.Enter_Transaction_ref_no)).sendKeys(part2);
+	  Thread.sleep(3000);
+	  //click on DOW No from grid table 
+	  driver.findElement(By.xpath(Withdrawal_Cons.DOW_NOS)).click();
+	  Thread.sleep(2000);
+	  //Click on Approve button
+	  driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button)).click();
+	  
+	  //validation message -"Quantity Deduction Transaction has been Approved successfully.
+	  Thread.sleep(3000);
+	  //String actual_result4=driver.findElement(By.xpath(Withdrawal_Cons.Validation_message4)).getText();
+	  String actual_result4=driver.findElement(By.cssSelector(Withdrawal_Cons.VAlidation_CSS_msg)).getText();
+	   
+	  System.out.println("Actual validation message is " +actual_result4);
+			       
+	  Assert.assertEquals(actual_result4,"Quantity Deduction Transaction has been Approved successfully.");
+	  Thread.sleep(3000);
+	  utility.logout1();
+	  Thread.sleep(3000);
+	  driver.close();
+
+	//.............Test case-3....................................
+
+	System.out.println("Test Case-3 Approverd by RP-checker");
+
+	utility.Login1(WSP_Maker,WSP1_PW);
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
+	Thread.sleep(3000); 
+	  //Click on Menu_Toggle 
+	    driver.findElement(By.xpath(Withdrawal_Cons.Menu_Toggle)).click();
+	    Thread.sleep(2000); 
+	    //Click on Quantity_deduction_menu
+	    driver.findElement(By.xpath(Withdrawal_Cons.Quantity_deduction_menu_wsp)).click();
+	    Thread.sleep(2000); 
+	  //Click on Quantity_deduction_submenu_wsp
+	    driver.findElement(By.xpath(Withdrawal_Cons.Quantity_deduction_submenu_wsp)).click();
+	    Thread.sleep(3000); 
+	   // Click on arrow key for hide menu list
+	    driver.findElement(By.xpath(Withdrawal_Cons.Hidemenulist_arrow_key)).click();
+	    Thread.sleep(2000);
+	   //click on toggle for new window list
+	    driver.findElement(By.xpath(Withdrawal_Cons.DOW_Toggle_newwindow)).click();
+	    Thread.sleep(3000);
+	    //Enter transaction ref no_dow details
+	    driver.findElement(By.xpath(Withdrawal_Cons.transaction_ref_no_wsp)).sendKeys(part2);
+	    Thread.sleep(2000);
+	    //Select check box from grid table
+	    driver.findElement(By.xpath(Withdrawal_Cons.select_checkbox_wsp)).click();
+	    Thread.sleep(2000);
+	    //Enter EWR NO_WSP
+	    driver.findElement(By.xpath(Withdrawal_Cons.select_EWR_NO_WSP)).sendKeys(EWR_No);
+	    Thread.sleep(2000);
+	    //Select check box from grid table EWR_NO_WSP
+	    driver.findElement(By.xpath(Withdrawal_Cons.EWR_N0_WSP_CHECKBOX)).click();
+	    
+	    utility.scrolldown1();
+	    Thread.sleep(2000);
+	    
+	  //click on select button 
+	    driver.findElement(By.xpath(Withdrawal_Cons.select_button_wsp)).click();
+	    Thread.sleep(2000);
+	 //Now click on check box from available ewr list
+	    driver.findElement(By.xpath(Withdrawal_Cons.checkbox_EWR)).click();
+	    Thread.sleep(2000);
+	    
+	   //Clear input no of begs 
+	    driver.findElement(By.xpath(Withdrawal_Cons.Clear_input_no_of_begs1)).clear();
+	    Thread.sleep(2000);
+	  //enter input no of begs
+	    driver.findElement(By.xpath(Withdrawal_Cons.Input_no_of_begs1)).sendKeys(Input_no_of_begs1);
+	    //Click on input physical quantity 
+	   driver.findElement(By.xpath(Withdrawal_Cons.input_physical_quantity_gridtable)).click();
+	    Thread.sleep(2000);
+	    //Click on save button 
+	   driver.findElement(By.xpath(Withdrawal_Cons.save_button1)).click(); 
+	   
+	 //validation message -WOW Transaction has been saved successfully
+	   Thread.sleep(3000); 
+		    String actual_result8=driver.findElement(By.xpath(Withdrawal_Cons.validation_message5)).getText();
+		      System.out.println("Actual validation message is " +actual_result8);
+			         
+			  Assert.assertEquals(actual_result8,"WOW Transaction has been saved successfully.");
+			  Thread.sleep(2000);
+	  
+		//Now click on submit button  
+		driver.findElement(By.xpath(Withdrawal_Cons.Click_submit_button2)).click();   
+		Thread.sleep(3000);
+	//-------------------------------------------------------------------------------------------------
+		
+		String WOW_no=driver.findElement(By.xpath(Withdrawal_Cons.WOW_No_Capture)).getText();
+		 System.out.println(WOW_no); 		
+	     String string1 = WOW_no; 		
+	    String[] parts1 = string1.split(":-      ");
+	   String part3 = parts1[0];
+	   this.part4 = parts1[1]; 		
+	    System.out.println(part3); 		
+	    System.out.println("WOW NO IS : " +part4);
+	  Thread.sleep(3000);
+	//------------------------------------------------------------------------------------------------------------	    
+		//validation message - WOW Transaction has been submitted successfully. 
+		
+		String actual_result5=driver.findElement(By.xpath(Withdrawal_Cons.validation_message6)).getText();
+	  Thread.sleep(2000); 
+		   System.out.println("Actual validation message is " +actual_result5);
+			       
+		  Assert.assertEquals(actual_result5,"WOW Transaction has been submitted successfully.");
+		  Thread.sleep(3000); 
+		  utility.logout1();
+		 driver.close();
+	
+		  //..........................Test case 4  ....Approved by WSP checker-- WSP2002
+
+	System.out.println("Tes Case - 4 Approverd by WSP2002 checker");
+
+	utility.Login(WSP_Checker,WSP2_PW);
+
+	//Thread.sleep(4000);
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
+	//Click on toggle for select pending transaction
+	driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
+	Thread.sleep(2000);
+	//Click on Pending transaction
+	driver.findElement(By.xpath(Withdrawal_Cons.Click_Pending_transaction)).click();
+	Thread.sleep(2000);
+	//Enter Transaction ref no.
+	driver.findElement(By.xpath(Withdrawal_Cons.Enter_Transaction_ref_no)).sendKeys(this.part4);
+	Thread.sleep(3000);
+	//click on DOW No from grid table 
+	driver.findElement(By.xpath(Withdrawal_Cons.Pending_txn_Click)).click();
+	Thread.sleep(2000);
+	//Click on Approve button
+	driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button1)).click();
+
+	//Validation message "WOW Transaction has been Approved successfully.
+	Thread.sleep(3000);
+	String actual_result6=driver.findElement(By.cssSelector(Withdrawal_Cons.VAlidation_CSS_msg)).getText();
+
+	System.out.println("Actual validation message is " +actual_result6);
+		       
+	Assert.assertEquals(actual_result6,"WOW Transaction has been Approved successfully.");
+	Thread.sleep(2000);
+	driver.findElement(By.xpath(Withdrawal_Cons.Download_Receipt)).click();
+	Thread.sleep(3000);
+	utility.logout1();
+	Thread.sleep(3000);
+	driver.close();
+	}
+	
+   @DataProvider(name="Withdrawal")
+	  	public Object[][] passdata1() throws IOException{
+	  		System.out.println("Inside passdata()");
+	  		config=new Exceldataconfig();
+	  		config.setExcelPath("D:/TestData.xlsx");
+	  		
+	  		//config.setExcelPath("D:/D DRIVE/New folder/Workspace/Withdrawal/TestData/TestData.xlsx");
+			config.setSheetId(3);
+	  		
+	  		int rows=config.getrowcount(3);
+	  		Object[][] data=new Object[rows-1][13];
+	  		for(int i=1; i< rows;i++){
+	  			
+	  			data[i-1][0]=config.getdata(3, i, 0);    //Warehouse Code
+	  			data[i-1][1]=config.getdata(3, i, 1 );   //Commodity ID
+	  			data[i-1][2]=config.getdata(3, i, 2 );   //Beneficiary Account Code
+	  			data[i-1][3]=config.getdata(3, i, 3 );   //EWR NO
+	  			data[i-1][4]=config.getdata(3, i, 4 );	  //I/P NO of begs
+	  			data[i-1][5]=config.getdata(3, i, 5 );    //rm_maker
+	  			data[i-1][6]=config.getdata(3, i, 6 );    //rm_pw
+	  			data[i-1][7]=config.getdata(3, i, 7 );    //rp_ch
+	  			data[i-1][8]=config.getdata(3, i, 8 );     //rp_pw
+	  			data[i-1][9]=config.getdata(3, i, 9 );     // wsp_m
+	  			data[i-1][10]=config.getdata(3, i, 10 );    //wsp_pw
+	  			data[i-1][11]=config.getdata(3, i, 11 );    //wsp_c
+	  			data[i-1][12]=config.getdata(3, i, 12 );    //wsppw
+	  			
+	  			System.out.println(data[i-1][0]+" - " +data[i-1][1]+" - "+data[i-1][2]+" - " +data[i-1][3]+" - " +data[i-1][4]+" - " +data[i-1][5]+" - " +data[i-1][6]+" - " +data[i-1][7]+" - " +data[i-1][8]+" - " +data[i-1][9]+" - " +data[i-1][10]+" - " +data[i-1][11]+" - " +data[i-1][12]);
+	  			
+			}
+	  		
+			System.out.println("data length:- "+data.length);
+			
+		 return data;
+		
+		
+}
+}
+

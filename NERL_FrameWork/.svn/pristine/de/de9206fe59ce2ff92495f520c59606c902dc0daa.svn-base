@@ -1,0 +1,134 @@
+package NERL;
+
+import org.testng.annotations.Test;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class Masters {
+	public static WebDriver driver;
+@BeforeMethod
+	public void MasterLogin(){
+		
+	System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+	driver = new ChromeDriver();	
+	
+	driver.get("https://nerltest.erepository.in/");//NERL Test URL
+	
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+	
+	driver.findElement(
+			By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input"))
+			.sendKeys("ORGADM3");//User ID Text box
+	
+	driver.findElement(
+			By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input"))
+			.sendKeys("mumbai123");//Password Text box
+	driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	driver.manage().window().maximize();
+	}
+	
+@AfterMethod
+			public void afterMethod() {
+	             try {
+					
+	            	 System.out.println("Inside After Method");	
+					driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+					Thread.sleep(3000);
+					driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click(); //Logout Button             
+	             
+	             } catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+								// Close the driver
+	             driver.quit();
+
+     				}
+	@Test(priority=1, description="Verify Addition Of New Record in UOM Master")
+	public void Uom(){
+    	try {
+    		System.out.println("Inside Uom Methord");
+    	//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	Thread.sleep(3000);
+    	driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();// Menu Button
+    	Thread.sleep(3000);
+    	driver.findElement(By.cssSelector("#mCSB_1_container > ul > li:nth-child(2) > a")).click();//Master Menu Button
+	 	Thread.sleep(3000);
+	 	
+	 	//++++++++++++
+	 // Create instance of Javascript executor
+	 	JavascriptExecutor je = (JavascriptExecutor) driver;
+	 	//Identify the WebElement which will appear after scrolling down
+	 	WebElement element = driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[13]/a")); //Scroll List Until UOM eliment found
+	 	// now execute query which actually will scroll until that element is not appeared on page.
+	 	je.executeScript("arguments[0].scrollIntoView(true);",element);
+	 	//+++++++++
+        
+	 	driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[13]/a")).click();// Click on UOM Master Link
+        Thread.sleep(3000);
+    	
+        driver.findElement(By.xpath("//*[@id='toggle-width']/div/label")).click();//Toggle
+        
+        driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[3]/div/button[2]")).click();//Click on ADD Button
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[1]/div/div[2]/input")).sendKeys("pound2");//UOM Name Field
+    	
+        driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[1]/div/div[5]/input")).sendKeys("pd2");//UOM Code 
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[3]/div/button[3]")).click();
+    	
+    	} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    	@Test(priority=2, description="Verify Addition Of Duplicate Record in UOM Master")
+    	public void Uom_Duplicate(){
+        	try {
+        		System.out.println("Inside Uom Methord");
+        	//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        	Thread.sleep(3000);
+        	driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();// Menu Button
+        	Thread.sleep(3000);
+        	driver.findElement(By.cssSelector("#mCSB_1_container > ul > li:nth-child(2) > a")).click();//Master Menu Button
+    	 	Thread.sleep(3000);
+    	 	
+    	 	//++++++++++++
+    	 // Create instance of Javascript executor
+    	 	JavascriptExecutor je = (JavascriptExecutor) driver;
+    	 	//Identify the WebElement which will appear after scrolling down
+    	 	WebElement element = driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[13]/a")); //Scroll List Until UOM eliment found
+    	 	// now execute query which actually will scroll until that element is not appeared on page.
+    	 	je.executeScript("arguments[0].scrollIntoView(true);",element);
+    	 	//+++++++++
+            
+    	 	driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[13]/a")).click();// Click on UOM Master Link
+            Thread.sleep(3000);
+        	
+            driver.findElement(By.xpath("//*[@id='toggle-width']/div/label")).click();//Toggle
+            
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[3]/div/button[2]")).click();//Click on ADD Button
+            Thread.sleep(3000);
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[1]/div/div[2]/input")).sendKeys("Kelo");//UOM Name Field
+        	
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[1]/div/div[5]/input")).sendKeys("KG1");//UOM Code 
+            Thread.sleep(2000);
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/form/div/div[2]/div/div[3]/div/button[3]")).click();
+        	
+        	} catch (InterruptedException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+
+          }
+    	
+    	
+
+}

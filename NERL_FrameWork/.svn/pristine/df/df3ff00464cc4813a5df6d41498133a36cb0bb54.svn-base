@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="PledgeeInitiation-PledgeeRedeem">
+  <test name="	">
+    <classes>
+    
+    <class name="NERL.Pledgee_Initiation_Main"/>
+    <class name="withdrawal_pkg.PledgeeRedemption_main"/>
+      
+    </classes>
+  </test> <!-- PledgeeInitiation-PledgeeRedeem -->
+</suite> <!-- PledgeeInitiation-PledgeeRedeem -->

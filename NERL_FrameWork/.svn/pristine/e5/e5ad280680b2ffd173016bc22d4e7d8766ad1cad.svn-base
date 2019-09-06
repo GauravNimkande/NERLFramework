@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Deposit-BenfToBenf-Withdrawal">
+  <test name="Deposit-BenfToBenf-Withdrawal">
+    <classes>
+    
+     <class name="NERL.EWR_With_Deposit_Main"/> 
+     <class name="NERL.Benf_To_Benf_Main"/>  
+     <class name="withdrawal_pkg.Quantity_Deduction_Main"/>
+     
+      
+    </classes>
+  </test> <!-- Deposit-BenfToBenf-Withdrawal -->
+</suite> <!-- Deposit-BenfToBenf-Withdrawal -->

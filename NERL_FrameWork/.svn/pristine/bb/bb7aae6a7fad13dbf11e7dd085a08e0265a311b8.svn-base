@@ -1,0 +1,24 @@
+package NERL;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FireFoxDriverImpl implements WebDriverService{
+
+	@Override
+	public WebDriver getDriver() {
+		System.setProperty("webdriver.firefox.driver", "D://firefoxdriver.exe");
+		 WebDriver driver = new FirefoxDriver();
+
+		// driver.get("https://interrepotest.erepository.in/");
+		driver.get("https://nerltest.erepository.in/");
+		// driver.get("https://erepository.in/");
+		
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		return driver;
+	}
+}

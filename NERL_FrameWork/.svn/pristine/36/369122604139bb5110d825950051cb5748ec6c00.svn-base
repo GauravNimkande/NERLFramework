@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="Test(failed)">
+    <classes>
+      <class name="NERL.Benf_To_Benf">
+        <methods>
+          <include name="EOT_Discard_Maker"/>
+          <include name="Benf_To_Benf_Submit"/>
+          <include name="EOT_Discard_Reject"/>
+          <include name="EOT_Approval_By_RpChecker_Buyerclient"/>
+          <include name="Befour"/>
+          <include name="EOT_Approval_By_RpChecker_Sellerclient"/>
+        </methods>
+      </class> <!-- NERL.Benf_To_Benf -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

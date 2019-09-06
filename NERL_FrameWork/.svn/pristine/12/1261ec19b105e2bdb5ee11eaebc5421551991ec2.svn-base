@@ -1,0 +1,150 @@
+package withdrawal_pkg;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import library.Exceldataconfig;
+import library.Utility;
+
+public class PledgeRedemption {
+	
+	private static WebDriver driver;
+	private Utility utility;
+	public Exceldataconfig config;
+	
+		@BeforeMethod
+
+	public void Befour() throws InterruptedException 
+	{
+		System.out.println("Withdrawal Test Case Execution Started");
+		
+		System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+	    Thread.sleep(2000);
+
+		driver = new ChromeDriver();
+		
+		driver.get("https://nerltest.erepository.in/");
+		
+	    driver.manage().window().maximize();
+	    
+	    utility=new Utility(driver);
+	}
+	  
+	    @Test 
+		(priority=1,description ="To verify initation/submit for pledgee invoke transaction by Pledgee Maker",dataProvider="Withdrawal")
+		
+		public void Pledgee_creation(String Loan_account_no,String EPG_NO,String EWR_NO, String Invoke_unit_no,String RP_maker,String RP_PW,String User_role,String pledgee_M, String pledgee_pw,String Pledgee_checker,String Pledgee1_pw,int R_No) throws InterruptedException{
+		  
+	     System.out.println("Step 1 -> Tes case -1 Initation/submit by maker");   
+	     System.out.println(User_role);
+	     
+	     if (User_role.equalsIgnoreCase("RP"))
+	    {
+	    	System.out.println("User Role is RP");
+	       utility.RP_Maker(RP_maker, RP_PW);
+	    	
+	    	
+	    }
+	    else
+	    {
+	    	System.out.println("User Role is Pledgee");
+	    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
+	    	
+	    }
+	    	 
+	     System.out.println("Initiation by Maker");
+
+	     
+	     utility.clickOnWebElement(Withdrawal_Cons.Loan_account_no_toggle,driver); // Loan account no toggle   		   		
+	   		
+         driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list)).sendKeys(Loan_account_no);   	
+         
+         driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
+         
+         utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
+         Thread.sleep(2000);
+         utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
+         
+         Thread.sleep(2000);   		   		
+         utility.scrolldown1(); 
+          
+         Thread.sleep(2000);
+         driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR)).sendKeys(EWR_NO);   //Enter EWR NO 	
+         
+         utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
+         
+         utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
+         //Next Page
+         Thread.sleep(3000);
+         driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR_1)).sendKeys(EWR_NO);   //Enter EWR NO 	
+         
+         utility.clickOnWebElement(Withdrawal_Cons.Select_EWR_1,driver);   //Select checkbox4
+         
+          Actions action = new Actions(driver);
+         
+          action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div[5]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input"))).doubleClick().build().perform();
+          Thread.sleep(2000);                              // html/body/section/section/div/data/div/div[4]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[2]/div/div/div/div[4]/div[2]/form/input
+          
+          //driver.findElement(By.xpath(Withdrawal_Cons.Enter_Redeem_qut)).clear();
+          
+          driver.findElement(By.xpath(Withdrawal_Cons.Enter_Redeem_qut)).sendKeys("200");
+          
+          //utility.clickOnWebElement(Withdrawal_Cons.Enter_Redeem_qut,driver);
+          
+          //driver.findElement(By.xpath(Withdrawal_Cons.Enter_Redeem_qut)).clear();
+          Thread.sleep(2000);
+        
+          Thread.sleep(2000);   		   		
+          utility.scrolldown1(); 
+         
+          utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
+	}
+	
+	    @DataProvider(name="Withdrawal")
+	  
+	    public Object[][] passdata1() throws IOException{
+		   
+	    System.out.println("Inside passdata()");
+	  
+	    config=new Exceldataconfig();
+
+	    config.setExcelPath("D:/D DRIVE/New folder/Workspace/Withdrawal/TestData/TestData.xlsx");
+
+	    config.setSheetId(5);
+		
+	    int rows=config.getrowcount(5);
+	  
+	    Object[][] data=new Object[rows-1][12];
+	  
+	    for(int i=1; i< rows;i++){
+			
+			data[i-1][0]=config.getdata(5, i, 0);    //Loan Account Number
+			data[i-1][1]=config.getdata(5, i, 1);     //epg no
+			data[i-1][2]=config.getdata(5, i, 2 );   //EWR NO
+			data[i-1][3]=config.getdata(5, i, 3 );   //Invoke unit no
+			data[i-1][4]=config.getdata(5, i, 4 );	  //Maker login
+			data[i-1][5]=config.getdata(5, i, 5 );    //maker pw
+			data[i-1][6]=config.getdata(5, i, 6 );    //user role
+			data[i-1][7]=config.getdata(5, i, 7 );    //pledgee_maker
+			data[i-1][8]=config.getdata(5, i, 8 );    // pledgee pw
+			data[i-1][9]=config.getdata(5, i,9 );    //pledgee checker
+			data[i-1][10]=config.getdata(5, i,10 );    // pledgee pw
+			data[i-1][11]=i;                           //Record no
+			
+	 System.out.println(data[i-1][0]+" - " +data[i-1][1]+" - "+data[i-1][2]+" - " +data[i-1][3]+" - " +data[i-1][4]+" - " +data[i-1][5]+" - " +data[i-1][6]+" - " +data[i-1][7]+" - " +data[i-1][8]+" -  "+data[i-1][9]+" -  "+data[i-1][10]+" -  "+data[i-1][11]);
+			
+	}
+		
+	 System.out.println("data length:- "+data.length);
+
+	return data;                        
+	}
+
+}

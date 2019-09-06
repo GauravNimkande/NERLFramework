@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="77091" started-at="2017-12-26T10:00:24Z" finished-at="2017-12-26T10:01:41Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="77091" started-at="2017-12-26T10:00:24Z" finished-at="2017-12-26T10:01:41Z">
+      <class name="withdrawal_pkg.Pledgeeinvoke_apprval">
+        <test-method status="PASS" signature="Befour()[pri:0, instance:withdrawal_pkg.Pledgeeinvoke_apprval@6093dd95]" name="Befour" is-config="true" duration-ms="8636" started-at="2017-12-26T15:30:25Z" finished-at="2017-12-26T15:30:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Befour -->
+        <test-method status="PASS" signature="Pledgee_creation(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, int)[pri:1, instance:withdrawal_pkg.Pledgeeinvoke_apprval@6093dd95]" name="Pledgee_creation" duration-ms="67850" started-at="2017-12-26T15:30:33Z" description="To verify initation/submit for pledgee invoke transaction by Pledgee Maker" data-provider="Withdrawal" finished-at="2017-12-26T15:31:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[120]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[EPG0000000426]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[BENF0000010022]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[6630]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[200]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[PLEDGEE1001]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Mumbai@123]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[PLEDGEE1002]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[mumbai123]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Pledgee_creation -->
+      </class> <!-- withdrawal_pkg.Pledgeeinvoke_apprval -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,224 @@
+package withdrawal_pkg;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
+
+import library.Exceldataconfig;
+import library.Utility;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import NERL.TestFFonGrid;
+
+public class PledgeeRedemption_main {
+	public String part2;
+	public String part4;
+	public String part3;
+	public String part5;  
+	private static WebDriver driver;
+	private Utility utility;
+	public Exceldataconfig config;
+	private final static Logger logger = LoggerFactory.getLogger(PledgeeRedemption_main.class);
+		@BeforeMethod
+		
+	public void Befour() throws InterruptedException, MalformedURLException 
+	{
+		System.out.println("Withdrawal Test Case Execution Started");
+		
+		System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+	    Thread.sleep(2000);
+
+	   /* TestFFonGrid Remote=new TestFFonGrid();
+		driver=Remote.Grid();*/
+	   
+	    
+		driver = new ChromeDriver();
+		
+	//	driver.get("https://nerltest.erepository.in/");
+		
+		driver.get("https://test.erepository.in");
+		
+		 logger.info("Web application launched");
+		
+	    driver.manage().window().maximize();
+	    
+	    utility=new Utility(driver);
+	}
+	  //################ Test case 1####################################
+	  @Test 
+		(priority=4,description ="To verify initation/submit for pledgee Redeem transaction by Pledgee Maker",dataProvider="Withdrawal")
+		
+		public void Pledgee_creation1(String Loan_account_no,String EPG_NO,String EWR_NO, String Redeem_qty,String RP_maker,String RP_PW,String User_role,String pledgee_M, String pledgee_pw,String Pledgee_checker,String Pledgee1_pw,int R_No) throws InterruptedException{
+	    	
+	     System.out.println("Step 1 Submit by RP maker");   
+	     System.out.println(User_role);
+	     
+	     if (User_role.equalsIgnoreCase("RP"))
+	    {
+	    	System.out.println("User Role is RP");
+	       utility.RP_Maker(RP_maker, RP_PW);
+	       logger.info("Click action performed on login key RP Maker");
+	    	
+	    }	
+	    else
+	    {
+	    	System.out.println("User Role is Pledgee");
+	    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
+	    	logger.info("Click action performed on login key Pledgee Checker");
+	    }
+	    	 
+	   System.out.println("Initiation by Maker");
+
+	     
+	   utility.clickOnWebElement(Withdrawal_Cons.Loan_account_no_toggle,driver); // Loan account no toggle   		   		
+	   		
+       driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list)).sendKeys(Loan_account_no);   	
+       
+       driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
+       
+       utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
+       Thread.sleep(2000);
+       utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
+       logger.info("Click on Fetch button");
+       
+       Thread.sleep(2000);   		   		
+       utility.scrolldown1(); 
+        
+       Thread.sleep(2000);
+       driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR)).sendKeys(EWR_NO);   //Enter EWR NO 	
+       
+       utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
+       
+       utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
+       
+       logger.info("Clicked on select Button.");
+      
+
+       Thread.sleep(2000);
+       
+       //Select ENWR--> Double Click on Redeem qnt
+       utility.DoubleClick("html/body/section/section/div/data/div/div[5]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[2]/div/div/div/div[4]/div");
+       
+       //Send Values in Redeem qnt
+       //driver.findElement(By.xpath("html/body/section/section/div/data/div/div[5]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[2]/div/div/div/div[4]/div[2]/form/input")).sendKeys("200");
+       driver.findElement(By.xpath(Withdrawal_Cons.sendkey1)).sendKeys(Redeem_qty);
+       //driver.findElement(By.xpath("html/body/section/section/div/data/div/div[5]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[2]/div/div/div/div[4]/div[2]/form/input")).sendKeys(Keys.TAB);
+       driver.findElement(By.xpath(Withdrawal_Cons.sendkey1)).sendKeys(Keys.TAB);
+       
+ 		utility.scrolldown1(); 
+      
+ 		 Thread.sleep(2000);     
+        
+        utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
+        logger.info("Click on Save button");
+        utility.XY_PageScrollUp();
+        
+         Thread.sleep(2000);
+ //****************** Validation message **********************
+          
+        String validation_message_save = driver.findElement(By.cssSelector(Withdrawal_Cons.validation_message_save)).getText();       
+          
+         System.out.println("Actual validation message is " +validation_message_save);
+         
+         Assert.assertEquals(validation_message_save,"Saved Successfully.");
+         
+        // utility.scrolldown1();
+        // utility.XY_PageScrollDown();
+         
+         utility.clickOnWebElement(Withdrawal_Cons.Submit_Redeem,driver);
+         
+         logger.info("Click action performed on Submit button");
+         
+         Thread.sleep(3000);
+    //##############################################################
+             
+    		String Redeem_Number =driver.findElement(By.xpath(Withdrawal_Cons.Redeem_no_capture)).getText();
+    						
+    	    String string = Redeem_Number; 	
+    	    
+    	    String[] parts = string.split(":-      ");
+    			     
+    	    this.part2 = parts[1]; 		
+    	    System.out.println("2");	     
+    		System.out.println("EPR NO is : " +part2);
+    		
+    		Thread.sleep(3000);
+    		
+   //****************** Validation message **********************
+            
+         String validation_message_Submit = driver.findElement(By.cssSelector(Withdrawal_Cons.validation_message_Submit)).getText();
+           
+           System.out.println("Actual validation message is " +validation_message_Submit);
+           
+           Assert.assertEquals(validation_message_Submit,"Pledge Redeem submitted Successfully"); 
+           
+           utility.logout1();
+           
+           logger.info("Click action performed on Log out link");
+           
+    // ###################### Login with Pledgee Checker#################
+           
+    	System.out.println("Step 2 Approved by checker");
+    		
+    		utility.Login1(Pledgee_checker, Pledgee1_pw);
+    		
+    		logger.info("Logged in by pledgee checker");
+    		Thread.sleep(5000);
+    		
+    		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+    		
+    		logger.info("Implicit wait applied on the driver for 20 seconds");
+    		
+    		utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); // Click on toggle for select pending transaction
+    		
+    		utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); // Click on Pending transaction
+    					
+    		Thread.sleep(2000);
+    		
+    		driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Txn_no)).sendKeys(part2); // Enter EPR NO
+    		
+    		utility.clickOnWebElement(Withdrawal_Cons.Redeem_Txn,driver);
+    		
+    		utility.clickOnWebElement(Withdrawal_Cons.Approve_redeem,driver);	
+    		
+    		logger.info("Click action performed on Approved");
+    		
+    		 //**********************Validation Message************************************ 	     
+    	     
+    	     String Approve_2=driver.findElement(By.cssSelector(Withdrawal_Cons.Approve_validation)).getText();
+    	     
+   	     System.out.println("Actual validation message is " +Approve_2);
+   	     
+   	             
+   	      Assert.assertEquals(Approve_2,"Pledge Redeem approved Successfully."); 
+    	     
+    	//*****************************************************************************     
+   	      utility.logout1();
+     	   
+     	      driver.close();
+     	    
+     	      
+            }
+	  @DataProvider(name="Withdrawal")
+		public Object[][] passdata1() throws IOException{
+		 
+
+		  config=new Exceldataconfig();
+		  Object[][] data= config.Excel_Data_Reader(5);  
+	 
+		  return data;
+		 
+		 
+		}
+	}
+
+	 

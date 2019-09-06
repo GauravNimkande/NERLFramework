@@ -1,0 +1,339 @@
+package Com.Wordpress.pages;
+
+import static org.testng.Assert.assertEquals;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import library.Utility;
+
+
+
+public class Deposit {
+	private final static Logger logger = LoggerFactory.getLogger(Deposit.class);
+	WebDriver driver;
+	public String part2;
+	Utility utility = new Utility(driver);
+	
+	//Arrow to Open menu
+	By Menu_trigger=By.xpath("//*[@id='menu-trigger']/div");
+	
+	//Select EWR Dropdon
+	By EWR_Menu=By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/a");
+	
+	//EWR With Deposit Link
+    By ENWR_link=By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[1]/a");
+
+//++++++++++++++++++++++Deposit Page++++++++++++++++++++++++++++++++++++++++++
+    
+   //Click on Warehouse Details Button
+   By Warehouse_Details_Button=By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[2]/div[3]/div/button");
+   
+   //Send Warehouse Into Text
+   By Warehouse=By.className("ui-grid-filter-input-0");
+    
+   //Select First Record From Warehouse detail frame
+   By First_Record=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div");
+   
+   //Select Goods Code Button
+   By Goods_code_Button=By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[4]/div[3]/div/button");
+                                 
+   //Send Commodity code
+   By Commodity_Code=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input");
+                   
+   //Type Of Enwr
+   By Enwr_Type=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[4]/div[2]/div[3]/div/div/input");
+   
+   //Select First Commodity
+   By First_Commodity=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div");
+
+   //Pack Type Button
+   By Pack_Type_Button=By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[6]/div[3]/div/button");
+   
+   //Send Pack Type
+   By Packk_Type=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input");
+   
+   //Select First Pack Type
+   By First_Pack_Type=By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div");
+   
+   //Storage charge date
+   By Storage_Charge_Date=By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/span");
+   
+   By Storage_date_Today=By.xpath(" //*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/div/ul/li[2]/span/button[1]");
+   
+   By Save_Button=By.xpath("//button[@data-ng-click='saveEWRData()']");
+   
+   //Save EWR Details Validation message
+   
+   By EWR_Save_Validation=By.xpath("//div[@role='alert']");
+   
+ 
+  
+   
+   //++++++++++++++++++++++++++++++++Deposit Page++++++++++++++++++++++++++++++++++++++++++++++++
+   
+   By Deposit_Date=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/span/i");
+   
+   By Todays_Date=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/div/ul/li[2]/span/button[1]");
+  
+   //Benf account code
+   
+   By Beneficiary_Acc_Code=By.xpath("//input[@id='beneficiaryId']");
+   
+   //Number of packs
+   By No_Of_Packs_bags=By.xpath("//input[@name='numberOfPacks']");
+   
+   //Depositor Name
+   By Depositor_NM=By.xpath("//*[@id='depositorName']");
+   
+   //Depositor address
+   By DepositorADD=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/textarea");
+   
+   //Gross Quantity
+   By Gross_qnt=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input");
+   
+   //Physical qnt
+   By Phy_qnt=By.xpath(" //*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[5]/div/input");
+     
+   //Commodity rate
+   By Comm_Rate=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[2]/div/input");
+   
+   //Estimated Value
+   By Estimated_Value=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[5]/div/input");
+   
+   //Market Value
+   By Mark_val=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[2]/input");
+   
+   //Lot Number
+   By Lot_no=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[5]/div/input");
+   
+   //Storage Charges
+   By Storage_Chargess=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[2]/div/input");
+   
+   //Handling Charges
+   By Handling_ch=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[5]/div/input");
+   
+   //Save button
+   By Save_DP_Button=By.xpath("//button[@data-ng-click='saveDepositData()']");
+   
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++ Vehicle Deposit Details ++++++++++++++++++++++++++++++++++++
+   //ADD button
+   By Add_button=By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]");
+   
+   //Suplyar name
+   By Supplier_name=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/input");
+   
+   //Date
+   By Date=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/input");
+   
+   //Transporter name
+   By Transp_Name=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[3]/div/input");
+   
+   //Vehicle number
+   By Vehicle_no=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[4]/div/input");
+   
+   //Mobileno
+   By Mob_no=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[5]/div/input");
+   
+   //Select Adhar card
+   By Adhar_Card=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[6]/select");
+   
+   //Enter Adhar number
+   By Adhar_no=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[7]/div/input");
+   
+   //Gross Qnt
+   By Grossqt=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input");
+   
+   //Net Quantity
+   By NetQt=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input");
+   
+   //Number Of Packs
+   By No_Pack=By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input");
+   
+   //Save Button
+   By Save_Vehicle=By.xpath("//button[@data-ng-click='saveVehicleDepositDtls()']");
+   
+   
+ public Deposit(WebDriver driver){
+	
+	this.driver=driver;
+}
+
+public void Navigate_To_DepositPage(){
+	
+	 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	 
+	 driver.findElement(Menu_trigger).click();
+	 
+	 driver.findElement(EWR_Menu).click();
+	 
+	 driver.findElement(ENWR_link).click();
+	
+	 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	 
+	 driver.findElement(Menu_trigger).click();
+	 
+	 logger.info("Page Open Successfully");
+	
+}
+
+public void EWR_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_Code,String No_Packs,String DepositorName,String Gross_Quantity,String Physical_Quantity,String Commodity_Rate,String Estimated_deposit,String Private_Marks,String Lot_Number,String Storage_Charges,String Handling_Charges,String Other_Charges,String Advance_Paid,String Remaining_Charges,String Depositor_Address,String VDD_Gross_Qty,String VDD_Net_Qty,String VDD_Number_of_Packs,String Ass_Sampleno,String Assayer_Methodology,String Actual_Grade,String Para_1,String Para_2,String Para_3,String Para_4,String WSP_maker,String WSP_Password1,String WSP_checker,String WSP_Password2,String Login_Assayer,String Ass_password,int Record_Number) throws InterruptedException{
+ 
+	//Warehouse details
+	utility.clickOnWebElement1(Warehouse_Details_Button, driver);
+	
+	driver.findElement(Warehouse).sendKeys(WHCode);
+	
+	utility.clickOnWebElement1(First_Record, driver);
+	
+	logger.info("Warehouse Selected Successfully :"+WHCode);
+	
+	Thread.sleep(2000);
+	//Goods Code
+	utility.clickOnWebElement1(Goods_code_Button, driver);
+	
+	driver.findElement(Commodity_Code).sendKeys(Comm_ID);
+	
+	driver.findElement(Enwr_Type).sendKeys("Y");
+	
+	utility.clickOnWebElement1(First_Commodity, driver);
+	
+	logger.info("Commodity Code Selected Successfully :"+Comm_ID);
+	
+	Thread.sleep(2000);
+	
+	//Pack Type
+	utility.clickOnWebElement1(Pack_Type_Button, driver);
+	
+	driver.findElement(Packk_Type).sendKeys(Pack_Type);
+	
+	utility.clickOnWebElement1(First_Pack_Type, driver);
+	
+	logger.info("pack Type Selected Successfully :"+Pack_Type);
+	
+	Thread.sleep(2000);
+	
+	utility.clickOnWebElement1(Storage_Charge_Date, driver);
+	
+	utility.clickOnWebElement1(Storage_date_Today, driver);
+	
+	utility.clickOnWebElement1(Save_Button, driver);
+	
+	logger.info("Click on SAVE button Successfully");
+	
+	Result_Check(EWR_Save_Validation, "EWR Transaction Details Saved Successfully.");
+	
+	logger.info("EWR Transaction Details Saved Successfully.");
+	
+}
+
+public void Deposit_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_Code,String No_Packs,String DepositorName,String Gross_Quantity,String Physical_Quantity,String Commodity_Rate,String Estimated_deposit,String Private_Marks,String Lot_Number,String Storage_Charges,String Handling_Charges,String Other_Charges,String Advance_Paid,String Remaining_Charges,String Depositor_Address,String VDD_Gross_Qty,String VDD_Net_Qty,String VDD_Number_of_Packs,String Ass_Sampleno,String Assayer_Methodology,String Actual_Grade,String Para_1,String Para_2,String Para_3,String Para_4,String WSP_maker,String WSP_Password1,String WSP_checker,String WSP_Password2,String Login_Assayer,String Ass_password,int Record_Number) throws InterruptedException{
+
+	
+	 utility.clickOnWebElement1(Deposit_Date, driver);
+	 
+	 utility.clickOnWebElement1(Todays_Date, driver);
+	 
+	 driver.findElement(Beneficiary_Acc_Code).sendKeys(Benf_Code);
+	 
+	 driver.findElement(No_Of_Packs_bags).sendKeys(No_Packs);
+	 
+	 driver.findElement(Depositor_NM).sendKeys(DepositorName);
+
+	 driver.findElement(DepositorADD).sendKeys("Kanjurmarg W");
+	 
+	 driver.findElement(Gross_qnt).sendKeys(Gross_Quantity);
+	 
+	 driver.findElement(Phy_qnt).sendKeys(Physical_Quantity);
+	 
+	 driver.findElement(Comm_Rate).sendKeys(Commodity_Rate);
+	 
+	 driver.findElement(Estimated_Value).sendKeys(Estimated_deposit);
+	 
+	 driver.findElement(Mark_val).sendKeys("250000");
+	 
+	 driver.findElement(Lot_no).sendKeys(Lot_Number);
+	 
+     driver.findElement(Storage_Chargess).sendKeys(Storage_Charges);
+     
+     driver.findElement(Handling_ch).sendKeys(Handling_Charges);
+     
+     utility.clickOnWebElement1(Save_DP_Button, driver);
+     
+    Result_Check(EWR_Save_Validation, "Deposit Transaction Details Saved Successfully.");
+     
+}
+
+public void Vehicle_Deposit_Details(String WHCode,String Comm_ID,String Pack_Type,String Benf_Code,String No_Packs,String DepositorName,String Gross_Quantity,String Physical_Quantity,String Commodity_Rate,String Estimated_deposit,String Private_Marks,String Lot_Number,String Storage_Charges,String Handling_Charges,String Other_Charges,String Advance_Paid,String Remaining_Charges,String Depositor_Address,String VDD_Gross_Qty,String VDD_Net_Qty,String VDD_Number_of_Packs,String Ass_Sampleno,String Assayer_Methodology,String Actual_Grade,String Para_1,String Para_2,String Para_3,String Para_4,String WSP_maker,String WSP_Password1,String WSP_checker,String WSP_Password2,String Login_Assayer,String Ass_password,int Record_Number) throws InterruptedException{
+
+	utility.clickOnWebElement1(Add_button, driver);
+	
+	driver.findElement(Supplier_name).sendKeys("Sahara");
+	
+	 Calendar cal = Calendar.getInstance();
+	 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	 String strDate = sdf.format(cal.getTime());
+	 
+	 driver.findElement(Date).sendKeys(strDate);
+	 
+	 driver.findElement(Transp_Name).sendKeys("Shree transport");
+	 
+	 driver.findElement(Vehicle_no).sendKeys("MH12AS1234");
+	 
+	 driver.findElement(Mob_no).sendKeys("8796004476");
+	 
+	 driver.findElement(Adhar_Card).sendKeys("Aadhar Card");
+	
+	 driver.findElement(Adhar_no).sendKeys("123564789456");
+	 
+	 driver.findElement(Grossqt).sendKeys(VDD_Gross_Qty);
+	
+	 driver.findElement(NetQt).sendKeys(VDD_Net_Qty);
+	 
+	 driver.findElement(No_Pack).sendKeys(VDD_Number_of_Packs);
+	 
+	 utility.clickOnWebElement1(Save_Vehicle, driver);
+	 
+	 Result_Check(EWR_Save_Validation, "Vehiclewise Deposit Details Saved Successfully.");
+}
+
+
+
+  
+
+public void Result_Check(By XPATH,String Expected_Result){
+	
+	String Actual_Validation=driver.findElement((XPATH)).getText();
+	
+	assertEquals(Actual_Validation, Expected_Result);
+}
+
+public String Transaction_Number() throws InterruptedException{
+	Thread.sleep(3000);
+	String Reference_No=driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/ul/table/tbody/tr/td[1]")).getText();
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);	
+	System.out.println(Reference_No);
+		String string = Reference_No;
+		String[] parts = string.split(":-      ");
+		String part1 = parts[0];
+		this.part2 = parts[1];
+		System.out.println("Transaction number is : "+part2);
+		return part2;
+		
+		
+}
+	
+	
+	
+	
+	
+
+
+
+}

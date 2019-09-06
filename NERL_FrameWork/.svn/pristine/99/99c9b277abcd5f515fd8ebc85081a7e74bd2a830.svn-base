@@ -1,0 +1,95 @@
+package library;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Exceldataconfig {
+	private XSSFWorkbook workbook;
+	private XSSFSheet sheet;
+	private String excelPath;
+	private int sheetId;
+	
+//	 public Exceldataconfig(){
+//	 }
+//	 public Exceldataconfig(String excelpath,int SheetID) throws IOException{
+//	
+//		 FileInputStream fis = new FileInputStream(excelpath);
+//	         workbook = new XSSFWorkbook(fis);
+//	        sheet  = workbook.getSheetAt(SheetID);
+//	        workbook.close();
+//	 }
+//	public Exceldataconfig(String excelPath,int sheetId){
+//		this.excelPath = excelPath;
+//		this.sheetId = sheetId;
+//		
+//	}
+	public XSSFWorkbook getWorkbook() throws IOException {
+		FileInputStream fis = new FileInputStream(excelPath);
+		workbook = new XSSFWorkbook(fis);
+		return workbook;
+	}
+	public XSSFSheet getSheet() throws IOException {
+		sheet  = getWorkbook().getSheetAt(sheetId);
+		System.out.println(sheet.getLastRowNum());
+		return sheet;
+	}
+	public String getExcelPath() {
+		return excelPath;
+	}
+	public void setExcelPath(String excelPath) {
+		this.excelPath = excelPath;
+	}
+	public int getSheetId() {
+		return sheetId;
+	}
+	public void setSheetId(int sheetId) {
+		this.sheetId = sheetId;
+	}
+	public Object getdata(int sheetnumber,int row,int column){
+		
+		 String USer=null;
+		 if(sheet.getRow(row).getCell(column).getCellTypeEnum()==CellType.STRING){
+			 USer=sheet.getRow(row).getCell(column).getStringCellValue();
+		 }else if(sheet.getRow(row).getCell(column).getCellTypeEnum()==CellType.NUMERIC){
+			 USer=String.valueOf((int)sheet.getRow(row).getCell(column).getNumericCellValue());
+		 }
+		
+		  return USer; 
+		  
+		 }
+	 
+		 
+	 public int  getrowcount(int sheetindex) throws IOException{
+		 int row = getSheet().getLastRowNum();
+		//int row=workbook.getSheetAt(sheetindex).getLastRowNum();
+		row=row+1;
+		return row;
+	 }
+	 
+	public void WriteExcel(String EWR_Number,int Record_Number,int Cell_No) throws IOException{
+		
+		
+		//Exceldataconfig AB=new Exceldataconfig();
+		
+		int Benf_Row=getrowcount(1);
+//		FileInputStream fis = new FileInputStream(excelPath);
+//		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+//		XSSFSheet sheet  = workbook.getSheetAt(sheetId);
+//		 int Benf_Row = sheet.getLastRowNum();
+		System.out.println("Row count for Benf Exls File is " +Benf_Row);
+		
+		      sheet.getRow(Record_Number).createCell(Cell_No).setCellValue(EWR_Number);
+		      
+		      FileOutputStream Fout=new FileOutputStream("D:/TestData.xlsx");
+		     //FileOutputStream Fout=new FileOutputStream("C:/Users/gauravn/workspace/Test/TestData/TestData.xlsx");
+	   workbook.write(Fout);
+	   workbook.close();
+	 }
+}
+
+

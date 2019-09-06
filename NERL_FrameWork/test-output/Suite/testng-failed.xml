@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test name="Test2(failed)" parallel="tests">
+    <classes>
+      <class name="withdrawal_pkg.Pledgeeinvoke_apprval">
+        <methods>
+          <include name="Pledgee_creation"/>
+          <include name="Befour"/>
+        </methods>
+      </class> <!-- withdrawal_pkg.Pledgeeinvoke_apprval -->
+    </classes>
+  </test> <!-- Test2(failed) -->
+</suite> <!-- Failed suite [Suite] -->

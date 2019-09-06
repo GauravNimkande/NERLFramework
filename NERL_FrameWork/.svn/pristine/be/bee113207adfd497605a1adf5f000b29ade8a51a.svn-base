@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NERLSuite">
+  <test name="NeRLFramework">
+    <classes>
+    <class name="NERL.Datadriven_ENWR_creation"/>
+    <class name="NERL.Benf_To_Benf_Main"/>
+     <!--  <class name="NERL.Benf_To_Benf"/> -->
+     <!--  <class name="NERL.Masters"/>
+      <class name="NERL.EWRCreation"/> -->
+      
+    </classes>
+  </test> <!-- NeRLFramework -->
+</suite> <!-- NERLSuite -->

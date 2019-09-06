@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Deposit-Withdrawal">
+  <test name="Quantity Deduction">
+    <classes>
+       <class name="NERL.EWR_With_Deposit_Main"/>
+    <class name="withdrawal_pkg.Quantity_Deduction_Main"/>
+     <class name="withdrawal_pkg.Update_Quantity_deduction"/>
+   
+     
+   
+    </classes>
+  </test> <!-- Quantity Deduction -->
+</suite> <!-- Deposit-Withdrawal -->

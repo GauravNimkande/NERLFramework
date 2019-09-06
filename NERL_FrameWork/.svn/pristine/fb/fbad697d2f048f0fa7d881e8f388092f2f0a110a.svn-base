@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>TestNG:  NeRLFramework</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>NeRLFramework</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>6/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sat Oct 28 12:18:12 IST 2017</td>
+</tr>
+<tr><td>Total time:</td><td>634 seconds (634748 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='NERL.Benf_To_Benf.Benf_To_Benf_Submit()'><b>Benf_To_Benf_Submit</b><br>Test class: NERL.Benf_To_Benf<br>Test method: To verify if Rp Maker having Provision to initate/Submit EOT txn<br>Parameters: 9000112, RMSEED, BENF0000010022, R10277, BENF0000010023, ENWR, 004957</td>
+<td></td>
+<td>65</td>
+<td>NERL.Benf_To_Benf@5e3a8624</td></tr>
+<tr>
+<td title='NERL.Benf_To_Benf.EOT_Approval_By_RpChecker_Buyerclient()'><b>EOT_Approval_By_RpChecker_Buyerclient</b><br>Test class: NERL.Benf_To_Benf<br>Test method: To verify if EOT transection Approve by RP Checker(Buyer client))</td>
+<td></td>
+<td>22</td>
+<td>NERL.Benf_To_Benf@5e3a8624</td></tr>
+<tr>
+<td title='NERL.Benf_To_Benf.EOT_Approval_By_RpChecker_Sellerclient()'><b>EOT_Approval_By_RpChecker_Sellerclient</b><br>Test class: NERL.Benf_To_Benf<br>Test method: To verify if EOT transection Approve by RP Checker(Seller client))</td>
+<td></td>
+<td>22</td>
+<td>NERL.Benf_To_Benf@5e3a8624</td></tr>
+<tr>
+<td title='NERL.Benf_To_Benf.EOT_Discard_Maker()'><b>EOT_Discard_Maker</b><br>Test class: NERL.Benf_To_Benf<br>Test method: To verify if Rp Maker having Provision to Discard EOT txn<br>Parameters: 9000112, RMSEED, BENF0000010022, R10277, BENF0000010023, ENWR, 004957</td>
+<td></td>
+<td>67</td>
+<td>NERL.Benf_To_Benf@5e3a8624</td></tr>
+<tr>
+<td title='NERL.Benf_To_Benf.EOT_Discard_Reject()'><b>EOT_Discard_Reject</b><br>Test class: NERL.Benf_To_Benf<br>Test method: To verify if RP Checker having Provision to Reject EOT txn<br>Parameters: 9000112, RMSEED, BENF0000010022, R10277, BENF0000010023, ENWR, 004957</td>
+<td></td>
+<td>163</td>
+<td>NERL.Benf_To_Benf@5e3a8624</td></tr>
+<tr>
+<td title='NERL.Datadriven_ENWR_creation.EWR_creation()'><b>EWR_creation</b><br>Test class: NERL.Datadriven_ENWR_creation<br>Test method: To verify Creation Of ENWR With Valid details<br>Parameters: 9000112, RMSEED, Gunny, BENF0000010022, 1000, Gaurav, 1000, 1000, 2300, 500, Dry storage deposit, LOT001, 500, 200, 250, 650, 200, Kanjurmarg akruti center, 1000, 1000, 1000, Sample1, AM0000000084, GRADE A, 1, 1, 1, 1, WSP2001, mumbai123, WSP2002, mumbai123, ASY001USER, mumbai123</td>
+<td></td>
+<td>239</td>
+<td>NERL.Datadriven_ENWR_creation@1bce4f0a</td></tr>
+</table><p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Deposit-PledgeInitiation-Redeem-Invoke">
+  <test name="Depo-PledgeInitiation-Redeem-invoke">
+    <classes>
+    <!-- <class name="NERL.EWR_With_Deposit_Main"/> -->
+      <class name="NERL.Pledgee_Initiation_Main"/> 
+     <class name="withdrawal_pkg.PledgeeRedemption_main"/> 
+     <class name="withdrawal_pkg.Pledgeeinvoke_apprval"/>
+     
+     
+     
+    
+     
+      
+    </classes>
+  </test> <!-- Depo-PledgeInitiation-Redeem-invoke -->
+</suite> <!-- Deposit-PledgeInitiation-Redeem-Invoke -->

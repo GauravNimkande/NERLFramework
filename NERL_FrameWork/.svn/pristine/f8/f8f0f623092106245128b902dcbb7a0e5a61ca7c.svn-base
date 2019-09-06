@@ -1,0 +1,92 @@
+package NERL;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.xmlbeans.impl.tool.Extension.Param;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Com.Wordpress.pages.Deposit;
+import library.Exceldataconfig;
+import library.Utility;
+
+public class TestT {
+
+	public Utility utility;
+	public  WebDriver driver;
+	public Exceldataconfig config;
+	private final static Logger logger = LoggerFactory.getLogger( EWR_With_Deposit_Main.class);
+	private static Deposit ENWR;
+	public String ENWR_Number;
+	public String EDP_No;
+	private EWR_With_Deposite EWR=new EWR_With_Deposite();
+	 
+	
+	@Test(priority=1,description="To verify Creation Of ENWR With Valid details",dataProvider="wordpressdata")
+	public void test2(){
+		
+		
+		
+		
+	}
+	
+	/*
+	 * 
+	 * main(){
+	Test tt=new Test();
+	
+	HashMap<String, Double> paraMap=new HashMap<String, Double>();
+	
+	 
+	
+	 
+	
+	StringBuffer st1= new StringBuffer("1.2");
+	StringBuffer st2= new StringBuffer("2.2");
+	tt.testt("testWH", "101", "testPackType", st1,st2, "2");
+	
+ 	
+	
+	
+}*/
+
+
+  @Test
+public  void testt(String WHCode,String Comm_ID,String Pack_Type,StringBuffer para1,StringBuffer para2,String Number_Of_Para){
+	
+	
+	
+	HashMap<String, Object> depositMap=new HashMap<String, Object>();
+	
+	depositMap.put("WHCode",WHCode );
+	depositMap.put("Comm_ID",Comm_ID );
+	depositMap.put("Pack_Type",Pack_Type );
+	
+	
+	
+	
+	
+	
+	HashMap<String, Object> paraMap=new HashMap<String, Object> ();
+	for(int i=1;i<=Integer.valueOf(Number_Of_Para) ;i++){
+		StringBuffer para=new StringBuffer("para");
+	paraMap.put("Para_"+i, para+""+i);	
+		
+	}
+	
+	
+}
+ }

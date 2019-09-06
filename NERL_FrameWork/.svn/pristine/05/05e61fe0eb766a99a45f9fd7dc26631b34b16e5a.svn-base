@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Deposit-PledgeeInitiation">
+  <test name="PledgeeInitiation">
+    <classes>
+    <class name="NERL.Datadriven_ENWR_creation"/>
+    <class name="NERL.Pledgee_Initiation_Main"/>
+     <class name="NERL.PledgeeInitiation"/>
+     
+    </classes>
+  </test> <!-- PledgeeInitiation -->
+</suite> <!-- Deposit-PledgeeInitiation -->

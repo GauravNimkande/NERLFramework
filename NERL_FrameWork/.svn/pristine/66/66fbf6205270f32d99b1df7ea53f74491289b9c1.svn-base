@@ -1,0 +1,1937 @@
+//++++++++++++++++++++++++NERL Test++++++++++++++++++++++++++++++++++++++++++
+package NERL;
+
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+
+import java.lang.Thread;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
+
+import library.Utility;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.By;
+import org.testng.annotations.BeforeMethod;
+
+@Test
+public class EWRCreation {
+	public String part2;
+	public Utility utility;
+		
+		public static WebDriver driver;
+		
+@BeforeMethod
+public void beforeMethod() {
+	
+				 System.out.println("Test Case Execution Started");
+				  // Create a new instance of the Chrome driver
+				 System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
+			 
+				  driver = new ChromeDriver();	
+				 driver.get("https://nerltest.erepository.in/");
+				 driver.manage().window().maximize();
+				
+			 
+			      //Put a Implicit wait, this means that any search for elements on the page could take the time the implicit wait is set for before throwing exception
+			 
+			      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			      utility = new Utility(driver);
+			   		  }
+/*@AfterMethod
+			 public void afterMethod() throws InterruptedException {
+				 driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();//Menu Button
+			Thread.sleep(5000);
+			driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+			Thread.sleep(3000);
+				  // Close the driver
+			 System.out.println("Inside After Method");
+			      driver.quit();
+			 
+	              }*/
+
+@Test(priority=1,description="To verify Creation Of ENWR With Valid details",groups="Sanity")
+public  void EWR_creation()
+	       {
+		
+		try{
+			 //User ID Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+	    	 //Password Text box
+	   		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+	   		
+	   		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		//Click On Login Button
+	   		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	               //Thread.sleep(5000);
+	             String url="https://nerltest.erepository.in/views/index.html#/home";
+	             if(url.equals(driver.getCurrentUrl()))
+	             {
+	            	 System.out.println("login successful");
+	             }
+	             else
+	             {
+	            	 System.out.println("Login Failed");
+	             }
+	        
+	   		
+	         //Menu Button
+	         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();
+	   		Thread.sleep(2000);
+	   		
+	     	//EWR dropdown
+	   		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/a")).click();
+	   	
+	   	    //EWR With Deposit Link
+	   		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[1]/a")).click();
+	   		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		
+	   		//Menu trigger
+	   		driver.findElement(By.xpath(".//*[@id='menu-trigger']/div")).click();
+	   		Thread.sleep(3000);
+	   	    
+	   		// Click on Warehouse Details Button
+	   		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[2]/div[3]/div/button")).click();
+	   		Thread.sleep(3000);
+
+	   		driver.switchTo().defaultContent();
+
+		   	//Select Warehouse 0000999
+	   		driver.findElement(By.className("ui-grid-filter-input-0")).sendKeys("9009002"); 
+	   		Thread.sleep(2000);
+	   		
+	   		//*********************************************************************************
+	   		//Select Record From Warehouse detail frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+	   		
+	   		//***********************************************************************************
+	   		
+	   		Thread.sleep(2000);
+	   		// Select Goods Code
+	     	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[4]/div[3]/div/button")).click();
+	   		Thread.sleep(2000);
+	   		//Select Commodity Details from Frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//Select Commodity Details 
+	   		
+	   		Thread.sleep(2000);
+	   		// To Select Pack Type
+	   		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[6]/div[3]/div/button")).click();
+	   		Thread.sleep(2000);
+	   		// Select Pack Details from Frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//To Select Pack Type as Gunny
+	   		Thread.sleep(3000);
+	   	    
+	   		//Select Dropdown Insurance ID
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/a/span")).click();
+	   	    //Send key 001 in inshurance ID
+	   		Thread.sleep(2000);
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/div/ul/li")).click();
+	       
+	        //Select Calender date
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/span")).click();
+            Thread.sleep(2000);
+            
+            driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/div/ul/li[2]/span/button[1]")).click();
+            Thread.sleep(2000);
+            
+            //click on save button
+            driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+            utility.CaptureScreenshot(driver, "Ewr Details",1);
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+            Thread.sleep(5000);
+            String EDPno=driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/ul/table/tbody/tr/td[1]")).getText();
+		System.out.println(EDPno);
+		
+		String string = EDPno;
+		String[] parts = string.split(":-      ");
+		String part1 = parts[0];
+		//System.out.println("Vlaue of Array= "+parts[1]);
+		this.part2 = parts[1];
+		System.out.println(part1);
+		System.out.println(part2);
+		   
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);    
+		Thread.sleep(2000);
+            //Click on Deposit Tab Deposit Date
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/span/i")).click();     
+            Thread.sleep(2000);
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+	     
+	       
+            //Enter Beneficiary Account Code
+            driver.findElement(By.xpath("//*[@id='beneficiaryId']")).sendKeys("BENF0000010022");
+            //Enter Number Of Packs
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).sendKeys("100");
+		    //Depositor Name
+            driver.findElement(By.xpath("//*[@id='depositorName']")).sendKeys("Sahara");
+            //Gross Quantity
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).sendKeys("1000");
+		    //Physical Quantity
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).sendKeys("1000");
+            //Commodity Rate
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[5]/div/input")).sendKeys("50");
+            //Estimated value at deposit*
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[2]/div/input")).sendKeys("1500");
+            //Private Marks
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[2]/div/input")).sendKeys("Sample");
+            //Lot/BIN Number
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[5]/div/input")).sendKeys("Lot001");
+            //Storage Charges
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[2]/div/input")).sendKeys("5000");
+            //Handling Charges
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[5]/div/input")).sendKeys("1000");
+            //Other Charges
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[2]/div/input")).sendKeys("500");
+            //Advance Amount Paid
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[5]/div/input")).sendKeys("5000");
+            //Remaining Charges
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[2]/div/input")).sendKeys("500");
+            //Depositor Address
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[5]/div/textarea")).sendKeys("Kanjurmarg (W)");
+            
+            Thread.sleep(2000);
+            //Click on SAVE Button
+            driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[12]/div[4]/button[2]")).click();
+            utility.CaptureScreenshot(driver, "Deposit Details",1);
+            
+            //Scroll List Until ADD Button not found
+            utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]");
+            Thread.sleep(2000);
+    	 	
+      	 	//---------------------Click on ADD Button on Vehicle Deposit Details----------------------------------
+    	 	 driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]")).click();
+		     //Depositor Name
+    	 	 driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/input")).sendKeys("Sahara");
+    	 	
+    	 	 Calendar cal = Calendar.getInstance();
+		    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		    String strDate = sdf.format(cal.getTime());
+		    //Enter Date in dd/mm/yyyy Format
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/input")).sendKeys(strDate);
+    	 	//Enter Transporter Name
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[3]/div/input")).sendKeys("RK Sarma");
+            //Enter Vehicle Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[4]/div/input")).sendKeys("MH12AS1234");
+		    //Enter Mobile Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[5]/div/input")).sendKeys("9985654125");
+		    //Select Adhar as document 
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[6]/select")).sendKeys("Aadhar Card");
+		    Thread.sleep(2000);
+		    //Enter Aadher Card Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[7]/div/input")).sendKeys("123456789456");
+		    //Enter Gross Qty
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).sendKeys("1000");
+		    //Enter Net Qty
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).sendKeys("1000");
+		    //Number Of Packs
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).sendKeys("100");
+		    Thread.sleep(2000);
+		    //Click om SAVE Button
+		    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+		  
+		    //------------------------------------Assaying Tab------------------------------------------------
+		    //Get Sample Number
+		    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[1]/div[5]/div/input")).sendKeys("SAMP123");
+		    //Click On Assayer ID Button
+		    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[2]/div[3]/button")).click();
+		    //Select Assayer Details
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+		    Thread.sleep(2000);
+		    //Assaying Methodology 
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[3]/button")).click();
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[4]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();
+		   
+		    Thread.sleep(2000);
+		    //Click on Assying Type Dropdown
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/a/span")).click();
+		    //3rd party verifyed
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/div/ul/li[1]")).click();
+		    Thread.sleep(2000);
+		    //Final Expiry Date
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/span/i")).click();
+		    Thread.sleep(2000);
+		    //Click in next button >
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/thead/tr[1]/th[3]/button")).click();
+		   //Select 26 spt
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/tbody/tr[4]/td[4]/button")).click();
+		   
+		   //Select Actual Grade
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/a/span")).click();
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/div/ul/li")).click();
+		   
+		   //Assaying Date
+		   Thread.sleep(3000);
+		   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+		  // driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+		   //Click on Today Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+		 
+		   //Scroll List Until ADD Button not found
+		   utility.pageScrollDown("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]");
+		   
+		     
+		   //Parameter Details
+	   	  Thread.sleep(2000);
+		   Actions action = new Actions(driver);
+		  //Damaged
+		  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div"))).doubleClick().build().perform();
+		  //Thread.sleep(2000); 
+		  driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		  //Dust
+		  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		   //Moisture
+         action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		   //Oil content
+		   action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(2));
+		 
+		   //Click on Fetch Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]")).click();
+		   //Click on Save Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[4]")).click();
+		   
+		   Thread.sleep(2000);
+		 //ScrollDown on Generate EWR button
+		   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button");
+	 	 	
+   	 	   //Click on Generate EWR Number Button
+   	 	  driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button")).click();
+   	 	
+   	       Thread.sleep(4000);
+	   //ScrollDown on SUBMIT button
+   	       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+   	   	 
+	   //Click on Submit Button
+	   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+	 	
+	 	driver.switchTo().alert().accept();
+	 	
+	 	Thread.sleep(2000);
+	 	
+		
+			String Validation="EWR Transaction Details Submitted Successfully.";
+			String Actual_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+			System.out.println(Actual_Validation);
+			
+			
+			if(Actual_Validation.equals(Validation)){
+				System.out.println("EWR Submited Successfully ");
+				}
+			else{
+				System.out.println("Error While Submiting EWR");
+			     }
+			utility.CaptureScreenshot(driver, "Ewr Swbmited",1);
+			
+		AssertJUnit.assertEquals("EWR Transaction Details Submitted Successfully.", Actual_Validation );
+		Thread.sleep(2000);
+		//-----------Logout WSP Maker----------------------
+	     driver.findElement(By.xpath("//*[@id='menu-trigger']/div/div[2]")).click();
+	     Thread.sleep(2000);
+	     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+	     //Logout Button
+	     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
+	     //-------------------------------------------------------
+		}
+		catch(Exception e){		
+	   e.printStackTrace();
+		                  }
+		
+		}
+
+@Test(priority=2,dependsOnMethods="EWR_creation",description="To verify ENWR Approval Flow",groups="Sanity")
+public void EWR_Approve(){	
+	  try {
+	  //User ID Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+  	 //Password Text box
+ 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+ 		
+ 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+             
+				Thread.sleep(5000);
+			
+           String url="https://nerltest.neml.in/views/index.html#/home";
+           if(url.equals(driver.getCurrentUrl()))
+           {
+          	 System.out.println("login successful");
+           }
+           else
+           {
+          	 System.out.println("Login Failed");
+           }
+      
+        // Click on pending txn button
+   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+   		Thread.sleep(3000);
+   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+   		System.out.println(part2);
+   		Thread.sleep(3000);
+   		//Put EDP number into search box
+   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(part2);
+   		Thread.sleep(3000);
+   		//Click On EDP No
+       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+       Thread.sleep(3000);
+       driver.switchTo().alert().accept();
+       Thread.sleep(3000);
+       driver.switchTo().alert().accept();
+     //Scroll List Until Sign Button not found
+       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button");
+       
+	 	//Click on SIGN Button
+	 	Thread.sleep(3000);
+	 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button")).click();
+	 	Thread.sleep(5000);
+	       driver.switchTo().alert().accept();
+	       Thread.sleep(2000);
+	     //Click On Approve Button. 
+	     driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+	     driver.switchTo().alert().accept();
+	     Thread.sleep(2000);
+	     String Approval_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+	     
+	     AssertJUnit.assertEquals("EWR Transaction Approved Successfully.",Approval_Validation ); 
+	     
+	     utility.logout();
+	   
+	    //------------------------Assayer Login-------------------------- 
+	     Thread.sleep(3000);
+	     //User ID Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("ASY001USER");
+	  	 //Password Text box
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+	 		
+	 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	 		//Click On Login Button
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	        Thread.sleep(5000);
+	        // Click on pending txn button
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+	   		Thread.sleep(3000);
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+	   		System.out.println(part2);
+	   		Thread.sleep(3000);
+	   		//Put EDP number into search box
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(part2);
+	   		Thread.sleep(3000);
+	   		//Click On EDP No
+	       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+	       Thread.sleep(3000);
+	       
+	       //Scroll Down To Visibale Submit Button
+	       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+	       
+	       //Click on Approve Button
+		 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+		 	driver.switchTo().alert().accept();
+		 	String Asy_Approve=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+		 	
+		 	if(Asy_Approve.equals("EWR Transaction Approved Successfully."))
+	           {
+	          	 System.out.println("EWR Approve By Assayer Successfully");
+	           }
+	           else
+	           {
+	          	 System.out.println("Error While Approve EWR By Assayer");
+	           }
+		 	
+		 	utility.logout();
+		 	//driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
+		 	Thread.sleep(3000);
+		     //User ID Text box 
+				driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+		  	 //Password Text box
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		 		
+		 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 		//Click On Login Button
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();
+		        Thread.sleep(5000);
+				 // Click on pending txn button
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		   		Thread.sleep(3000);
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		   		System.out.println(part2);
+		   		Thread.sleep(2000);
+		   		//Put EDP number into search box
+		   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(part2);
+		   		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		   		//Click On EDP No
+		       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+		       Thread.sleep(3000);		
+		     //Scroll Down To Visibale Approve Button
+		       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+		       
+			 	//Click on Approve Button
+			 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+			 	driver.switchTo().alert().accept();
+			 	
+			 	String FinalApproval=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+				String ExpectedApproval="EWR Transaction Approved Successfully.";		
+				utility.CaptureScreenshot(driver, "ENWRCompleted",1);
+				AssertJUnit.assertEquals(FinalApproval, ExpectedApproval);
+				
+				utility.logout();				     
+	  } catch (InterruptedException e) {
+				e.printStackTrace();
+		}
+ 
+     } 
+
+
+@Test(priority=3,description="To verify Discard ENWR from WSP User(Maker)",groups="Regression")
+public void EWR_Discard(){
+	
+	try{
+		 //User ID Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+ 	 //Password Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Click On Login Button
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+            //Thread.sleep(5000);
+          String url="https://nerltest.erepository.in/views/index.html#/home";
+          if(url.equals(driver.getCurrentUrl()))
+          {
+         	 System.out.println("login successful");
+          }
+          else
+          {
+         	 System.out.println("Login Failed");
+          }
+     
+		
+      //Menu Button
+      driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();
+		Thread.sleep(2000);
+		
+  	//EWR dropdown
+		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/a")).click();
+	
+	    //EWR With Deposit Link
+		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[1]/a")).click();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		//Menu trigger
+		driver.findElement(By.xpath(".//*[@id='menu-trigger']/div")).click();
+		Thread.sleep(3000);
+	    
+		// Click on Warehouse Details Button
+		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[2]/div[3]/div/button")).click();
+		Thread.sleep(3000);
+
+		driver.switchTo().defaultContent();
+
+	   	//Select Warehouse 0000999
+		driver.findElement(By.className("ui-grid-filter-input-0")).sendKeys("9009002"); 
+		Thread.sleep(2000);
+		//Select Record From Warehouse detail frame
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+		
+		Thread.sleep(2000);
+		// Select Goods Code
+  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[4]/div[3]/div/button")).click();
+		Thread.sleep(2000);
+		//Select Commodity Details from Frame
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//Select Commodity Details 
+		
+		Thread.sleep(2000);
+		// To Select Pack Type
+		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[6]/div[3]/div/button")).click();
+		Thread.sleep(2000);
+		// Select Pack Details from Frame
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//To Select Pack Type as Gunny
+		Thread.sleep(3000);
+	    
+		//Select Dropdown Insurance ID
+		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/a/span")).click();
+	    //Send key 001 in inshurance ID
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/div/ul/li")).click();
+    
+     //Select Calender date
+		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/span")).click();
+     Thread.sleep(2000);
+     
+     driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/div/ul/li[2]/span/button[1]")).click();
+     Thread.sleep(2000);
+     
+     //click on save button
+     driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+     utility.CaptureScreenshot(driver, "Ewr Details",1);
+     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+   	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);    
+	Thread.sleep(2000);
+     //Click on Deposit Tab Deposit Date
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/span/i")).click();     
+     Thread.sleep(2000);
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+  
+    
+     //Enter Beneficiary Account Code
+     driver.findElement(By.xpath("//*[@id='beneficiaryId']")).sendKeys("BENF0000010022");
+     //Enter Number Of Packs
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).sendKeys("100");
+	    //Depositor Name
+     driver.findElement(By.xpath("//*[@id='depositorName']")).sendKeys("Sahara");
+     //Gross Quantity
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).sendKeys("1000");
+	    //Physical Quantity
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).sendKeys("1000");
+     //Commodity Rate
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[5]/div/input")).sendKeys("50");
+     //Estimated value at deposit*
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[2]/div/input")).sendKeys("1500");
+     //Private Marks
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[2]/div/input")).sendKeys("Sample");
+     //Lot/BIN Number
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[5]/div/input")).sendKeys("Lot001");
+     //Storage Charges
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[2]/div/input")).sendKeys("5000");
+     //Handling Charges
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[5]/div/input")).sendKeys("1000");
+     //Other Charges
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[2]/div/input")).sendKeys("500");
+     //Advance Amount Paid
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[5]/div/input")).sendKeys("5000");
+     //Remaining Charges
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[2]/div/input")).sendKeys("500");
+     //Depositor Address
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[5]/div/textarea")).sendKeys("Kanjurmarg (W)");
+     
+     Thread.sleep(2000);
+     //Click on SAVE Button
+     driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[12]/div[4]/button[2]")).click();
+     utility.CaptureScreenshot(driver, "Deposit Details",1);
+     
+     utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]");
+	 	//---------------------Click on ADD Button on Vehicle Deposit Details----------------------------------
+	 	 driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]")).click();
+	     //Depositor Name
+	 	 driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/input")).sendKeys("Sahara");
+	 	
+	 	 Calendar cal = Calendar.getInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	    String strDate = sdf.format(cal.getTime());
+	    //Enter Date in dd/mm/yyyy Format
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/input")).sendKeys(strDate);
+	 	//Enter Transporter Name
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[3]/div/input")).sendKeys("RK Sarma");
+     //Enter Vehicle Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[4]/div/input")).sendKeys("MH12AS1234");
+	    //Enter Mobile Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[5]/div/input")).sendKeys("9985654125");
+	    //Select Adhar as document 
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[6]/select")).sendKeys("Aadhar Card");
+	    Thread.sleep(2000);
+	    //Enter Aadher Card Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[7]/div/input")).sendKeys("123456789456");
+	    //Enter Gross Qty
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).sendKeys("1000");
+	    //Enter Net Qty
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).sendKeys("1000");
+	    //Number Of Packs
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).sendKeys("100");
+	    Thread.sleep(2000);
+	    //Click om SAVE Button
+	    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+	  
+	    //------------------------------------Assaying Tab------------------------------------------------
+	    //Get Sample Number
+	    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[1]/div[5]/div/input")).sendKeys("SAMP123");
+	    //Click On Assayer ID Button
+	    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[2]/div[3]/button")).click();
+	    //Select Assayer Details
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+	    Thread.sleep(2000);
+	    //Assaying Methodology 
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[3]/button")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[4]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();
+	   
+	    Thread.sleep(2000);
+	    //Click on Assying Type Dropdown
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/a/span")).click();
+	    //3rd party verifyed
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/div/ul/li[1]")).click();
+	    Thread.sleep(2000);
+	    //Final Expiry Date
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/span/i")).click();
+	    Thread.sleep(2000);
+	    //Click in next button >
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/thead/tr[1]/th[3]/button")).click();
+	   //Select 26 spt
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/tbody/tr[4]/td[4]/button")).click();
+	   
+	   //Select Actual Grade
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/a/span")).click();
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/div/ul/li")).click();
+	   
+	   //Assaying Date
+	   Thread.sleep(3000);
+	   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+	  // driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+	   //Click on Today Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+	 //Scroll List Until ADD Button not found
+	   utility.pageScrollDown("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]");
+	  
+	   //Parameter Details
+	  Thread.sleep(2000);
+	   Actions action = new Actions(driver);
+	  //Damaged
+	  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div"))).doubleClick().build().perform();
+	  driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	
+	  //Dust
+	  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div"))).doubleClick().build().perform();
+	  driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	   
+	   //Moisture
+       action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div"))).doubleClick().build().perform();
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	   
+	   //Oil content
+	   action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div"))).doubleClick().build().perform();
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(2));
+	  //Click on Fetch Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]")).click();
+	   //Click on Save Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[4]")).click();
+	   
+	   Thread.sleep(3000);
+	 //Scroll List Until ADD Button not found
+	   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button");
+	
+ 	//Click on Generate EWR Number Button
+ 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button")).click();
+ 	Thread.sleep(2000);
+     //Scroll List Until discard Button not found
+    utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button");
+ 		
+	  //Click on Discard Button  	
+      driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button")).click();
+	  
+	    String Validation="EWR Transaction Cancelled Successfully.";
+		String Actual_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+		System.out.println(Actual_Validation);
+	
+		if(Actual_Validation.equals(Validation)){
+			System.out.println("EWR Discard Successfully ");
+			}
+		else{
+			System.out.println("Error While Discard EWR");
+		     }
+		utility.CaptureScreenshot(driver, "Ewr Discard",1);
+		
+	AssertJUnit.assertEquals("EWR Transaction Cancelled Successfully.", Actual_Validation );
+	Thread.sleep(2000);
+	utility.logout();
+	
+	}
+	  catch(Exception e){		
+      e.printStackTrace();
+	                  }
+	
+	}
+
+
+@Test(priority=4,description="To verify Reject ENWR from WSP checker")
+public void EWR_Reject(){
+	
+	try{
+	 //User ID Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+   	 //Password Text box
+  		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+  		
+  		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+  		//Click On Login Button
+  		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+              //Thread.sleep(5000);
+            String url="https://nerltest.erepository.in/views/index.html#/home";
+            if(url.equals(driver.getCurrentUrl()))
+            {
+           	 System.out.println("login successful");
+            }
+            else
+            {
+           	 System.out.println("Login Failed");
+            }
+       
+  		
+        //Menu Button
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+  		driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();
+  		Thread.sleep(2000);
+      	//EWR dropdown
+  		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/a")).click();
+  	
+  	    //EWR With Deposit Link
+  		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[1]/a")).click();
+  		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+  		
+  		//Menu trigger
+  		driver.findElement(By.xpath(".//*[@id='menu-trigger']/div")).click();
+  		Thread.sleep(3000);
+  	    
+  		// Click on Warehouse Details Button
+  		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[2]/div[3]/div/button")).click();
+  		Thread.sleep(3000);
+
+  		driver.switchTo().defaultContent();
+
+	   	//Select Warehouse 0000999
+  		driver.findElement(By.className("ui-grid-filter-input-0")).sendKeys("9009002"); 
+  		Thread.sleep(2000);
+  		
+  		//*********************************************************************************
+  		//Select Record From Warehouse detail frame
+  		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+  		
+  		//***********************************************************************************
+  		
+  		Thread.sleep(2000);
+  		// Select Goods Code
+    	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[4]/div[3]/div/button")).click();
+  		Thread.sleep(2000);
+  		//Select Commodity Details from Frame
+  		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//Select Commodity Details 
+  		
+  		Thread.sleep(2000);
+  		// To Select Pack Type
+  		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[6]/div[3]/div/button")).click();
+  		Thread.sleep(2000);
+  		// Select Pack Details from Frame
+  		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//To Select Pack Type as Gunny
+  		Thread.sleep(3000);
+  	    
+  		//Select Dropdown Insurance ID
+  		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/a/span")).click();
+  	    //Send key 001 in inshurance ID
+  		Thread.sleep(2000);
+  		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/div/ul/li")).click();
+      
+       //Select Calender date
+  		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/span")).click();
+       Thread.sleep(2000);
+       
+       driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/div/ul/li[2]/span/button[1]")).click();
+       Thread.sleep(2000);
+       
+       //click on save button
+       driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+       utility.CaptureScreenshot(driver, "Ewr Details",1);
+       driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+ //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+       Thread.sleep(5000);
+       String EDPno=driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/ul/table/tbody/tr/td[1]")).getText();
+	System.out.println(EDPno);
+	
+	String string = EDPno;
+	String[] parts = string.split(":-      ");
+	String EDPstrng = parts[0];
+	//System.out.println("Vlaue of Array= "+parts[1]);
+	String EDPnumber = parts[1];
+	System.out.println(EDPstrng);
+	System.out.println(EDPnumber);
+	   
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);    
+	Thread.sleep(2000);
+       //Click on Deposit Tab Deposit Date
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/span/i")).click();     
+       Thread.sleep(2000);
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+    
+      
+       //Enter Beneficiary Account Code
+       driver.findElement(By.xpath("//*[@id='beneficiaryId']")).sendKeys("BENF0000010022");
+       //Enter Number Of Packs
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).sendKeys("100");
+	    //Depositor Name
+       driver.findElement(By.xpath("//*[@id='depositorName']")).sendKeys("Sahara");
+       //Gross Quantity
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).sendKeys("1000");
+	    //Physical Quantity
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).sendKeys("1000");
+       //Commodity Rate
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[5]/div/input")).sendKeys("50");
+       //Estimated value at deposit*
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[2]/div/input")).sendKeys("1500");
+       //Private Marks
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[2]/div/input")).sendKeys("Sample");
+       //Lot/BIN Number
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[5]/div/input")).sendKeys("Lot001");
+       //Storage Charges
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[2]/div/input")).sendKeys("5000");
+       //Handling Charges
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[5]/div/input")).sendKeys("1000");
+       //Other Charges
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[2]/div/input")).sendKeys("500");
+       //Advance Amount Paid
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[5]/div/input")).sendKeys("5000");
+       //Remaining Charges
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[2]/div/input")).sendKeys("500");
+       //Depositor Address
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[5]/div/textarea")).sendKeys("Kanjurmarg (W)");
+       
+       Thread.sleep(2000);
+       //Click on SAVE Button
+       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[12]/div[4]/button[2]")).click();
+       utility.CaptureScreenshot(driver, "Deposit Details",1);
+       //Scroll List Until ADD Button not found
+       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]");
+ 	 	Thread.sleep(2000);
+	 	
+	 	//---------------------Click on ADD Button on Vehicle Deposit Details----------------------------------
+	 	 driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]")).click();
+	     //Depositor Name
+	 	 driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/input")).sendKeys("Sahara");
+	 	
+	 	 Calendar cal = Calendar.getInstance();
+	    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	    String strDate = sdf.format(cal.getTime());
+	    //Enter Date in dd/mm/yyyy Format
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/input")).sendKeys(strDate);
+	 	//Enter Transporter Name
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[3]/div/input")).sendKeys("RK Sarma");
+       //Enter Vehicle Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[4]/div/input")).sendKeys("MH12AS1234");
+	    //Enter Mobile Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[5]/div/input")).sendKeys("9985654125");
+	    //Select Adhar as document 
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[6]/select")).sendKeys("Aadhar Card");
+	    Thread.sleep(2000);
+	    //Enter Aadher Card Number
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[7]/div/input")).sendKeys("123456789456");
+	    //Enter Gross Qty
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).sendKeys("1000");
+	    //Enter Net Qty
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).sendKeys("1000");
+	    //Number Of Packs
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).sendKeys("100");
+	    Thread.sleep(2000);
+	    //Click om SAVE Button
+	    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+	  
+	    //------------------------------------Assaying Tab------------------------------------------------
+	    //Get Sample Number
+	    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[1]/div[5]/div/input")).sendKeys("SAMP123");
+	    //Click On Assayer ID Button
+	    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[2]/div[3]/button")).click();
+	    //Select Assayer Details
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+	    Thread.sleep(2000);
+	    //Assaying Methodology 
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[3]/button")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[4]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();
+	   
+	    Thread.sleep(2000);
+	    //Click on Assying Type Dropdown
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/a/span")).click();
+	    //3rd party verifyed
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/div/ul/li[1]")).click();
+	    Thread.sleep(2000);
+	    //Final Expiry Date
+	    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/span/i")).click();
+	    Thread.sleep(2000);
+	    //Click in next button >
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/thead/tr[1]/th[3]/button")).click();
+	   //Select 26 spt
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/tbody/tr[4]/td[4]/button")).click();
+	   
+	   //Select Actual Grade
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/a/span")).click();
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/div/ul/li")).click();
+	   
+	   //Assaying Date
+	   Thread.sleep(3000);
+	   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+	  // driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+	   //Click on Today Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+	 //Scroll List Until ADD Button not found
+	   utility.pageScrollDown("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]");
+	   
+	   //Parameter Details
+  	  Thread.sleep(2000);
+	   //driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div")).isSelected();
+	  //driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div")).click();
+	  Actions action = new Actions(driver);
+	  //Damaged
+	  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div"))).doubleClick().build().perform();
+	  //Thread.sleep(2000); 
+	  driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	   
+	  //Dust
+	  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div"))).doubleClick().build().perform();
+	   //Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	   
+	   //Moisture
+       action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div"))).doubleClick().build().perform();
+	   //Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+	   
+	   //Oil content
+	   action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div"))).doubleClick().build().perform();
+	   //Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(2));
+	 
+	   //Click on Fetch Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]")).click();
+	   //Click on Save Button
+	   Thread.sleep(2000);
+	   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[4]")).click();
+	   
+	   Thread.sleep(3000);
+	 //Scroll List Until ADD Button not found
+	   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button");
+	
+	   //Click on Generate EWR Number Button
+	 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button")).click();
+	 	
+	 Thread.sleep(4000);
+	//Scroll List Until Submit Button not found
+	 utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+	    //Click on Submit Button
+  driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+	
+	driver.switchTo().alert().accept();
+	
+	Thread.sleep(2000);
+	
+	
+		String Validation="EWR Transaction Details Submitted Successfully.";
+		String Actual_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+		System.out.println(Actual_Validation);
+		if(Actual_Validation.equals(Validation)){
+			System.out.println("EWR Submited Successfully ");
+			}
+		else{
+			System.out.println("Error While Submiting EWR");
+		     }
+		utility.CaptureScreenshot(driver, "Ewr Swbmited",1);
+		
+	AssertJUnit.assertEquals("EWR Transaction Details Submitted Successfully.", Actual_Validation );
+
+	utility.logout();
+	Thread.sleep(2000);
+    //User ID Text box
+	driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+	 //Password Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Click On Login Button
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+         
+			Thread.sleep(3000);
+		
+       String url1="https://nerltest.neml.in/views/index.html#/home";
+       if(url1.equals(driver.getCurrentUrl()))
+       {
+      	 System.out.println("login successful");
+       }
+       else
+       {
+      	 System.out.println("Login Failed");
+       }
+  
+    // Click on pending txn button
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		System.out.println(EDPnumber);
+		Thread.sleep(3000);
+		//Put EDP number into search box
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPnumber);
+		Thread.sleep(3000);
+		//Click On EDP No
+   driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+   Thread.sleep(3000);
+   driver.switchTo().alert().accept();
+   Thread.sleep(3000);
+   driver.switchTo().alert().accept();
+   
+    //Scroll Down To Visibale Submit Button
+	utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button");
+   
+	Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button")).click();
+	Thread.sleep(5000);
+      driver.switchTo().alert().accept();
+      driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[9]/div[2]/div/textarea")).sendKeys("EWR Rejecte due to Invalid Details");
+      Thread.sleep(2000);
+    //Click On Reject Button. 
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button")).click();
+     Thread.sleep(2000);
+    String Reject_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+                                                           
+    AssertJUnit.assertEquals("EWR Transaction Rejected Successfully.",Reject_Validation ); 
+    
+    utility.logout();
+    
+	driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+	 //Password Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Click On Login Button
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();
+		Thread.sleep(3000);
+     // Click on pending txn button
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		System.out.println(part2);
+		Thread.sleep(3000);
+		//Put EDP number into search box
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPnumber);
+		
+		Thread.sleep(3000);
+		//Click On EDP No
+   driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+   Thread.sleep(3000);
+   //Depsit tab button
+   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/li[2]/a")).click();
+   
+  	//Click on EDIT Button
+  	Thread.sleep(3000);
+  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[1]/div/div[12]/div[5]/button[1]")).click();
+  	 
+    //Enter Number Of Packs
+  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).clear();
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).sendKeys("250");
+    //Gross Quantity
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).clear();
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).sendKeys("2500");
+    //Physical Quantity
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).clear();
+    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).sendKeys("2500");
+    Thread.sleep(2000);
+    
+  	//Click on SAVE Button
+  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[1]/div/div[12]/div[4]/button[2]")).click();
+  	Thread.sleep(3000);
+  	
+  	//Click on SAVE Button
+  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+  	Thread.sleep(3000);
+  	
+    //Enter Gross Qty
+  	driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).clear();
+    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).sendKeys("2500");
+    //Enter Net Qty
+    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).clear();
+    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).sendKeys("2500");
+    //Number Of Packs
+    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).clear();
+    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).sendKeys("250");
+    Thread.sleep(2000);
+    //Click om SAVE Button
+    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+  
+	Thread.sleep(3000);
+	//Scroll Down To Visibale Submit Button
+	utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[1]");
+	  
+	  	//Click on SUBMIT Button
+	  	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[1]")).click();
+	  	Thread.sleep(2000);
+  	  driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+  	driver.switchTo().alert().accept();
+	
+  	Thread.sleep(2000);
+  //-----------Logout WSP Maker----------------------
+  	utility.logout();
+  	
+    Thread.sleep(3000);
+    //User ID Text box
+	driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+	 //Password Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Click On Login Button
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+         
+			Thread.sleep(5000);
+	   String url2="https://nerltest.neml.in/views/index.html#/home";
+       if(url2.equals(driver.getCurrentUrl()))
+       {
+      	 System.out.println("login successful");
+       }
+       else
+       {
+      	 System.out.println("Login Failed");
+       }
+  
+    // Click on pending txn button
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		System.out.println(EDPnumber);
+		Thread.sleep(3000);
+		//Put EDP number into search box
+		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPnumber);
+		Thread.sleep(3000);
+		//Click On EDP No
+   driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+   Thread.sleep(3000);
+   driver.switchTo().alert().accept();
+   Thread.sleep(3000);
+   driver.switchTo().alert().accept();
+ //Scroll List Until Reject Button not found
+   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button");
+   Thread.sleep(3000);
+	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button")).click();
+	Thread.sleep(5000);
+      driver.switchTo().alert().accept();
+      
+      Thread.sleep(2000);
+     //Click On Approve Button. 
+     driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+     driver.switchTo().alert().accept();
+     //-----------Logout WSP Checker----------------------
+    utility.logout();  
+     
+    //------------------------Assayer Login-------------------------- 
+     Thread.sleep(3000);
+     //User ID Text box
+		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("ASY001USER");
+  	 //Password Text box
+ 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+ 		
+ 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+ 		//Click On Login Button
+ 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+        Thread.sleep(5000);
+        // Click on pending txn button
+   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+   		Thread.sleep(3000);
+   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+   		System.out.println(part2);
+   		Thread.sleep(3000);
+   		//Put EDP number into search box
+   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPnumber);
+   		Thread.sleep(3000);
+   		//Click On EDP No
+       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+       Thread.sleep(3000);
+       //Scroll List Until ADD Button not found
+       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");  
+     
+       //Click on Approve Button
+	 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+	 	driver.switchTo().alert().accept();
+	 	String Asy_Approve=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+	 	
+	 	if(Asy_Approve.equals("EWR Transaction Approved Successfully."))
+           {
+          	 System.out.println("EWR Approve By Assayer Successfully");
+           }
+           else
+           {
+          	 System.out.println("Error While Approve EWR By Assayer");
+           }
+	 	//-----------Logout Assayer user----------------------	
+	   utility.logout();	
+	 	 
+	      Thread.sleep(3000);
+	     //User ID Text box 
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+	  	 //Password Text box
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+	 		
+	 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	 		//Click On Login Button
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	        Thread.sleep(5000);
+			 // Click on pending txn button
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+	   		Thread.sleep(3000);
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+	   		System.out.println(part2);
+	   		Thread.sleep(3000);
+	   		//Put EDP number into search box
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPnumber);
+	   		Thread.sleep(3000);
+	   		//Click On EDP No
+	       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+	       Thread.sleep(3000);
+	     //Scroll List Until ADD Button not found
+	     utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+	     
+		 	//Click on Approve Button
+		 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+		 	driver.switchTo().alert().accept();
+		 	
+		 	String FinalApproval=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+			String ExpectedApproval="EWR Transaction Approved Successfully.";		
+			utility.CaptureScreenshot(driver, "RejectEWRCompleted",1);
+			AssertJUnit.assertEquals(FinalApproval, ExpectedApproval);
+			Thread.sleep(2000);
+			//-----------Logout WSP Checker----------------------
+		     
+			utility.logout();
+			
+	}
+	catch(Exception e){		
+  e.printStackTrace();
+	                  }
+	
+}
+
+@Test(priority=5,description="To Verify ENWR Reject By Assayer",groups="Regression")
+	public void EWR_Reject_Assayer(){
+		
+		try{
+			 //User ID Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+	    	 //Password Text box
+	   		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+	   		
+	   		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		//Click On Login Button
+	   		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	               //Thread.sleep(5000);
+	             String url="https://nerltest.erepository.in/views/index.html#/home";
+	             if(url.equals(driver.getCurrentUrl()))
+	             {
+	            	 System.out.println("login successful");
+	             }
+	             else
+	             {
+	            	 System.out.println("Login Failed");
+	             }
+	        
+	   		
+	         //Menu Button
+	         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		driver.findElement(By.xpath("//*[@id='menu-trigger']/div")).click();
+	   		Thread.sleep(2000);
+	   		
+	     	//EWR dropdown
+	   		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/a")).click();
+	   	
+	   	    //EWR With Deposit Link
+	   		driver.findElement(By.xpath("//*[@id='mCSB_1_container']/ul/li[2]/ul/li[1]/a")).click();
+	   		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	   		
+	   		//Menu trigger
+	   		driver.findElement(By.xpath(".//*[@id='menu-trigger']/div")).click();
+	   		Thread.sleep(3000);
+	   	    
+	   		// Click on Warehouse Details Button
+	   		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[2]/div[3]/div/button")).click();
+	   		Thread.sleep(3000);
+
+	   		driver.switchTo().defaultContent();
+
+		   	//Select Warehouse 0000999
+	   		driver.findElement(By.className("ui-grid-filter-input-0")).sendKeys("9009002"); 
+	   		Thread.sleep(2000);
+	   		
+	   		//*********************************************************************************
+	   		//Select Record From Warehouse detail frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[1]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+	   		
+	   		//***********************************************************************************
+	   		
+	   		Thread.sleep(2000);
+	   		// Select Goods Code
+	     	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[4]/div[3]/div/button")).click();
+	   		Thread.sleep(2000);
+	   		//Select Commodity Details from Frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[2]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//Select Commodity Details 
+	   		
+	   		Thread.sleep(2000);
+	   		// To Select Pack Type
+	   		driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[6]/div[3]/div/button")).click();
+	   		Thread.sleep(2000);
+	   		// Select Pack Details from Frame
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();//To Select Pack Type as Gunny
+	   		Thread.sleep(3000);
+	   	    
+	   		//Select Dropdown Insurance ID
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/a/span")).click();
+	   	    //Send key 001 in inshurance ID
+	   		Thread.sleep(2000);
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[2]/div/div/div/ul/li")).click();
+	       
+	        //Select Calender date
+	   		driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/span")).click();
+           Thread.sleep(2000);
+           
+           driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[7]/div[5]/div/div/div/ul/li[2]/span/button[1]")).click();
+           Thread.sleep(2000);
+           
+           //click on save button
+           driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+           utility.CaptureScreenshot(driver, "Ewr Details",1);
+           driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	  //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+           Thread.sleep(5000);
+           String EDPno=driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/ul/table/tbody/tr/td[1]")).getText();
+		System.out.println(EDPno);
+		
+		String string = EDPno;
+		String[] parts = string.split(":-      ");
+		String EDP = parts[0];
+		//System.out.println("Vlaue of Array= "+parts[1]);
+		String EDPNo = parts[1];
+		System.out.println(EDP);
+		System.out.println(EDPNo);
+		   
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);    
+		Thread.sleep(2000);
+           //Click on Deposit Tab Deposit Date
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/span/i")).click();     
+           Thread.sleep(2000);
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[1]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+	     
+	       
+           //Enter Beneficiary Account Code
+           driver.findElement(By.xpath("//*[@id='beneficiaryId']")).sendKeys("BENF0000010022");
+           //Enter Number Of Packs
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[4]/div[2]/input")).sendKeys("100");
+		    //Depositor Name
+           driver.findElement(By.xpath("//*[@id='depositorName']")).sendKeys("Sahara");
+           //Gross Quantity
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[5]/div[5]/div/input")).sendKeys("1000");
+		    //Physical Quantity
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[2]/div/input")).sendKeys("1000");
+           //Commodity Rate
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[6]/div[5]/div/input")).sendKeys("50");
+           //Estimated value at deposit*
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[7]/div[2]/div/input")).sendKeys("1500");
+           //Private Marks
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[2]/div/input")).sendKeys("Sample");
+           //Lot/BIN Number
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[8]/div[5]/div/input")).sendKeys("Lot001");
+           //Storage Charges
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[2]/div/input")).sendKeys("5000");
+           //Handling Charges
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[9]/div[5]/div/input")).sendKeys("1000");
+           //Other Charges
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[2]/div/input")).sendKeys("500");
+           //Advance Amount Paid
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[10]/div[5]/div/input")).sendKeys("5000");
+           //Remaining Charges
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[2]/div/input")).sendKeys("500");
+           //Depositor Address
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[11]/div[5]/div/textarea")).sendKeys("Kanjurmarg (W)");
+           
+           Thread.sleep(2000);
+           //Click on SAVE Button
+           driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div/div/div[12]/div[4]/button[2]")).click();
+           utility.CaptureScreenshot(driver, "Deposit Details",1);
+           
+           //Create instance of Javascript executor
+   	 	JavascriptExecutor je = (JavascriptExecutor) driver;
+     	 	//Scroll List Until ADD Button not found
+   	 	WebElement element = driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]")); 
+   	 	// now execute query which actually will scroll until that element is not appeared on page.
+   	 	je.executeScript("arguments[0].scrollIntoView(true);",element);
+   	 	//+++++++++
+   	 	Thread.sleep(2000);
+   	 	
+   	 	//---------------------Click on ADD Button on Vehicle Deposit Details----------------------------------
+   	 	 driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[4]")).click();
+		     //Depositor Name
+   	 	 driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/input")).sendKeys("Sahara");
+   	 	
+   	 	 Calendar cal = Calendar.getInstance();
+		    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		    String strDate = sdf.format(cal.getTime());
+		    //Enter Date in dd/mm/yyyy Format
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[2]/div/input")).sendKeys(strDate);
+   	 	//Enter Transporter Name
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[3]/div/input")).sendKeys("RK Sarma");
+           //Enter Vehicle Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[4]/div/input")).sendKeys("MH12AS1234");
+		    //Enter Mobile Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[5]/div/input")).sendKeys("9985654125");
+		    //Select Adhar as document 
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[6]/select")).sendKeys("Aadhar Card");
+		    Thread.sleep(2000);
+		    //Enter Aadher Card Number
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[7]/div/input")).sendKeys("123456789456");
+		    //Enter Gross Qty
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[8]/div/input")).sendKeys("1000");
+		    //Enter Net Qty
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[9]/div/input")).sendKeys("1000");
+		    //Number Of Packs
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[2]/form/div[2]/div/div[1]/div/div[1]/div[3]/div[2]/div/div/div/div[10]/div/input")).sendKeys("100");
+		    Thread.sleep(2000);
+		    //Click om SAVE Button
+		    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[2]/form/div[2]/div/div[2]/div/button[3]")).click();
+		  
+		    //------------------------------------Assaying Tab------------------------------------------------
+		    //Get Sample Number
+		    driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[1]/div[5]/div/input")).sendKeys("SAMP123");
+		    //Click On Assayer ID Button
+		    driver.findElement(By.xpath(".//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[2]/div[3]/button")).click();
+		    //Select Assayer Details
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div[1]/div/div/div/div/div")).click();
+		    Thread.sleep(2000);
+		    //Assaying Methodology 
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[3]/button")).click();
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[4]/div/div/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div/div/div/div/div")).click();
+		   
+		    Thread.sleep(2000);
+		    //Click on Assying Type Dropdown
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/a/span")).click();
+		    //3rd party verifyed
+		    Thread.sleep(2000);
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[3]/div[5]/div/div/ul/li[1]")).click();
+		    Thread.sleep(2000);
+		    //Final Expiry Date
+		    driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/span/i")).click();
+		    Thread.sleep(2000);
+		    //Click in next button >
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/thead/tr[1]/th[3]/button")).click();
+		   //Select 26 spt
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[4]/div[5]/div/div/ul/li[1]/div/table/tbody/tr[4]/td[4]/button")).click();
+		   
+		   //Select Actual Grade
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/a/span")).click();
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[5]/div[2]/div/div/ul/li")).click();
+		   
+		   //Assaying Date
+		   Thread.sleep(3000);
+		   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+		  // driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/span/i")).click();
+		   //Click on Today Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[1]/div[6]/div[5]/div/div/ul/li[2]/span/button[1]")).click();
+		 
+		 //Scroll List Until ADD Button not found
+         utility.pageScrollDown("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]");
+		   
+		   
+		   //Parameter Details
+	   	  Thread.sleep(2000);
+		  
+	   	  Actions action = new Actions(driver);
+		  //Damaged
+		  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div"))).doubleClick().build().perform();
+		  //Thread.sleep(2000); 
+		  driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		  //Dust
+		  action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[2]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		   //Moisture
+           action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[3]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(1));
+		   
+		   //Oil content
+		   action.moveToElement(driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div"))).doubleClick().build().perform();
+		   //Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/div/div[4]/div/div[2]/div[2]/form/input")).sendKeys(String.valueOf(2));
+		 
+		   //Click on Fetch Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[3]")).click();
+		   //Click on Save Button
+		   Thread.sleep(2000);
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[3]/form/div/div[2]/div[2]/div/div[2]/button[4]")).click();
+		   
+		   Thread.sleep(3000);
+		   
+		 //Scroll List Until ADD Button not found
+		   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button");
+		 
+  	 	
+  	 	//Click on Generate EWR Number Button
+  	 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[3]/div/button")).click();
+  	 	
+  	 Thread.sleep(4000);
+	    //Scroll Down To Visibale Submit Button
+	   utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button"); 	
+  	 
+	 	//Click on Submit Button
+	   driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+	 	
+	 	driver.switchTo().alert().accept();
+	 	
+	 	Thread.sleep(2000);
+	 	
+		
+			String Validation="EWR Transaction Details Submitted Successfully.";
+			String Actual_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+			System.out.println(Actual_Validation);
+			
+			
+			if(Actual_Validation.equals(Validation)){
+				System.out.println("EWR Submited Successfully ");
+				}
+			else{
+				System.out.println("Error While Submiting EWR");
+			     }
+			utility.CaptureScreenshot(driver, "Ewr Swbmited",1);
+			
+		AssertJUnit.assertEquals("EWR Transaction Details Submitted Successfully.", Actual_Validation );
+		Thread.sleep(2000);
+		//-----------Logout WSP Maker----------------------
+	     driver.findElement(By.xpath("//*[@id='menu-trigger']/div/div[2]")).click();
+	     Thread.sleep(2000);
+	     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+	     //Logout Button
+	     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
+	     //-------------------------------------------------------
+	     Thread.sleep(3000);
+	   //User ID Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+	  	 //Password Text box
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+	 		
+	 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	 		//Click On Login Button
+	 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+	             
+					Thread.sleep(5000);
+				
+	           String url1="https://nerltest.neml.in/views/index.html#/home";
+	           if(url1.equals(driver.getCurrentUrl()))
+	           {
+	          	 System.out.println("login successful");
+	           }
+	           else
+	           {
+	          	 System.out.println("Login Failed");
+	           }
+	      
+	        // Click on pending txn button
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+	   		Thread.sleep(3000);
+	   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+	   		System.out.println(part2);
+	   		Thread.sleep(3000);
+	   		//Put EDP number into search box
+	   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+	   		Thread.sleep(3000);
+	   		//Click On EDP No
+	       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+	       Thread.sleep(3000);
+	       driver.switchTo().alert().accept();
+	       Thread.sleep(3000);
+	       driver.switchTo().alert().accept();
+	       
+	        //Scroll Down To Visibale Submit Button
+		 	JavascriptExecutor SV5 = (JavascriptExecutor) driver;
+		 	//Scroll List Until ADD Button not found
+		 	WebElement element45 = driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button"));
+		 	// now execute query which actually will scroll until that element is not appeared on page.
+		 	SV5.executeScript("arguments[0].scrollIntoView(true);",element45);
+		 	//Click on SIGN Button
+		 	Thread.sleep(3000);
+		 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button")).click();
+		 	Thread.sleep(5000);
+		       driver.switchTo().alert().accept();
+		       Thread.sleep(2000);
+		     //Click On Approve Button. 
+		     driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+		     driver.switchTo().alert().accept();
+		     Thread.sleep(2000);
+		     String Approval_Validation=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+		     
+		     AssertJUnit.assertEquals("EWR Transaction Approved Successfully.",Approval_Validation ); 
+		     
+		     //-----------Logout WSP Checker----------------------
+		     driver.findElement(By.xpath("//*[@id='menu-trigger']/div/div[2]")).click();
+		     Thread.sleep(2000);
+		     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+		     //Logout Button
+		     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
+		     //-------------------------------------------------------
+		  
+		    //------------------------Assayer Login-------------------------- 
+		     Thread.sleep(3000);
+		     //User ID Text box
+				driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("ASY001USER");
+		  	 //Password Text box
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		 		
+		 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 		//Click On Login Button
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+		        Thread.sleep(5000);
+		        // Click on pending txn button
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		   		Thread.sleep(3000);
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		   		System.out.println(part2);
+		   		Thread.sleep(3000);
+		   		//Put EDP number into search box
+		   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+		   		Thread.sleep(3000);
+		   		//Click On EDP No
+		       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+		       Thread.sleep(3000);
+		       
+		       driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[9]/div[2]/div/textarea")).sendKeys("EWR Rejecte due to Invalid Details");
+		       
+		       //Scroll Down To Visibale Submit Button
+			 	utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+		       
+			 	//Click on Reject Button
+			 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button")).click();
+			 	//driver.switchTo().alert().accept();
+			 	String Asy_Reject=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+			 	
+			 	if(Asy_Reject.equals("EWR Transaction Rejected Successfully."))
+		           {
+		          	 System.out.println("EWR Reject By Assayer");
+		           }
+		           else
+		           {
+		          	 System.out.println("Error While Reject EWR By Assayer");
+		           }
+			 	AssertJUnit.assertEquals("EWR Transaction Rejected Successfully.", Asy_Reject );
+			 	
+			 	 //-----------Logout Assayer Checker----------------------
+			     driver.findElement(By.xpath("//*[@id='menu-trigger']/div/div[2]")).click();
+			     Thread.sleep(2000);
+			     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
+			     //Logout Button
+			     driver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
+			     //-------------------------------------------------------
+			     Thread.sleep(3000);
+			     
+			     
+			     //User ID Text box
+			     Thread.sleep(3000);
+			 	driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1003");
+			 	 //Password Text box
+			 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+			 		
+			 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			 		//Click On Login Button
+			 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();
+			 		Thread.sleep(3000);
+			  // Click on pending txn button
+			 		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+			 		Thread.sleep(3000);
+			 		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+			 		System.out.println(part2);
+			 		Thread.sleep(3000);
+			 		//Put EDP number into search box
+			 		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+			 		
+			 		Thread.sleep(3000);
+			 		//Click On EDP No
+			    driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+			    Thread.sleep(3000);
+			  //Scroll Down To Visibale Submit Button 
+			  utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");  
+			    
+			  		//Click on SUBMIT Button
+			  	
+			  driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+			  	Thread.sleep(2000);
+			  			driver.switchTo().alert().accept();
+			
+		  	Thread.sleep(2000);
+		  	
+			//-----------Logout WSP Maker----------------------
+		    utility.logout();
+		  	 Thread.sleep(3000);
+		    //User ID Text box
+			driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+			 //Password Text box
+				driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+				
+				driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+				//Click On Login Button
+				driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+		         
+					Thread.sleep(5000);
+				
+		       String url2="https://nerltest.neml.in/views/index.html#/home";
+		       if(url2.equals(driver.getCurrentUrl()))
+		       {
+		      	 System.out.println("login successful");
+		       }
+		       else
+		       {
+		      	 System.out.println("Login Failed");
+		       }
+		  
+		    // Click on pending txn button
+				driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+				Thread.sleep(3000);
+				driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+				System.out.println(EDPNo);
+				Thread.sleep(3000);
+				//Put EDP number into search box
+				driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+				Thread.sleep(3000);
+				//Click On EDP No
+		   driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+		   Thread.sleep(3000);
+		   driver.switchTo().alert().accept();
+		   Thread.sleep(3000);
+		   driver.switchTo().alert().accept();
+		 
+		   //Scroll Down To Visibale Submit Button
+           utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[6]/div/button");
+		   
+			//Click on SIGN Button
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[4]/div/button")).click();
+			Thread.sleep(5000);
+		      driver.switchTo().alert().accept();
+		      
+		      Thread.sleep(2000);
+		     //Click On Approve Button. 
+		     driver.findElement(By.xpath("html/body/section/section/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+		     driver.switchTo().alert().accept();
+		     
+		     //-----------Logout WSP Checker----------------------
+		    utility.logout();
+		     
+		    //------------------------Assayer Login-------------------------- 
+		     Thread.sleep(3000);
+		     //User ID Text box
+				driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("ASY001USER");
+		  	 //Password Text box
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+		 		
+		 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		 		//Click On Login Button
+		 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+		        Thread.sleep(5000);
+		        // Click on pending txn button
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+		   		Thread.sleep(3000);
+		   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+		   		System.out.println(part2);
+		   		Thread.sleep(3000);
+		   		//Put EDP number into search box
+		   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+		   		Thread.sleep(3000);
+		   		//Click On EDP No
+		       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+		       Thread.sleep(3000);
+		       
+		       //Scroll Down To Visibale Submit Button
+			 utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+		       
+			 	//Click on Approve Button
+			 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+			 	driver.switchTo().alert().accept();
+			 	String Asy_Approve=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+			 	
+			 	if(Asy_Approve.equals("EWR Transaction Approved Successfully."))
+		           {
+		          	 System.out.println("EWR Approve By Assayer Successfully");
+		           }
+		           else
+		           {
+		          	 System.out.println("Error While Approve EWR By Assayer");
+		           }
+			 	
+			 	//-----------Logout WSP Checker----------------------
+			    utility.logout();
+			 	
+			    //--------------- login With WSP checker----------------
+			    
+			    Thread.sleep(3000);
+			     //User ID Text box 
+					driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys("WSP1004");
+			  	 //Password Text box
+			 		driver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys("mumbai123");
+			 		
+			 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			 		//Click On Login Button
+			 		driver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();//
+			        Thread.sleep(5000);
+					 // Click on pending txn button
+			   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+			   		Thread.sleep(3000);
+			   		driver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+			   		System.out.println(part2);
+			   		Thread.sleep(3000);
+			   		//Put EDP number into search box
+			   		driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(EDPNo);
+			   		Thread.sleep(3000);
+			   		//Click On EDP No
+			       driver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+			       Thread.sleep(3000);		
+			     //Scroll Down To Visibale Submit Button
+			       utility.pageScrollDown("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button");
+			       
+				 	//Click on Approve Button
+				 	driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/div/div[1]/form/div/div/div[10]/div[5]/div/button")).click();
+				 	driver.switchTo().alert().accept();
+				 	
+				 	String FinalApproval=driver.findElement(By.xpath("//*[@id='content']/div/data/div/div/ul/div[2]")).getText();
+					String ExpectedApproval="EWR Transaction Approved Successfully.";		
+					utility.CaptureScreenshot(driver, "RejectassayerEWrCompleted",1);
+					AssertJUnit.assertEquals(FinalApproval, ExpectedApproval);
+					
+					utility.logout();
+		     
+		   		}
+		catch(Exception e){		
+	   e.printStackTrace();
+		                  }
+		
+	}
+
+}	
+
+
+	
+	
+

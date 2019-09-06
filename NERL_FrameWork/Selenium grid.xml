@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" name="Suite" parallel="tests">
+
+  <test name="Test1">
+    <classes>  
+       <class name="NERL.EWR_With_Deposit_Main"/>   
+       <class name="NERL.Benf_To_Benf_Main"/>  
+       <class name="withdrawal_pkg.Quantity_Deduction_Main"/>        
+    </classes>
+    </test> <!-- Test1 -->
+   
+    <test name="Test2">
+    <classes>  
+      <class name="NERL.Pledgee_Initiation_Main"/> 
+      <class name="withdrawal_pkg.PledgeeRedemption_main"/>   
+      <class name="withdrawal_pkg.Pledgeeinvoke_apprval"/>    
+    </classes>
+  </test> <!-- Test2 -->
+</suite> <!-- Grid_Sample_Test -->

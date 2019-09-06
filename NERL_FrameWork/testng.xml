@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Main NerlSuite">
+  <test name="NerlAll">
+    <classes>
+    <class name="NERL.ENWR_Deposit_Exchange_NMCE"/>
+        <!--   <class name="NERL.EWR_Deposit_AssayerChange"/>  -->
+  <!--    <class name="NERL.EWR_With_Deposite"/> -->
+    
+          <class name="NERL.Benf_To_Benf_Main"/> 
+   <!--   <class name="NERL.Benf_To_Benf"/> -->
+     
+     
+          <class name="NERL.Pledgee_Initiation_Main"/> 
+   <!--   <class name="NERL.PledgeeInitiation"/> -->
+      
+      
+           <class name="withdrawal_pkg.PledgeeRedemption_main"/> 
+    <!--   <class name="withdrawal_pkg.PledgeRedemption"/> -->
+      
+     <!--       <class name="withdrawal_pkg.Pledgeeinvoke_apprval"/>
+      <class name="withdrawal_pkg.Pledgee_invocation_main"/>
+      
+           <class name="withdrawal_pkg.Quantity_Deduction_Main"/>
+      <class name="withdrawal_pkg.Update_Quantity_deduction"/> -->
+        
+      
+    </classes>
+  </test> <!-- NerlAll -->
+</suite> <!-- Main NerlSuite -->

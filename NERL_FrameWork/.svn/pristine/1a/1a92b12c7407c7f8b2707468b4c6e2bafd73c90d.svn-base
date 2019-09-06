@@ -1,0 +1,152 @@
+package library;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import NERL.NERLConstants;
+
+public class Utility {
+	private WebDriver webDriver;
+
+	
+
+	public Utility(WebDriver webDriver) {
+		this.webDriver = webDriver;
+	}
+
+	public void CaptureScreenshot(WebDriver driver, String Screenshotname) {
+		try {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File Source = ts.getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(Source, new File("./Screenshots/"
+					+ Screenshotname + ".png"));
+			System.out.println("Screenshot Capture");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void pageScrollDown(String xpath) throws InterruptedException {
+		// Create instance of Javascript executor
+		JavascriptExecutor jScriptExecutorForScrolling = (JavascriptExecutor) webDriver;
+		// Scroll List Until ADD Button not found
+		WebElement element = webDriver.findElement(By.xpath(xpath));
+		// now execute query which actually will scroll until that element is
+		// not appeared on page.
+		jScriptExecutorForScrolling.executeScript(
+				"arguments[0].scrollIntoView(true);", element);
+		// +++++++++
+		Thread.sleep(2000);
+	}
+
+	public void XY_PageScrollDown() {
+		JavascriptExecutor jse1 = (JavascriptExecutor) webDriver;
+		jse1.executeScript("window.scrollBy(0,750)", "");
+	}
+
+	public WebElement getElementByXPath(String xpath) {
+		return webDriver.findElement(By.xpath(xpath));
+	}
+
+	public void XY_PageScrollUp() {
+		JavascriptExecutor jse2 = (JavascriptExecutor) webDriver;
+		jse2.executeScript("window.scrollBy(0,-600)", "");
+	}
+public void Login(String UserName,String Password) throws InterruptedException{
+	 //User ID Text box
+	webDriver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[1]/div/input")).sendKeys(UserName);
+	 //Password Text box
+	webDriver.findElement(By.xpath(".//*[@id='l-login']/form/div[2]/div/div[2]/div/input")).sendKeys(Password);
+		
+	webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Click On Login Button
+	webDriver.findElement(By.xpath(".//*[@id='l-login']/form/a")).click();
+	
+}
+	public void logout() throws InterruptedException {
+		//Thread.sleep(2000);
+		// -----------Logout WSP Checker----------------------
+		webDriver.findElement(By.xpath("//*[@id='menu-trigger']/div/div[2]"))
+				.click();
+		Thread.sleep(2000);
+		webDriver
+				.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div"))
+				.click();
+		// Logout Button
+		webDriver.findElement(
+				By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
+		// -------------------------------------------------------
+		Thread.sleep(2000);
+	}
+	
+	public void PendingTxn_Approval(String Transaction_Number) throws InterruptedException{
+		 // Click on pending txn button
+		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+   		Thread.sleep(3000);
+   		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+   		System.out.println(Transaction_Number);
+   		Thread.sleep(3000);
+   		//Put EDP number into search box
+   		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(Transaction_Number);
+   		Thread.sleep(3000);
+   		//Click On EDP No
+   		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+       Thread.sleep(3000);
+       webDriver.findElement(By.xpath(NERLConstants.Approve_Button)).click();
+	}
+	
+	public void PendingTxn_Rejection(String Transaction_Number) throws InterruptedException{
+		 // Click on pending txn button
+		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+  		Thread.sleep(3000);
+  		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+  		System.out.println(Transaction_Number);
+  		Thread.sleep(3000);
+  		//Put EDP number into search box
+  		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(Transaction_Number);
+  		Thread.sleep(3000);
+  		//Click On EDP No
+  		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+  		Thread.sleep(2000);
+      //Send Key Into Remark Box
+      webDriver.findElement(By.xpath("//*[@id='content']/div/data/div/div[3]/div/div[6]/div[5]/textarea")).sendKeys("Abc");
+      Thread.sleep(3000);
+      
+      webDriver.findElement(By.xpath(NERLConstants.Reject_Button)).click();
+	}	
+	public void Rejected_Submit(String Transaction_Number) throws InterruptedException{
+		 // Click on pending txn button
+		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/a/i")).click();
+  		Thread.sleep(3000);
+  		webDriver.findElement(By.xpath(".//*[@id='header']/ul/li[3]/ul/li[3]/div/div[1]/div[2]/p//a")).click();
+  		System.out.println(Transaction_Number);
+  		Thread.sleep(3000);
+  		//Put EDP number into search box
+  		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(Transaction_Number);
+  		Thread.sleep(3000);
+  		//Click On EDP No
+  		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
+   		Thread.sleep(3000);
+      webDriver.findElement(By.xpath(NERLConstants.Submit_Button)).click();
+	}
+	
+
+	public void DoubleClick(String Xpath) {
+		Actions action = new Actions(webDriver);
+		action.moveToElement(webDriver.findElement(By.xpath(Xpath)))
+				.doubleClick().build().perform();
+	}
+
+}
