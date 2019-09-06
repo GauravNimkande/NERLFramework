@@ -22,8 +22,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.//logger;
+//import org.slf4j.//loggerFactory;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 
@@ -32,7 +32,7 @@ public class EWR_With_Deposite {
 	public Utility utility;
 	public static WebDriver driver;
 	public Exceldataconfig config;
-	private final static Logger logger = LoggerFactory.getLogger(EWR_With_Deposite.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(EWR_With_Deposite.class);
 	public Deposit ENWR;
 	public String ENWR_Number;
 	public String EDP_No;
@@ -76,29 +76,29 @@ public class EWR_With_Deposite {
 		
 		utility.Login(WSP_maker, WSP_Password1);       
 		
-		logger.info("WSP maker Login Successfully");
+		//logger.info("WSP maker Login Successfully");
 		
 		ENWR.Navigate_To_DepositPage();
 		
 		ENWR.EWR_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 	   
-		logger.info("EWR Details Saved Successfully");
+		//logger.info("EWR Details Saved Successfully");
 		
 		EDP_No=ENWR.Transaction_Number();
 		
 		ENWR.Deposit_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		
-		logger.info("Deposit Details Saved Successfully");
+		//logger.info("Deposit Details Saved Successfully");
 		
 		utility.pageScrollDown(NERLConstants.ADD_Vehicle_Details);
 		
 		ENWR.Vehicle_Deposit_Details(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		   
-		logger.info("Vehicle Details Saved Successfully");
+		//logger.info("Vehicle Details Saved Successfully");
 		
 		ENWR.Assaying_Details_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		       
-		logger.info("Assaying Details Saved Successfully");
+		//logger.info("Assaying Details Saved Successfully");
 		
 		utility.clickOnWebElement(NERLConstants.SUBMIT_EWR_BUTTON, driver);
 		
@@ -108,7 +108,7 @@ public class EWR_With_Deposite {
 		
 		ENWR_Number=ENWR.EWR_Number();
 		
-		logger.info(ENWR_Number+" EWR Submited Successfully");
+		//logger.info(ENWR_Number+" EWR Submited Successfully");
 		
 		//-------Write ENWR Into Benf to Benf Sheet----------------------
 		utility.Write_EWR_No("D:/TestData.xlsx", ENWR_Number, 1, Record_Number, 6);
@@ -183,33 +183,33 @@ public class EWR_With_Deposite {
 		       {
 		utility.Login(WSP_maker, WSP_Password1);       
 		
-		logger.info("WSP maker Login Successfully");
+		//logger.info("WSP maker Login Successfully");
 		
 		ENWR.Navigate_To_DepositPage();
 		
 		ENWR.EWR_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6 ,Record_Number);
 	   
-		logger.info("EWR Details Saved Successfully");
+		//logger.info("EWR Details Saved Successfully");
 		
 		EDP_No=ENWR.Transaction_Number();
 		
 		ENWR.Deposit_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		
-		logger.info("Deposit Details Saved Successfully");
+		//logger.info("Deposit Details Saved Successfully");
 		
 		utility.pageScrollDown(NERLConstants.ADD_Vehicle_Details);
 		
 		ENWR.Vehicle_Deposit_Details(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		   
-		logger.info("Vehicle Details Saved Successfully");
+		//logger.info("Vehicle Details Saved Successfully");
 		
 		ENWR.Assaying_Details_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6, Record_Number);
 		       
-		logger.info("Assaying Details Saved Successfully");
+		//logger.info("Assaying Details Saved Successfully");
 		
 	   utility.clickOnWebElement(NERLConstants.Discard_Button, driver);
 	
-	   logger.info(ENWR_Number+" EWR Canceled Successfully");
+	   //logger.info(ENWR_Number+" EWR Canceled Successfully");
 		
 	   ENWR.Result_Check1(NERLConstants.Validation_msg, "EWR Transaction Cancelled Successfully.");
 	   
@@ -224,29 +224,29 @@ public class EWR_With_Deposite {
 		
         utility.Login(WSP_maker, WSP_Password1);       
 		
-		logger.info("WSP maker Login Successfully");
+		//logger.info("WSP maker Login Successfully");
 		
 		ENWR.Navigate_To_DepositPage();
 		
 	//	ENWR.EWR_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6,Para_7,Para_8,Para_9,Para_10,Para_11,Para_12,Para_13,Para_14,Para_15,Number_Of_Para,Record_Number);
 	   
-		logger.info("EWR Details Saved Successfully");
+		//logger.info("EWR Details Saved Successfully");
 		
 		EDP_No=ENWR.Transaction_Number();
 		
 		//ENWR.Deposit_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6,Para_7,Para_8,Para_9,Para_10,Para_11,Para_12,Para_13,Para_14,Para_15,Number_Of_Para,Record_Number);
 		
-		logger.info("Deposit Details Saved Successfully");
+		//logger.info("Deposit Details Saved Successfully");
 		
 		utility.pageScrollDown(NERLConstants.ADD_Vehicle_Details);
 		
 		//ENWR.Vehicle_Deposit_Details(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6,Para_7,Para_8,Para_9,Para_10,Para_11,Para_12,Para_13,Para_14,Para_15,Number_Of_Para,Record_Number);
 		   
-		logger.info("Vehicle Details Saved Successfully");
+		//logger.info("Vehicle Details Saved Successfully");
 		
 		//ENWR.Assaying_Details_Page(WHCode, Comm_ID, Pack_Type, Benf_Code, No_Packs, DepositorName, Gross_Quantity, Physical_Quantity, Commodity_Rate, Estimated_deposit, Private_Marks, Lot_Number, Storage_Charges, Handling_Charges, Other_Charges, Advance_Paid, Remaining_Charges, Depositor_Address, VDD_Gross_Qty, VDD_Net_Qty, VDD_Number_of_Packs, Ass_Sampleno, Assayer_Methodology, Actual_Grade, Para_1, Para_2, Para_3, Para_4, WSP_maker, WSP_Password1, WSP_checker, WSP_Password2, Login_Assayer, Ass_password,Para_5,Para_6,Para_7,Para_8,Para_9,Para_10,Para_11,Para_12,Para_13,Para_14,Para_15,Number_Of_Para,Record_Number);
 		       
-		logger.info("Assaying Details Saved Successfully");
+		//logger.info("Assaying Details Saved Successfully");
 		
 		utility.clickOnWebElement(NERLConstants.SUBMIT_EWR_BUTTON, driver);
 		
@@ -256,7 +256,7 @@ public class EWR_With_Deposite {
 		
 		 ENWR_Number=ENWR.EWR_Number();
 		
-		logger.info(ENWR_Number+" EWR Submited Successfully");
+		//logger.info(ENWR_Number+" EWR Submited Successfully");
 
 		utility.logout();
 		

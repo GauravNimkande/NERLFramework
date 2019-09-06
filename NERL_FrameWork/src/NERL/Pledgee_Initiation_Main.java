@@ -12,8 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.//logger;
+//import org.slf4j.//loggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -39,7 +39,7 @@ public class Pledgee_Initiation_Main {
     //public PledgeeInitiation PI=new PledgeeInitiation();
     private EWR_With_Deposite EWR=new EWR_With_Deposite();
     
-    private final static Logger logger = LoggerFactory.getLogger(PledgeeRedemption_main.class);
+    //private final static //logger //logger = //loggerFactory.get//logger(PledgeeRedemption_main.class);
     
     private static PledgeInitiation PI;
     
@@ -88,7 +88,7 @@ public class Pledgee_Initiation_Main {
 		
 		 utility.Login(RPMaker,RPMaker_password);
 		
-	     logger.info("RP MAKER Login Successfully");
+	     //logger.info("RP MAKER Login Successfully");
 		
 	     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		

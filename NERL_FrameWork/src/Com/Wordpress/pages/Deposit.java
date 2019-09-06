@@ -10,14 +10,14 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import NERL.NERLConstants;
 import library.Utility;
 
 public class Deposit {
-	private final static Logger logger = LoggerFactory.getLogger(Deposit.class);
+	//private final static Logger logger = LoggerFactory.getLogger(Deposit.class);
 	WebDriver driver;
 	public String part2;
 	Utility utility = new Utility(driver);
@@ -347,7 +347,7 @@ public void Navigate_To_DepositPage() throws InterruptedException{
 	 
 	 driver.findElement(Menu_trigger).click();
 	 
-	 logger.info("Page Open Successfully");
+	// logger.info("Page Open Successfully");
 	
 }
 
@@ -360,7 +360,7 @@ public void EWR_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_C
 	
 	utility.clickOnWebElement1(First_Record, driver);
 	
-	logger.info("Warehouse Selected Successfully :"+WHCode);
+	//logger.info("Warehouse Selected Successfully :"+WHCode);
 	
 	Thread.sleep(2000);
 	//Goods Code
@@ -372,7 +372,7 @@ public void EWR_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_C
 	
 	utility.clickOnWebElement1(First_Commodity, driver);
 	
-	logger.info("Commodity Code Selected Successfully :"+Comm_ID);
+	//logger.info("Commodity Code Selected Successfully :"+Comm_ID);
 	
 	Thread.sleep(2000);
 	
@@ -383,7 +383,7 @@ public void EWR_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_C
 	
 	utility.clickOnWebElement1(First_Pack_Type, driver);
 	
-	logger.info("pack Type Selected Successfully :"+Pack_Type);
+	//logger.info("pack Type Selected Successfully :"+Pack_Type);
 	
 	Thread.sleep(2000);
 	
@@ -403,11 +403,11 @@ public void EWR_Page(String WHCode,String Comm_ID,String Pack_Type,String Benf_C
 	
 	utility.clickOnWebElement1(Save_Button, driver);
 	
-	logger.info("Click on SAVE button Successfully");
+	//logger.info("Click on SAVE button Successfully");
 	
 	Result_Check(EWR_Save_Validation, "EWR Transaction Details Saved Successfully.");
 	
-	logger.info("EWR Transaction Details Saved Successfully.");
+	//logger.info("EWR Transaction Details Saved Successfully.");
 	
 }
 
@@ -419,7 +419,7 @@ public void EWR_Page_NonNMCE(String WHCode,String Comm_ID,String Pack_Type,Strin
 		
 		utility.clickOnWebElement1(First_Record, driver);
 		
-		logger.info("Warehouse Selected Successfully :"+WHCode);
+		//logger.info("Warehouse Selected Successfully :"+WHCode);
 		
 		Thread.sleep(2000);
 		//Goods Code
@@ -431,7 +431,7 @@ public void EWR_Page_NonNMCE(String WHCode,String Comm_ID,String Pack_Type,Strin
 		
 		utility.clickOnWebElement1(First_Commodity, driver);
 		
-		logger.info("Commodity Code Selected Successfully :"+Comm_ID);
+	//	logger.info("Commodity Code Selected Successfully :"+Comm_ID);
 		
 		Thread.sleep(2000);
 		
@@ -442,7 +442,7 @@ public void EWR_Page_NonNMCE(String WHCode,String Comm_ID,String Pack_Type,Strin
 		
 		utility.clickOnWebElement1(First_Pack_Type, driver);
 		
-		logger.info("pack Type Selected Successfully :"+Pack_Type);
+		//logger.info("pack Type Selected Successfully :"+Pack_Type);
 		
 		Thread.sleep(2000);
 		
@@ -460,13 +460,13 @@ public void EWR_Page_NonNMCE(String WHCode,String Comm_ID,String Pack_Type,Strin
 		
 		utility.clickOnWebElement1(Save_Button, driver);
 		
-		logger.info("Click on SAVE button Successfully");
+		//logger.info("Click on SAVE button Successfully");
 		
 		driver.switchTo().alert().accept();
 		
 		Result_Check(EWR_Save_Validation, "EWR Transaction Details Saved Successfully.");
 		
-		logger.info("EWR Transaction Details Saved Successfully.");
+		//logger.info("EWR Transaction Details Saved Successfully.");
 }
 
 public void EWR_Page_NMCE(String WHCode,String Comm_ID,String Pack_Type,String Benf_Code,String No_Packs,String DepositorName,String Gross_Quantity,String Physical_Quantity,String Commodity_Rate,String Estimated_deposit,String Private_Marks,String Lot_Number,String Storage_Charges,String Handling_Charges,String Other_Charges,String Advance_Paid,String Remaining_Charges,String Depositor_Address,String VDD_Gross_Qty,String VDD_Net_Qty,String VDD_Number_of_Packs,String Ass_Sampleno,String Assayer_Methodology,String Actual_Grade,String Para_1,String Para_2,String Para_3,String Para_4,String WSP_maker,String WSP_Password1,String WSP_checker,String WSP_Password2,String Login_Assayer,String Ass_password,String AssayerChecker,String Ass_PassCKR,String Para_5,String Para_6,String Para_7,String Para_8,String Para_9,String Para_10,String Para_11,String Para_12,String Para_13,String Para_14,String Para_15,String Number_Of_Para,int Record_Number) throws InterruptedException{
@@ -498,7 +498,7 @@ public void EWR_Page_NMCE(String WHCode,String Comm_ID,String Pack_Type,String B
 	
 	utility.clickOnWebElement1(First_Record, driver);
 	
-	logger.info("Warehouse Selected Successfully :"+WHCode);
+//	logger.info("Warehouse Selected Successfully :"+WHCode);
 	
 	Thread.sleep(2000);
 	//Goods Code
@@ -510,7 +510,7 @@ public void EWR_Page_NMCE(String WHCode,String Comm_ID,String Pack_Type,String B
 	
 	utility.clickOnWebElement1(First_Commodity, driver);
 	
-	logger.info("Commodity Code Selected Successfully :"+Comm_ID);
+	//logger.info("Commodity Code Selected Successfully :"+Comm_ID);
 	
 	Thread.sleep(2000);
 	
@@ -521,7 +521,7 @@ public void EWR_Page_NMCE(String WHCode,String Comm_ID,String Pack_Type,String B
 	
 	utility.clickOnWebElement1(First_Pack_Type, driver);
 	
-	logger.info("pack Type Selected Successfully :"+Pack_Type);
+	//logger.info("pack Type Selected Successfully :"+Pack_Type);
 	
 	Thread.sleep(2000);
 	
@@ -539,13 +539,13 @@ public void EWR_Page_NMCE(String WHCode,String Comm_ID,String Pack_Type,String B
 	
 	utility.clickOnWebElement1(Save_Button, driver);
 	
-	logger.info("Click on SAVE button Successfully");
+	//logger.info("Click on SAVE button Successfully");
 	
 	driver.switchTo().alert().accept();
 	
 	Result_Check(EWR_Save_Validation, "EWR Transaction Details Saved Successfully.");
 	
-	logger.info("EWR Transaction Details Saved Successfully.");
+	//logger.info("EWR Transaction Details Saved Successfully.");
 	
 }
 

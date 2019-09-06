@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.//logger;
+//import org.slf4j.//loggerFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,7 +29,7 @@ public class PledgeeInitiation {
 	private Utility utility;
 	public Exceldataconfig config;
     public String EPGno;
-    private final static Logger logger = LoggerFactory.getLogger(PledgeeRedemption_main.class);
+   // private final static //logger //logger = //loggerFactory.get//logger(PledgeeRedemption_main.class);
 	@BeforeMethod		
 	public void Befour() throws InterruptedException {
 		System.out.println("Pledge Initiation Test Case Execution Started");
@@ -48,9 +48,9 @@ public class PledgeeInitiation {
 	  
 	     //driver.get("https://interrepotest.erepository.in/");
 		  driver.get("https://nerltest.erepository.in/");
-		  logger.info("Web application launched");
+		  //logger.info("Web application launched");
      	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-     	  logger.info("Implicit wait applied on the driver for 20 seconds");
+     	  //logger.info("Implicit wait applied on the driver for 20 seconds");
 		
 	      driver.manage().window().maximize();
 		
@@ -75,7 +75,7 @@ public class PledgeeInitiation {
 		try {
 			
 		utility.Login(RPMaker,RPMaker_password);
-	    logger.info("RP MAKER Login");
+	    //logger.info("RP MAKER Login");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		// Click on Menu Icon
 		driver.findElement(By.xpath(NERLConstants.Menu_Icon)).click();
@@ -89,7 +89,7 @@ public class PledgeeInitiation {
 		// Click on Back Button
 		Thread.sleep(2000);
        driver.findElement(By.xpath(NERLConstants.Back_Button)).click();
-       logger.info("PledgeeInition Window Open");
+       //logger.info("PledgeeInition Window Open");
        //Warehouse button
        driver.findElement(By.xpath(NERLConstants.Warehouse)).click();
        
@@ -103,7 +103,7 @@ public class PledgeeInitiation {
 	   //Commodity button
 	   driver.findElement(By.xpath(NERLConstants.Commodity)).click();
 	   driver.findElement(By.xpath(NERLConstants.Commodity_Code)).sendKeys(Comm_Id);
-	   logger.info("Commdity Code Popup open");
+	   //logger.info("Commdity Code Popup open");
 	   //EWR Type
 	   driver.findElement(By.xpath(NERLConstants.EWR_type2)).sendKeys("Y");
 	   Thread.sleep(1000);
@@ -114,7 +114,7 @@ public class PledgeeInitiation {
 	   
        //Beneficiary Button
 	   driver.findElement(By.xpath(NERLConstants.BenficiaryButton)).click();
-	   logger.info("Click on Benficiary button");
+	   //logger.info("Click on Benficiary button");
 	   //Enter Beneficiary ID 
 	   driver.findElement(By.xpath(NERLConstants.BenficiaryID)).sendKeys(Benf_Id);
 	   //Select first record
@@ -123,7 +123,7 @@ public class PledgeeInitiation {
 	   
 	   //Pledgee
 	   driver.findElement(By.xpath(NERLConstants.Pledgee_Button)).click();
-	   logger.info("Click on Pledgee button");
+	   //logger.info("Click on Pledgee button");
 	   driver.findElement(By.xpath(NERLConstants.Pledgee_Send)).sendKeys(Pledgee);
 	   Thread.sleep(1000);
 	   driver.findElement(By.xpath(NERLConstants.Pledgee_Select_FirstRecord)).click();
@@ -133,9 +133,9 @@ public class PledgeeInitiation {
 	   driver.findElement(By.xpath(NERLConstants.IFSC)).click();
 	   Thread.sleep(1000);
 	   driver.findElement(By.xpath(NERLConstants.IFCSEnter)).sendKeys(IFSC);
-	   logger.info("Print IFSC");
+	   //logger.info("Print IFSC");
 	   driver.findElement(By.xpath(NERLConstants.AgreementType)).sendKeys("TRIPARTITE");
-	   logger.info("Print TRIPARTITE");
+	   //logger.info("Print TRIPARTITE");
 	   driver.findElement(By.xpath(NERLConstants.IFSC_SelectFirstrecord)).click();
 	   
 	   Thread.sleep(2000);
@@ -152,13 +152,13 @@ public class PledgeeInitiation {
 	   
 	   //Account Number
 	   driver.findElement(By.xpath(NERLConstants.Account_Number)).sendKeys(ACC_no);
-	   logger.info("Print ACC_NO");
+	   //logger.info("Print ACC_NO");
 	   Thread.sleep(2000);
 	   
 	  // utility.pageScrollDown(NERLConstants.Fetch_Button);
 	   //Click Fetch button
 	   driver.findElement(By.xpath(NERLConstants.Fatch_button2)).click();
-	   logger.info("Click on Fetch button");
+	   //logger.info("Click on Fetch button");
 	   utility.XY_PageScrollDown();
 	   Thread.sleep(2000);
 	   
@@ -168,7 +168,7 @@ public class PledgeeInitiation {
 	   driver.findElement(By.xpath(NERLConstants.EWR_ID_FirstRecord)).click();
 	   //Click on Save button
 	   driver.findElement(By.xpath(NERLConstants.Save_Button_Pledge)).click();
-	   logger.info("Click on save button");
+	   //logger.info("Click on save button");
 	   Thread.sleep(2000);
 	   
 	   //Pledgee Qnt double click send.
@@ -183,7 +183,7 @@ public class PledgeeInitiation {
 	   Thread.sleep(2000);
 	   //Submit button
 	   driver.findElement(By.xpath(NERLConstants.Submit_Button_pledgee)).click();
-	   logger.info("Click on Submit button");
+	   //logger.info("Click on Submit button");
 	   Thread.sleep(3000);
 	   
 	   utility.XY_PageScrollUp();
@@ -215,10 +215,10 @@ public class PledgeeInitiation {
 	public void PI_Approve_RPchecker(String Ware_Code,String Comm_Id,String Benf_Id,String Pledgee,String IFSC,String ACC_no,String ENWR_no,String Pledge_Qnt,String RPMaker,String RPMaker_password,String RPChecker,String RPchecker_password,String WSP_USER_ID,String WSP_Password,String Pledgee_maker,String PledgeeM_Pass,String Pledgee_checker1,String PledgeeC1_pass,String Pledgee_Checker2,String PledgeeC2_pass,String Loan_amt,int R_No) throws InterruptedException{
 		
 		utility.Login(RPChecker,RPchecker_password);
-		logger.info("RP Checker login- Approve");
+		//logger.info("RP Checker login- Approve");
 		   // Click on pending txn button
 	  		utility.PendingTxn_Approval(EPGno,NERLConstants.Approve_Button_pledgee);
-	  		logger.info("Click on Approve button");
+	  		//logger.info("Click on Approve button");
 	   		Thread.sleep(2000);
 	  		utility.CaptureScreenshot(driver, "Pledgee Initiation RPChecker Approval",R_No);
 	  		utility.logout();
@@ -227,10 +227,10 @@ public class PledgeeInitiation {
 	@Test(priority=5,description="To verify if WSP Checker having provision to Approve Pledgee Initiation transaction",dataProvider="PledgeeInintiation")
 	public void PI_Approve_WSP(String Ware_Code,String Comm_Id,String Benf_Id,String Pledgee,String IFSC,String ACC_no,String ENWR_no,String Pledge_Qnt,String RPMaker,String RPMaker_password,String RPChecker,String RPchecker_password,String WSP_USER_ID,String WSP_Password,String Pledgee_maker,String PledgeeM_Pass,String Pledgee_checker1,String PledgeeC1_pass,String Pledgee_Checker2,String PledgeeC2_pass,String Loan_amt,int R_No) throws InterruptedException{
 		utility.Login(WSP_USER_ID,WSP_Password);
-		logger.info("WSP checker login- Approve");
+		//logger.info("WSP checker login- Approve");
 		   // Click on pending txn button
 		 utility.PendingTxn_Approval(EPGno, NERLConstants.Approve_pledgee_Wsp);
-		 logger.info("Click on approve button");
+		 //logger.info("Click on approve button");
 	  		Thread.sleep(2000);
 	  		String Actual_pledgee_Validation=driver.findElement(By.xpath(NERLConstants.Validation_pledgee_On_Approve)).getText();
 	  		System.out.println("WSP Checker : "+Actual_pledgee_Validation);
@@ -245,7 +245,7 @@ public class PledgeeInitiation {
 	public void PI_Approve_PledgeeM(String Ware_Code,String Comm_Id,String Benf_Id,String Pledgee,String IFSC,String ACC_no,String ENWR_no,String Pledge_Qnt,String RPMaker,String RPMaker_password,String RPChecker,String RPchecker_password,String WSP_USER_ID,String WSP_Password,String Pledgee_maker,String PledgeeM_Pass,String Pledgee_checker1,String PledgeeC1_pass,String Pledgee_Checker2,String PledgeeC2_pass,String Loan_amt,int R_No) throws InterruptedException{
 		 
 		utility.Login(Pledgee_maker,PledgeeM_Pass);
-		logger.info("Pledgee maker login- Approve");
+		//logger.info("Pledgee maker login- Approve");
 		   // Click on pending txn button
 		 
 		 driver.findElement(By.xpath(NERLConstants.Pending_txn_navigation)).click();
@@ -255,7 +255,7 @@ public class PledgeeInitiation {
 	   		Thread.sleep(3000);
 	   		//Put EDP number into search box
 	   		driver.findElement(By.xpath(NERLConstants.EDP_no_Search_pending_txn)).sendKeys(EPGno);
-	   		logger.info("Print EPG NO");
+	   		//logger.info("Print EPG NO");
 	   		Thread.sleep(3000);
 	   		//Click On EDP No
 	   		driver.findElement(By.xpath(NERLConstants.EDP_ni_Click_FirstRecord)).click();
@@ -268,13 +268,13 @@ public class PledgeeInitiation {
 		    Thread.sleep(2000);
 		    utility.DoubleClick(NERLConstants.MV_by_pledgee);
 		    driver.findElement(By.xpath(NERLConstants.MV_By_pledgee_Send)).sendKeys(Loan_amt);
-		    logger.info("Print Loan amt");
+		    //logger.info("Print Loan amt");
 		    Thread.sleep(2000);
 
 		    utility.XY_PageScrollUp();
 		    
 	       driver.findElement(By.xpath(NERLConstants.Approve_pledgee_button)).click(); 	
-	       logger.info("Click on Pledgee button - Approved ");
+	       //logger.info("Click on Pledgee button - Approved ");
 	       Thread.sleep(2000);
 	  		String Actual_pledgeeM_Validation=driver.findElement(By.cssSelector(NERLConstants.Approve_By_Pledgee_validation)).getText();
 	  		System.out.println("Pledgee Maker : "+Actual_pledgeeM_Validation);
@@ -291,12 +291,12 @@ public class PledgeeInitiation {
 	public void PI_Approve_Pledgee_Checker1(String Ware_Code,String Comm_Id,String Benf_Id,String Pledgee,String IFSC,String ACC_no,String ENWR_no,String Pledge_Qnt,String RPMaker,String RPMaker_password,String RPChecker,String RPchecker_password,String WSP_USER_ID,String WSP_Password,String Pledgee_maker,String PledgeeM_Pass,String Pledgee_checker1,String PledgeeC1_pass,String Pledgee_Checker2,String PledgeeC2_pass,String Loan_amt,int R_No) throws InterruptedException{
 		 
 		utility.Login(Pledgee_checker1,PledgeeC1_pass);
-		logger.info("Pledgee Checker login - Approve");
+		//logger.info("Pledgee Checker login - Approve");
 		   // Click on pending txn button
 		 
 		 
 		 utility.PendingTxn_Approval(EPGno, NERLConstants.Approve_pledgee_Wsp);
-		 logger.info("Approved by Pledgee checker");
+		 //logger.info("Approved by Pledgee checker");
 	  		Thread.sleep(2000);
 	  		String Actual_pledgee_Validation=driver.findElement(By.cssSelector(NERLConstants.Approve_By_Pledgee_validation)).getText();
 	  		System.out.println("Pledgee Checker1 : "+Actual_pledgee_Validation);
@@ -311,12 +311,12 @@ public class PledgeeInitiation {
 	public void PI_Approve_Pledgee_Verifier(String Ware_Code,String Comm_Id,String Benf_Id,String Pledgee,String IFSC,String ACC_no,String ENWR_no,String Pledge_Qnt,String RPMaker,String RPMaker_password,String RPChecker,String RPchecker_password,String WSP_USER_ID,String WSP_Password,String Pledgee_maker,String PledgeeM_Pass,String Pledgee_checker1,String PledgeeC1_pass,String Pledgee_Checker2,String PledgeeC2_pass,String Loan_amt,int R_No) throws InterruptedException{
 		
 		utility.Login(Pledgee_Checker2,PledgeeC2_pass);
-		logger.info("Pledgee checker login - Approve");
+		//logger.info("Pledgee checker login - Approve");
 		   // Click on pending txn button
 		 
 		 
 		 utility.PendingTxn_Approval(EPGno, NERLConstants.Approve_pledgee_Wsp);
-		 logger.info("Approve by pledgee checker - EPG NO  ");
+		 //logger.info("Approve by pledgee checker - EPG NO  ");
 	  		Thread.sleep(2000);
 	  		String Actual_pledgee_Validation=driver.findElement(By.cssSelector(NERLConstants.Approve_By_Pledgee_validation)).getText();
 	  		System.out.println("Pledgee Checker1 : "+Actual_pledgee_Validation);
@@ -335,7 +335,7 @@ public class PledgeeInitiation {
 		try {
 			
 		utility.Login(RPMaker,RPMaker_password);
-		logger.info("RP Maker login -Discard Pledgee Initiation");
+		//logger.info("RP Maker login -Discard Pledgee Initiation");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		// Click on Menu Icon
 		driver.findElement(By.xpath(NERLConstants.Menu_Icon)).click();
@@ -355,7 +355,7 @@ public class PledgeeInitiation {
        
        Thread.sleep(2000);
 	   driver.findElement(By.xpath(NERLConstants.Warehouse_code)).sendKeys(Ware_Code);
-	   logger.info("Enter Ware_code");
+	   //logger.info("Enter Ware_code");
 	   //First record from dynamic table
 	   driver.findElement(By.xpath(NERLConstants.Warehouse_code_firstrecord)).click();			
 	   Thread.sleep(2000);
@@ -363,10 +363,10 @@ public class PledgeeInitiation {
 	   //Commodity button
 	   driver.findElement(By.xpath(NERLConstants.Commodity)).click();
 	   driver.findElement(By.xpath(NERLConstants.Commodity_Code)).sendKeys(Comm_Id);
-	   logger.info("");
+	   //logger.info("");
 	   //EWR Type
 	   driver.findElement(By.xpath(NERLConstants.EWR_type2)).sendKeys("Y");
-	   logger.info("Select Y");
+	   //logger.info("Select Y");
 	   Thread.sleep(1000);
 	   
 	   //Select First Record
@@ -414,7 +414,7 @@ public class PledgeeInitiation {
 	  // utility.pageScrollDown(NERLConstants.Fetch_Button);
 	   //Click Fetch button
 	   driver.findElement(By.xpath(NERLConstants.Fatch_button2)).click();
-	   logger.info("Click on Fetch button");
+	   //logger.info("Click on Fetch button");
 	   
 	   utility.XY_PageScrollDown();
 	   Thread.sleep(2000);
@@ -425,18 +425,18 @@ public class PledgeeInitiation {
 	   driver.findElement(By.xpath(NERLConstants.EWR_ID_FirstRecord)).click();
 	   //Click on Save button
 	   driver.findElement(By.xpath(NERLConstants.Save_Button_Pledge)).click();
-	   logger.info("Click on save button ");
+	   //logger.info("Click on save button ");
 	   Thread.sleep(2000);
 	   
 	   //Pledgee Qnt double click send.
 	   utility.DoubleClick(NERLConstants.pledgee_qnt_doubleclick);
 	   driver.findElement(By.xpath(NERLConstants.pledgee_qnt_send)).sendKeys(Pledge_Qnt);
-	   logger.info("Enter pledgee qty");
+	   //logger.info("Enter pledgee qty");
 	   Thread.sleep(2000);
 	   
 	   //Save button
 	   driver.findElement(By.xpath(NERLConstants.Save_Button_Selected_EWR)).click();
-	   logger.info("Click on save button");
+	   //logger.info("Click on save button");
 	   Thread.sleep(2000);
 	   utility.XY_PageScrollUp();
 	   Thread.sleep(5000);
@@ -446,7 +446,7 @@ public class PledgeeInitiation {
 	   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	   //Discard button
 	  driver.findElement(By.xpath(NERLConstants.Pledgee_Discard_RPMak)).click();
-	  logger.info("Click on discard button- Pledge discarded successfully ");
+	  //logger.info("Click on discard button- Pledge discarded successfully ");
 	   Thread.sleep(3000);
 	   
 	   utility.XY_PageScrollUp();
@@ -483,7 +483,7 @@ public class PledgeeInitiation {
 				
 	 
 			utility.Login(RPChecker,RPchecker_password);
-			logger.info("RP checker Login- Discard EPG txn ");
+			//logger.info("RP checker Login- Discard EPG txn ");
 			   //Click on pending txn button
 		  		utility.Checker_Discard(EPGno);
 		   		Thread.sleep(3000);

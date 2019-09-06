@@ -3,9 +3,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.apache.poi.EncryptedDocumentException;
+/*import org.slf4j.//logger;
+import org.slf4j.//loggerFactory;
+*/import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -32,7 +32,7 @@ public class Update_Quantity_deduction {
 	private static WebDriver driver;
 	private Utility utility;
 	
-	private final static Logger logger = LoggerFactory.getLogger(Update_Quantity_deduction.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Update_Quantity_deduction.class);
 @BeforeMethod
 	
 	public void Befour() throws InterruptedException 
@@ -45,7 +45,7 @@ public class Update_Quantity_deduction {
 		driver = new ChromeDriver();
 		//driver.get("https://interrepotest.erepository.in/");
 		driver.get("https://nerltest.erepository.in/");
-		logger.info("Web application launched");
+		//logger.info("Web application launched");
        driver.manage().window().maximize();	
        utility=new Utility(driver);
 }
@@ -59,10 +59,10 @@ public class Update_Quantity_deduction {
 		System.out.println("Test Case-1 RP-Maker Add Withdrawal");
 	
 		utility.Login1(RP_Maker, RP1_PW);
-		logger.info("Click action performed on login key RP Maker");
+		//logger.info("Click action performed on login key RP Maker");
        //Thread.sleep(4000);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
-        logger.info("Implicit wait applied on the driver for 20 seconds");
+        //logger.info("Implicit wait applied on the driver for 20 seconds");
       // driver.findElement(By.xpath(Withdrawal_Cons.Menu_List_icon)).click(); //Click on menu list icon
       utility.clickOnWebElement(Withdrawal_Cons.Menu_List_icon, driver);
       
@@ -114,7 +114,7 @@ public class Update_Quantity_deduction {
      
       //click on fetch button 
       driver.findElement(By.xpath(Withdrawal_Cons.Fetch_button)).click();
-      logger.info("Click on Fetch button");
+      //logger.info("Click on Fetch button");
       
       Thread.sleep(2000);
     //Enter EWR NO
@@ -133,7 +133,7 @@ public class Update_Quantity_deduction {
  
       //Click on select button
       driver.findElement(By.xpath(Withdrawal_Cons.Select_button)).click();
-      logger.info("Clicked on select button");
+      //logger.info("Clicked on select button");
       Thread.sleep(2000);
 		String Actual_Validation = driver.findElement(By.xpath(Withdrawal_Cons.EWR_Add_Validation_Message)).getText();
 		Assert.assertEquals(Actual_Validation,"Selected EWR has been added susccessfully...","Please Select Valid EWR");
@@ -157,7 +157,7 @@ public class Update_Quantity_deduction {
 	//Click on save button 
     Thread.sleep(2000);
     driver.findElement(By.xpath(Withdrawal_Cons.Save_button)).click();
-    logger.info("Clicked on save button");
+    //logger.info("Clicked on save button");
     Thread.sleep(3000);
   //Validation message for save button 
     String actual_result=driver.findElement(By.xpath(Withdrawal_Cons.Validation_Message1)).getText();
@@ -171,7 +171,7 @@ public class Update_Quantity_deduction {
      //Now click on Submit button 
 	    driver.findElement(By.xpath(Withdrawal_Cons.Submit_Button)).click();
 	    
-	    logger.info("Click on Submit button");
+	    //logger.info("Click on Submit button");
 	    Thread.sleep(2000);
 	    String DOW_no=driver.findElement(By.xpath(Withdrawal_Cons.DOW_No_Capture2)).getText();
 		// System.out.println(DOW_no); 		
@@ -190,7 +190,7 @@ System.out.println("Actual validation message is " +actual_result1);
 Assert.assertEquals(actual_result1,"Qty Deduction Transaction has been submitted successfully.");
 Thread.sleep(2000);
 	utility.logout1();
-	logger.info("Click on logout button");
+	//logger.info("Click on logout button");
 	Thread.sleep(3000);
 	driver.close();
 }
@@ -204,11 +204,11 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
 
  utility.Login1(RP_Checker,RP2_PW);
 
- logger.info("Click action performed on login key RP Checker");
+ //logger.info("Click action performed on login key RP Checker");
 
   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
   
-  logger.info("Implicit wait applied on the driver for 20 seconds");
+  //logger.info("Implicit wait applied on the driver for 20 seconds");
   
   //Click on toggle for select pending transaction
   driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
@@ -224,7 +224,7 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
   Thread.sleep(2000);
   //Click on Approve button
   driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button)).click();
-  logger.info("Click on Approve button");
+  //logger.info("Click on Approve button");
   
   Thread.sleep(3000);
   //String actual_result4=driver.findElement(By.xpath(Withdrawal_Cons.Validation_message4)).getText();
@@ -248,9 +248,9 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
 System.out.println("Test Case-3 Approverd by RP-checker");
 
 utility.Login1(WSP_Maker,WSP1_PW);
-logger.info("Click action performed on login key WSP Maker");
+//logger.info("Click action performed on login key WSP Maker");
 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
-logger.info("Implicit wait applied on the driver for 20 seconds");
+//logger.info("Implicit wait applied on the driver for 20 seconds");
 Thread.sleep(3000); 
   //Click on Menu_Toggle 
     driver.findElement(By.xpath(Withdrawal_Cons.Menu_Toggle)).click();
@@ -284,7 +284,7 @@ Thread.sleep(3000);
     
   //click on select button 
     driver.findElement(By.xpath(Withdrawal_Cons.select_button_wsp)).click();
-    logger.info("Clicked on select button");
+    //logger.info("Clicked on select button");
     Thread.sleep(2000);
  //Now click on check box from available ewr list
     driver.findElement(By.xpath(Withdrawal_Cons.checkbox_EWR)).click();
@@ -300,7 +300,7 @@ Thread.sleep(3000);
     Thread.sleep(2000);
     //Click on save button 
    driver.findElement(By.xpath(Withdrawal_Cons.save_button1)).click(); 
-   logger.info("Clicked on Save button");
+   //logger.info("Clicked on Save button");
  //validation message -WOW Transaction has been saved successfully
    Thread.sleep(3000); 
 	    String actual_result8=driver.findElement(By.xpath(Withdrawal_Cons.validation_message5)).getText();
@@ -311,7 +311,7 @@ Thread.sleep(3000);
   
 	//Now click on submit button  
 	driver.findElement(By.xpath(Withdrawal_Cons.Click_submit_button2)).click();   
-	 logger.info("Clicked on Submit button");
+	 //logger.info("Clicked on Submit button");
 	Thread.sleep(3000);
 //-------------------------------------------------------------------------------------------------
 	
@@ -334,7 +334,7 @@ Thread.sleep(3000);
 	  Assert.assertEquals(actual_result5,"WOW Transaction has been submitted successfully.");
 	  Thread.sleep(3000); 
 	  utility.logout1();
-	  logger.info("Clicked on logout button");
+	  //logger.info("Clicked on logout button");
 	 driver.close();
 }
 	  //..........................Test case 4  ....Approved by WSP checker-- WSP2002
@@ -345,10 +345,10 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
 System.out.println("Tes Case - 4 Approverd by WSP2002 checker");
 
 utility.Login(WSP_Checker,WSP2_PW);
-logger.info("Click action performed on login key WSP Checker");
+//logger.info("Click action performed on login key WSP Checker");
 //Thread.sleep(4000);
 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
-logger.info("Implicit wait applied on the driver for 20 seconds");
+//logger.info("Implicit wait applied on the driver for 20 seconds");
 //Click on toggle for select pending transaction
 driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
 Thread.sleep(2000);
@@ -363,7 +363,7 @@ driver.findElement(By.xpath(Withdrawal_Cons.Pending_txn_Click)).click();
 Thread.sleep(2000);
 //Click on Approve button
 driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button1)).click();
-logger.info("Click on Approve button");
+//logger.info("Click on Approve button");
 
 //Validation message "WOW Transaction has been Approved successfully.
 Thread.sleep(3000);
@@ -374,10 +374,10 @@ System.out.println("Actual validation message is " +actual_result6);
 Assert.assertEquals(actual_result6,"WOW Transaction has been Approved successfully.");
 Thread.sleep(2000);
 driver.findElement(By.xpath(Withdrawal_Cons.Download_Receipt)).click();
-logger.info("Click on Download link");
+//logger.info("Click on Download link");
 Thread.sleep(3000);
 utility.logout1();
-logger.info("Click on Logout button");
+//logger.info("Click on Logout button");
 Thread.sleep(3000);
 driver.close();
 
@@ -392,10 +392,10 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
 System.out.println("Discard withdrawal_test case 5");	
 
 utility.Login1(RP_Maker, RP1_PW);
-logger.info("Click action performed on login key RP Maker");
+//logger.info("Click action performed on login key RP Maker");
   //Thread.sleep(4000);
   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
-  logger.info("Implicit wait applied on the driver for 20 seconds");
+  //logger.info("Implicit wait applied on the driver for 20 seconds");
   //Click on menu list icon
   driver.findElement(By.xpath(Withdrawal_Cons.Menu_List_icon)).click();
   
@@ -467,7 +467,7 @@ logger.info("Click action performed on login key RP Maker");
 
   //Click on select button
   driver.findElement(By.xpath(Withdrawal_Cons.Select_button)).click();
-  logger.info("Click on select button");
+  //logger.info("Click on select button");
   //No of Begs
 // String Input_No_of_Begs2=driver.findElement(By.xpath(Withdrawal_Cons.No_of_Begs)).getText();
 
@@ -481,7 +481,7 @@ driver.findElement(By.xpath(Withdrawal_Cons.Input_no_of_begs)).sendKeys(Input_no
 driver.findElement(By.xpath(Withdrawal_Cons.Storage_cherge_till_date)).sendKeys("09/10/2017");
 //Click on save button 
 driver.findElement(By.xpath(Withdrawal_Cons.Save_button)).click();
-logger.info("Click on save button");
+//logger.info("Click on save button");
 Thread.sleep(2000);
 //click on discard
 driver.findElement(By.xpath(Withdrawal_Cons.discard_button)).click();
@@ -499,7 +499,7 @@ String actual_result1=driver.findElement(By.xpath(Withdrawal_Cons.Validation_mes
 //Now again  click on discard button 
   
   driver.findElement(By.xpath(Withdrawal_Cons.Agian_click_discard_button)).click();
-  logger.info("Click on Discard button");
+  //logger.info("Click on Discard button");
   //validation message -Quantity Deduction Transaction has been discarded successfully.
   Thread.sleep(2000);
    
@@ -517,7 +517,7 @@ System.out.println(WHCode+"  "+Comm_ID+" "+Benf_Code+" "+EWR_No+" "+RP_Maker+" "
 System.out.println("Test Case -6 RP-Maker Add Withdrawal");
 
 utility.Login1(RP_Maker, RP1_PW);
-logger.info("Click action performed on login key RP Maker");
+//logger.info("Click action performed on login key RP Maker");
 //Thread.sleep(4000);
 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 //Click on menu list icon
@@ -574,7 +574,7 @@ Thread.sleep(3000);
 
 //click on fetch button 
 driver.findElement(By.xpath(Withdrawal_Cons.Fetch_button)).click();
-logger.info("Click on fetch button");
+//logger.info("Click on fetch button");
 Thread.sleep(2000);
 //Enter EWR NO
 driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR_NO)).sendKeys(EWR_No);
@@ -617,7 +617,7 @@ Thread.sleep(2000);
 //Click on save button 
 Thread.sleep(2000);
 driver.findElement(By.xpath(Withdrawal_Cons.Save_button)).click();
-logger.info("Click on save button");
+//logger.info("Click on save button");
 Thread.sleep(3000);
 //Validation message for save button 
 String actual_result=driver.findElement(By.xpath(Withdrawal_Cons.Validation_Message1)).getText();
@@ -630,7 +630,7 @@ Thread.sleep(3000);
 
 //Now click on Submit button 
   driver.findElement(By.xpath(Withdrawal_Cons.Submit_Button)).click();
-  logger.info("Click on submit button");
+  //logger.info("Click on submit button");
   Thread.sleep(2000);
  String DOW_NO2=driver.findElement(By.xpath(Withdrawal_Cons.DOW_No_Capture2)).getText();
 	System.out.println(DOW_NO2); 		
@@ -664,7 +664,7 @@ Thread.sleep(3000);
   System.out.println("Test Case-7 Approverd by RP-checker");
 	
 	utility.Login1(RP_Checker,RP2_PW);
-	logger.info("RP Checker login");
+	//logger.info("RP Checker login");
 //Thread.sleep(4000);
     driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
     //Click on toggle for select pending transaction
@@ -672,7 +672,7 @@ Thread.sleep(3000);
     Thread.sleep(2000);
     //Click on Pending transaction
     driver.findElement(By.xpath(Withdrawal_Cons.Click_Pending_transaction)).click();
-    logger.info("Clicked on pending Txn");
+    //logger.info("Clicked on pending Txn");
     Thread.sleep(2000);
     //Enter Transaction ref no.
     driver.findElement(By.xpath(Withdrawal_Cons.Enter_Transaction_ref_no)).sendKeys(part2);
@@ -682,7 +682,7 @@ Thread.sleep(3000);
     Thread.sleep(2000);
     //Click on Approve button
     driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button)).click();
-    logger.info("Clicked on Approved button");
+    //logger.info("Clicked on Approved button");
     
     //validation message -"Quantity Deduction Transaction has been Approved successfully.
     Thread.sleep(3000);
@@ -705,7 +705,7 @@ Thread.sleep(3000);
 
   System.out.println("Test Case-8 WSP maker submitted withdrawal");
   utility.Login1(WSP_Maker,WSP1_PW);
-  logger.info("WSP Maker login");
+  //logger.info("WSP Maker login");
   
   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
   Thread.sleep(3000); 
@@ -743,7 +743,7 @@ Thread.sleep(3000);
   
 //click on select button 
   driver.findElement(By.xpath(Withdrawal_Cons.select_button_wsp)).click();
-  logger.info("Click on Selecte button ");
+  //logger.info("Click on Selecte button ");
   Thread.sleep(2000);
 //Now click on check box from available ewr list
   driver.findElement(By.xpath(Withdrawal_Cons.checkbox_EWR)).click();
@@ -759,11 +759,11 @@ Thread.sleep(3000);
   Thread.sleep(3000);
   //Click on save button 
  driver.findElement(By.xpath(Withdrawal_Cons.save_button1)).click(); 
- logger.info("Click on Save button ");
+ //logger.info("Click on Save button ");
  Thread.sleep(3000);
 //Click on Submit button 
  driver.findElement(By.xpath(Withdrawal_Cons.wow_Submit_Button_ )).click();
- logger.info("Click on again Save button ");
+ //logger.info("Click on again Save button ");
  Thread.sleep(2000);
 String wow_no=driver.findElement(By.xpath(Withdrawal_Cons.wow_capture2)).getText();
 System.out.println(wow_no); 		
@@ -793,7 +793,7 @@ Assert.assertEquals(actual_result_M,"WOW Transaction has been submitted successf
   System.out.println("Rejected by checker- Withdrawal test case 9");
 	
 	 utility.Login(WSP_Checker,WSP2_PW);
-	 logger.info("WSP CHECKER LOGIN ");
+	 //logger.info("WSP CHECKER LOGIN ");
 //Thread.sleep(4000);
 driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 //Click on toggle for select pending transaction
@@ -801,7 +801,7 @@ driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
 Thread.sleep(2000);
 //Click on Pending transaction
 driver.findElement(By.xpath(Withdrawal_Cons.Click_Pending_transaction)).click();
-logger.info("Click on Pending txn");
+//logger.info("Click on Pending txn");
 Thread.sleep(2000);
 //-----------------------------------------------
 //Enter Transaction ref no.
@@ -826,7 +826,7 @@ driver.findElement(By.xpath(Withdrawal_Cons.Reject_button)).click();
 	  Thread.sleep(2000);
 	//Again Click on Reject button
    driver.findElement(By.xpath(Withdrawal_Cons.Reject_button)).click();
-   logger.info("Click on reject button ");
+   //logger.info("Click on reject button ");
 	  
 Thread.sleep(3000);
 utility.logout1();
@@ -844,7 +844,7 @@ driver.close();
    System.out.println("To Verify if WSP maker is able to Submit WOWTransaction");
   
    utility.Login1(WSP_Maker,WSP1_PW);
-   logger.info("WSP Maker login ");
+   //logger.info("WSP Maker login ");
   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
   Thread.sleep(3000); 
 //Click on toggle for select pending transaction
@@ -859,11 +859,11 @@ driver.close();
   Thread.sleep(3000);
   //click on  No from grid table 
   driver.findElement(By.xpath(Withdrawal_Cons.Pending_txn_Click)).click();
-  logger.info("Click on Pending txn button ");
+  //logger.info("Click on Pending txn button ");
   Thread.sleep(2000);
   //Click on submit button 
   driver.findElement(By.xpath(Withdrawal_Cons.Resubmit_button_wsp_M )).click();
-  logger.info("Click on submit button ");
+  //logger.info("Click on submit button ");
      Thread.sleep(2000);
 String wow_no=driver.findElement(By.xpath(Withdrawal_Cons.wow_capture2)).getText();
 System.out.println(wow_no); 		
@@ -893,7 +893,7 @@ Assert.assertEquals(actual_result1,"WOW Transaction has been submitted successfu
   
    System.out.println("To Verify if wsp Checker is able to discard  WOW txn");
    utility.Login(WSP_Checker,WSP2_PW);
-   logger.info("WSP Checker login");
+   //logger.info("WSP Checker login");
    
    //Thread.sleep(4000);
    driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
@@ -926,7 +926,7 @@ Assert.assertEquals(actual_result1,"WOW Transaction has been submitted successfu
 		  Thread.sleep(2000);
 		//Again Click on discard button
 	      driver.findElement(By.xpath(Withdrawal_Cons.Discard_button_cheker)).click();
-	      logger.info("Clicked on discard button");
+	      //logger.info("Clicked on discard button");
 		  
    Thread.sleep(3000);
    utility.logout1();

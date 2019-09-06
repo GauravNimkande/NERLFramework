@@ -10,9 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+/*import org.slf4j.///////logger;
+import org.slf4j./////////loggerFactory;
+*/
 import library.Exceldataconfig;
 import library.Utility;
 public class Pledgee_invocation_main {
@@ -25,7 +25,7 @@ public class Pledgee_invocation_main {
 	private Utility utility;
 	public Exceldataconfig config;
 	
-	private final static Logger logger = LoggerFactory.getLogger(Pledgee_invocation_main.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Pledgee_invocation_main.class);
 	
 @BeforeMethod
 	
@@ -37,14 +37,14 @@ public class Pledgee_invocation_main {
         Thread.sleep(2000);
 
 		driver = new ChromeDriver();
-		logger.info("New Driver Initiated");
+		//logger.info("New Driver Initiated");
 		
 		//driver.get("https://interrepotest.erepository.in/");
 		
 		driver.get("https://nerltest.erepository.in/");
 		
         driver.manage().window().maximize();
-        logger.info("Browser open Succesfully and Url is open");
+        //logger.info("Browser open Succesfully and Url is open");
         utility=new Utility(driver);
 
 	}
@@ -58,7 +58,7 @@ public class Pledgee_invocation_main {
          System.out.println("Step 1 -> Tes case -1 Initation/submit by maker");   
         
     	 utility.Login1(pledgee_M, pledgee_pw); // Login by Pledgee maker(pledgee1001, Mumbai@123)
-    	 logger.info("Login by Pledgee maker");
+    	 //logger.info("Login by Pledgee maker");
          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
              		      
          utility.clickOnWebElement(Withdrawal_Cons.Menu_Link, driver); 
@@ -74,7 +74,7 @@ public class Pledgee_invocation_main {
          driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list)).sendKeys(Loan_account_no);   	
          
          driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
-         logger.info("Select loan account no");		
+         //logger.info("Select loan account no");		
          utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
         
          Thread.sleep(2000);
@@ -82,7 +82,7 @@ public class Pledgee_invocation_main {
          driver.findElement(By.xpath(Withdrawal_Cons.To_Beneficiary_Id)).sendKeys(Beneficiary_Id);
             		   		
          utility.clickOnWebElement(Withdrawal_Cons.Fetch_button1,driver);  	
-         logger.info("Click on Fetch button ");
+         //logger.info("Click on Fetch button ");
          Thread.sleep(2000);   		   		
          utility.scrolldown1();   		   		
            
@@ -94,7 +94,7 @@ public class Pledgee_invocation_main {
          utility.scrolldown1();
          
          utility.clickOnWebElement(Withdrawal_Cons.select_button_pledgee,driver);   
-         logger.info("Click on Seletc button");		
+         //logger.info("Click on Seletc button");		
          Thread.sleep(2000);
          //****************** Validation message **********************
          
@@ -126,9 +126,9 @@ public class Pledgee_invocation_main {
          utility.clickOnWebElement(Withdrawal_Cons.loan_amount_to_relese,driver); 
          
          utility.clickOnWebElement(Withdrawal_Cons.Click_save_button,driver); // Click on save button 
-         logger.info("Click on save button");		
+         //logger.info("Click on save button");		
          utility.CaptureScreenshot(driver, "Save EWR NO", R_No);
-         logger.info("Select loan account no");		
+         //logger.info("Select loan account no");		
          
          //*************************Validation Message***********************
          
@@ -168,7 +168,7 @@ public class Pledgee_invocation_main {
          System.out.println("Step 2 -> Approved by Pledgee checker");
 			
 	     utility.Login1(Pledgee_checker,Pledgee1_pw);
-	     logger.info("Login by Pledgee checker");		
+	     //logger.info("Login by Pledgee checker");		
 	      
 		 Thread.sleep(5000);
 		 
@@ -182,9 +182,9 @@ public class Pledgee_invocation_main {
  	     driver.findElement(By.xpath(Withdrawal_Cons.Txn_no)).sendKeys(part2); //Enter Transaction ref no.
   	      
  	     utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver);   //click on DOW No from grid table 
- 	    logger.info("Click on DOW txn no");
+ 	    ////logger.info("Click on DOW txn no");
  	     utility.clickOnWebElement(Withdrawal_Cons.Approve_button_pledgee,driver); //Click on Approve button'
- 	    logger.info("Click on Approve button");
+ 	    //logger.info("Click on Approve button");
  	    utility.CaptureScreenshot(driver, "Approve Pledgee", R_No);
  	     
     //**********************Validation Message************************************ 	     
@@ -213,7 +213,7 @@ public class Pledgee_invocation_main {
           System.out.println("Step 3 -> Test case- 2 Discard by Maker ");
            
           utility.Login1(pledgee_M, pledgee_pw);
-          logger.info("Login by Pledgee maker- For discard");
+          //logger.info("Login by Pledgee maker- For discard");
 		  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		  
 		  utility.clickOnWebElement(Withdrawal_Cons.Menu_Link,driver); //Menu Button
@@ -227,15 +227,15 @@ public class Pledgee_invocation_main {
 		  utility.clickOnWebElement(Withdrawal_Cons.Loan_account_no_toggle,driver); // Loan account no toggle 
  		   		
  		  driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list)).sendKeys(Loan_account_no);
- 		 logger.info("Print Loan account no");
+ 		 //logger.info("Print Loan account no");
  		  driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
- 		 logger.info("Enter EPG NO");
+ 		 //logger.info("Enter EPG NO");
  		  utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
  		  Thread.sleep(2000);	
  	   	  driver.findElement(By.xpath(Withdrawal_Cons.To_Beneficiary_Id)).sendKeys(Beneficiary_Id);
- 	    logger.info("Print Beneficiary_Id");
+ 	    //logger.info("Print Beneficiary_Id");
  	   	  utility.clickOnWebElement(Withdrawal_Cons.Fetch_button1,driver);
- 	    logger.info("Click on Fetch button");
+ 	    //logger.info("Click on Fetch button");
  	   	 utility.CaptureScreenshot(driver, "Fetch Pledgee invoke", R_No);
  		   		
  		  Thread.sleep(2000);
@@ -288,7 +288,7 @@ public class Pledgee_invocation_main {
 		  
 		  utility.clickOnWebElement(Withdrawal_Cons.Click_save_button,driver); 
 		  
-		  logger.info("Click on save button");
+		  //logger.info("Click on save button");
 		          
 		  Thread.sleep(2000);
 		  
@@ -318,7 +318,7 @@ public class Pledgee_invocation_main {
 		 driver.findElement(By.xpath(Withdrawal_Cons.Enter_remark_discard)).sendKeys("enter remark"); //Enter remark
 			
 		 driver.findElement(By.xpath(Withdrawal_Cons.Discard_button_pledgee)).click(); //Now again  click on discard button 
-		 logger.info("Click on discard button");
+		 //logger.info("Click on discard button");
 		 utility.CaptureScreenshot(driver, "Discard Pledgee invoke", R_No);
 		 
 		 utility.logout1();
@@ -338,7 +338,7 @@ public class Pledgee_invocation_main {
          System.out.println("Step 4 -> Tes case 3 Initation/submit by maker ");
          
 		 utility.Login1(pledgee_M, pledgee_pw);
-		 logger.info("Login by Pldgee maker- for ReSubmit");
+		 //logger.info("Login by Pldgee maker- for ReSubmit");
          Thread.sleep(5000);
          
          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//Menu Button
@@ -356,13 +356,13 @@ public class Pledgee_invocation_main {
          utility.clickOnWebElement(Withdrawal_Cons.Loan_account_details_list,driver);
 	   	
 	   	 driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
-	   	 logger.info(" Print EPG NO");
+	   	 //logger.info(" Print EPG NO");
 	   	 utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
 	   	 Thread.sleep(2000);
 	   	 driver.findElement(By.xpath(Withdrawal_Cons.To_Beneficiary_Id)).sendKeys(Beneficiary_Id);
-	   	 logger.info("Enter Ben_id");
+	   	 //logger.info("Enter Ben_id");
 	   	 utility.clickOnWebElement(Withdrawal_Cons.Fetch_button1,driver);	
-	   	 logger.info("Click on Fetch button");
+	   	 //logger.info("Click on Fetch button");
 	   	 Thread.sleep(2000);
 	   	 
 	     utility.scrolldown1();
@@ -374,7 +374,7 @@ public class Pledgee_invocation_main {
 	     utility.scrolldown1();
 	     
 	     utility.clickOnWebElement(Withdrawal_Cons.select_button_pledgee,driver);	
-	     logger.info("Click on select button");
+	     //logger.info("Click on select button");
 	     //********************* Validation Message **********************
 	     Thread.sleep(2000);
 	     
@@ -408,7 +408,7 @@ public class Pledgee_invocation_main {
 	     utility.clickOnWebElement(Withdrawal_Cons.loan_amount_to_relese,driver);
          
 	     utility.clickOnWebElement(Withdrawal_Cons.Click_save_button,driver);
-	     logger.info("Click on save button");
+	     //logger.info("Click on save button");
 	     //******************* Validation Message***************************
 	     
 		String Actual_Validation_7 = driver.findElement(By.cssSelector(Withdrawal_Cons.Validation_message_Approval)).getText();
@@ -447,7 +447,7 @@ public class Pledgee_invocation_main {
 		 System.out.println("Step 5 -> Rejected by Pledgee checker ");
 			
 	     utility.Login1(Pledgee_checker,Pledgee1_pw);
-	     logger.info("Login by Pledgee checker- Reject");
+	     //logger.info("Login by Pledgee checker- Reject");
 		 Thread.sleep(5000);
 		 
          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
@@ -457,9 +457,9 @@ public class Pledgee_invocation_main {
          utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); //Click on Pending transaction
 	      
 	     driver.findElement(By.xpath(Withdrawal_Cons.Txn_no)).sendKeys(part2); //Enter Transaction ref no.
-	     logger.info("Display Txn No ");
+	     //logger.info("Display Txn No ");
 	     utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver); //click on txn no
-	     logger.info("Click on Txn no ");
+	     //logger.info("Click on Txn no ");
 	     utility.clickOnWebElement(Withdrawal_Cons.Reject_button_pledgee,driver);
 	     
 	  //*****************Validation Message******************
@@ -473,7 +473,7 @@ public class Pledgee_invocation_main {
 	     driver.findElement(By.xpath(Withdrawal_Cons.Enter_remark_reject)).sendKeys("please enter remark");
 			
 	     utility.clickOnWebElement(Withdrawal_Cons.Reject_button_pledgee1,driver);	 // Click on Reject button 
-	     logger.info("Click on Rejectbutton");
+	     //logger.info("Click on Rejectbutton");
 	     utility.CaptureScreenshot(driver, "Reject Pledgee invoke", R_No);
 			
 	//************ Validation Message*********
@@ -501,7 +501,7 @@ public class Pledgee_invocation_main {
 	     System.out.println("Step 6 -> Test case - 4 Submite by Pledgee Maker" );
 					
          utility.Login1(pledgee_M, pledgee_pw); //Enter User id
-         logger.info("Login by Pledgee Maker- Resubmit");
+         //logger.info("Login by Pledgee Maker- Resubmit");
          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
          
          utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); //Click on toggle for select pending transaction	
@@ -515,9 +515,9 @@ public class Pledgee_invocation_main {
          Thread.sleep(3000);
          
          utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver); //click on txn no
-         logger.info("Click on Txn no");      
+         //logger.info("Click on Txn no");      
          utility.clickOnWebElement(Withdrawal_Cons.Click_submit_button_pledgee1,driver);	
-         logger.info("Click on Submit button");
+         //logger.info("Click on Submit button");
       //*********************** Validation Message *****************
           	
          String Actual_Validation_9 = driver.findElement(By.cssSelector(Withdrawal_Cons.Validation_message_pledgee2)).getText();
@@ -531,7 +531,7 @@ public class Pledgee_invocation_main {
          System.out.println("Step 7 -> Approved by Pledgee checker");
          
          utility.Login1(Pledgee_checker,Pledgee1_pw);
-         logger.info("Login by Pledgee checker- Approvel ");
+         //logger.info("Login by Pledgee checker- Approvel ");
          driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
          
          utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); //Click on toggle for select pending transaction
@@ -543,7 +543,7 @@ public class Pledgee_invocation_main {
        	 utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver); //click on txn no
        	  
          utility.clickOnWebElement(Withdrawal_Cons.Click_Approve_button2,driver);
-         logger.info("Click on approve button");
+         //logger.info("Click on approve button");
          utility.CaptureScreenshot(driver, "Approve by checker Pledgee invoke", R_No);
          
        //**************** Validation Message***************  
@@ -571,7 +571,7 @@ public class Pledgee_invocation_main {
 	   System.out.println("Step 8 -> Tes case -5 Initation/submit by maker");
 					
 	   utility.Login1(pledgee_M, pledgee_pw);
-	   logger.info("Login by Pledgee maker");
+	   //logger.info("Login by Pledgee maker");
 	   driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	   
 	   utility.clickOnWebElement(Withdrawal_Cons.Menu_Link,driver);
@@ -587,7 +587,7 @@ public class Pledgee_invocation_main {
 	   driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list)).sendKeys(Loan_account_no);
 	   
 	   driver.findElement(By.xpath(Withdrawal_Cons.Loan_account_details_list1)).sendKeys(EPG_NO);
-	   logger.info("Enter EPG NO");
+	   //logger.info("Enter EPG NO");
 	   utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);	
 	   
 	   Thread.sleep(2000);
@@ -595,13 +595,13 @@ public class Pledgee_invocation_main {
 	   driver.findElement(By.xpath(Withdrawal_Cons.To_Beneficiary_Id)).sendKeys(Beneficiary_Id);
 	   
 	   utility.clickOnWebElement(Withdrawal_Cons.Fetch_button1,driver);	
-	   logger.info("Click on Fetch button");		
+	   //logger.info("Click on Fetch button");		
 	   Thread.sleep(2000);
 	    
 	   utility.scrolldown1();
 	   
 	   driver.findElement(By.xpath(Withdrawal_Cons.enter_ewr)).sendKeys(EWR_NO); // Enter EWR NO
-	   logger.info("Enter EWR NO");
+	   //logger.info("Enter EWR NO");
 	   utility.clickOnWebElement(Withdrawal_Cons.select_checkbox_ewr,driver);	// Select checkbox4	
 	   
 	   Thread.sleep(2000);
@@ -609,7 +609,7 @@ public class Pledgee_invocation_main {
 	   utility.scrolldown1();
 	   
 	   utility.clickOnWebElement(Withdrawal_Cons.select_button_pledgee,driver);	
-	   logger.info("Click on SELECT button");
+	   //logger.info("Click on SELECT button");
 	 //**************** Validation Message *********************
 					
 		String Actual_Validation_1 = driver.findElement(By.cssSelector(Withdrawal_Cons.after_select_validation_msg)).getText();
@@ -626,7 +626,7 @@ public class Pledgee_invocation_main {
 		
 		driver.findElement(By.xpath(Withdrawal_Cons.enter_invoke_unit)).clear();
 		
-		 logger.info("Enter Invoke unit");
+		 //logger.info("Enter Invoke unit");
 	//********************* 		
         
 		Actions action = new Actions(driver);
@@ -646,7 +646,7 @@ public class Pledgee_invocation_main {
         Assert.assertEquals(Actual_Validation_2, "EWR saved Successfully.");
 					
         utility.clickOnWebElement(Withdrawal_Cons.Click_submit_button_pledgee,driver);
-        logger.info("Click on submit button");			
+        //logger.info("Click on submit button");			
 		utility.CaptureScreenshot(driver, "Pledgee invoke", R_No);
 	
 //******************** Capture Invoke No ***************		
@@ -676,7 +676,7 @@ public class Pledgee_invocation_main {
 		System.out.println("Step 9 -> Discard by Pledgee checker");
 		
 		utility.Login1(Pledgee_checker, Pledgee1_pw);
-		 logger.info("Login by Pledgee Checker- Discard");
+		 //logger.info("Login by Pledgee Checker- Discard");
 		Thread.sleep(5000);
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -690,7 +690,7 @@ public class Pledgee_invocation_main {
 		driver.findElement(By.xpath(Withdrawal_Cons.Txn_no)).sendKeys(part2); // Enter EPC NO
 		 
 		utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver);
-		logger.info("Print EPC NO");
+		//logger.info("Print EPC NO");
 		utility.clickOnWebElement(Withdrawal_Cons.Discard_button_pledgee3,driver);			
 				
 	//*********** Validation Message ******************
@@ -706,7 +706,7 @@ public class Pledgee_invocation_main {
 	    driver.findElement(By.xpath(Withdrawal_Cons.Enter_remark_discard)).sendKeys("enter remark"); //Enter remark
 	   
 	    utility.clickOnWebElement(Withdrawal_Cons.discardbutton_final,driver); //Now again  click on discard button 
-	    logger.info("Click on discard button");	
+	    //logger.info("Click on discard button");	
 	    utility.CaptureScreenshot(driver, "Final Discard by Pledgee checker", R_No);
 	    
 	//******************** Validation Message**********************

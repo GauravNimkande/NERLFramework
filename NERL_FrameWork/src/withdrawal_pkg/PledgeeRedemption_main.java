@@ -10,9 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.Assert;
+/*import org.slf4j.//;
+import org.slf4j.//Factory;
+*/import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,7 +31,7 @@ public class PledgeeRedemption_main {
 	private Utility utility;
 	private static Deposit ENWR;
 	public Exceldataconfig config;
-	private final static Logger logger = LoggerFactory.getLogger(PledgeeRedemption_main.class);
+	//private final static // // = //Factory.get//(PledgeeRedemption_main.class);
 	public String EPR_No;
 	
 	public static PledgeRedeem PR;
@@ -58,7 +58,7 @@ public class PledgeeRedemption_main {
 	
 	    // driver.get("https://test.erepository.in");
 	 	
-		 logger.info("Web application launched");
+		 //.info("Web application launched");
 		
 	    driver.manage().window().maximize();
 	    
@@ -81,7 +81,7 @@ public class PledgeeRedemption_main {
 	       
 	    	utility.RP_Maker(RP_maker, RP_PW);
 	        
-	    	logger.info("Click action performed on login key RP Maker");
+	    	//.info("Click action performed on login key RP Maker");
 	       }	
 	    else
 	       {
@@ -89,7 +89,7 @@ public class PledgeeRedemption_main {
 	    	
 	    	utility.Pledgee_Maker(RP_maker, RP_PW);
 	    	
-	    	logger.info("Click action performed on login key Pledgee Checker");
+	    	//.info("Click action performed on login key Pledgee Checker");
 	       }
 	    	 	   
 	     PR.FetchPRdetails(Loan_account_no,EPG_NO,EWR_NO,Redeem_qty,RP_maker,RP_PW,User_role,pledgee_M,pledgee_pw,R_No);

@@ -12,8 +12,8 @@ import withdrawal_pkg.PledgeeRedemption_main;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.//logger;
+//import org.slf4j.//loggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -24,14 +24,14 @@ public class Benf_To_Benf_Main {
 	private static WebDriver driver;
 	private Utility utility;
 	public Exceldataconfig config;
-	private final static Logger logger = LoggerFactory.getLogger(Benf_To_Benf_Main.class);
+//	private final static //logger //logger = //loggerFactory.get//logger(Benf_To_Benf_Main.class);
 	
 	
 	
 	@BeforeMethod()		
 	public void Befour() throws InterruptedException, MalformedURLException {
 		
-		logger.info("Benf To Benf Test Cases Execution Started");
+		//logger.info("Benf To Benf Test Cases Execution Started");
 		
 		System.setProperty("webdriver.chrome.driver", "D://chromedriver.exe");
 		
@@ -54,7 +54,7 @@ public class Benf_To_Benf_Main {
 		
 		driver.manage().window().maximize();
 		 
-		logger.info("Browser open Succesfully and Url is open");
+		//logger.info("Browser open Succesfully and Url is open");
 		
 		utility = new Utility(driver);
 }
@@ -68,7 +68,7 @@ public class Benf_To_Benf_Main {
 		
         utility.Login(User_ID_1,Passw_1);
 		
-		logger.info("RP maker Login");
+		//logger.info("RP maker Login");
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
@@ -85,13 +85,13 @@ public class Benf_To_Benf_Main {
 		// Click on Back Button
 		Thread.sleep(2000);
          driver.findElement(By.xpath(NERLConstants.Back_Button)).click();
-		 logger.info("Benf To Benf Window Open");
+		 //logger.info("Benf To Benf Window Open");
 		 Thread.sleep(2000);
 		
 		 // Click on Popup (Warehouse Code)Button[...]
 		driver.findElement(By.xpath(NERLConstants.Popup_Win_Button)).click();
 		 
-		logger.info("Warehouse Code Popup open");
+		//logger.info("Warehouse Code Popup open");
 		
 		Thread.sleep(3000);
 
@@ -103,14 +103,14 @@ public class Benf_To_Benf_Main {
 		// Select A 1st record From Popup Win
 	    driver.findElement(By.xpath(NERLConstants.Select_Record)).click();
 	
-		logger.info("Warehouse code Selected");
+		//logger.info("Warehouse code Selected");
 	
 		 Thread.sleep(2000);
 		
 		// Click on Popup Button[...] Commodity ID
 		driver.findElement(By.xpath(NERLConstants.Popup_Win_Button2)).click();
 		
-		logger.info("Commodity ID Popup open");
+		//logger.info("Commodity ID Popup open");
 		
 		Thread.sleep(3000);
 		
@@ -122,7 +122,7 @@ public class Benf_To_Benf_Main {
 		// Select Serched Commodity Record
 		driver.findElement(By.xpath(NERLConstants.Select_Record2)).click();
 		
-		logger.info("Commodity ID Selected");
+		//logger.info("Commodity ID Selected");
 		Thread.sleep(2000);
 
 		// Click on From Beneficiary ID Button
@@ -135,7 +135,7 @@ public class Benf_To_Benf_Main {
 		
 		driver.findElement(By.xpath(NERLConstants.Select_Record3)).click();
 		
-		logger.info("From Benficiary Selected");
+		//logger.info("From Benficiary Selected");
 		
 		Thread.sleep(2000);
        
@@ -151,7 +151,7 @@ public class Benf_To_Benf_Main {
 		
 		driver.findElement(By.xpath(NERLConstants.EWR_Type_Span)).click();
 		
-		logger.info("To RP Id Selcted");
+		//logger.info("To RP Id Selcted");
 		
 		Thread.sleep(2000);
 		
@@ -164,7 +164,7 @@ public class Benf_To_Benf_Main {
 		driver.findElement(By.xpath(NERLConstants.EWR_Type_Record)).click();
 		
 		// Click on Fetch Button
-		logger.info("EWR Type Is Selected");
+		//logger.info("EWR Type Is Selected");
 		
 		driver.findElement(By.xpath(NERLConstants.Fetch_Button)).click();
 
@@ -187,7 +187,7 @@ public class Benf_To_Benf_Main {
 
 		String Actual_Validation = driver.findElement(
 				By.xpath(NERLConstants.EWR_Add_Validation_Message)).getText();
-		logger.info(Actual_Validation);
+		//logger.info(Actual_Validation);
 		
 		Assert.assertEquals(Actual_Validation,
 				"EWR added successfully for beneficiary transfer.",

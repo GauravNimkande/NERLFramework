@@ -8,9 +8,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.Assert;
+/*import org.slf4j.//logger;
+import org.slf4j.//loggerFactory;
+*/import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -28,7 +28,7 @@ public class PledgeRedemption {
 	private static WebDriver driver;
 	private Utility utility;
 	public Exceldataconfig config;
-	private final static Logger logger = LoggerFactory.getLogger(Benf_To_Benf.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Benf_To_Benf.class);
 		@BeforeMethod
 
 	public void Befour() throws InterruptedException 
@@ -41,7 +41,7 @@ public class PledgeRedemption {
 		driver = new ChromeDriver();
 		
 		driver.get("https://nerltest.erepository.in/");
-		 logger.info("New Driver Initiated- PledgeeRedemption");
+		 //logger.info("New Driver Initiated- PledgeeRedemption");
 	    driver.manage().window().maximize();
 	    
 	    utility=new Utility(driver);
@@ -59,14 +59,14 @@ public class PledgeRedemption {
 	    {
 	    	System.out.println("User Role is RP");
 	       utility.RP_Maker(RP_maker, RP_PW);
-	       logger.info("RP Maker login");
+	       //logger.info("RP Maker login");
 	    	
 	    }	
 	    else
 	    {
 	    	System.out.println("User Role is Pledgee");
 	    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
-	    	logger.info("Pledgee Maker login");
+	    	//logger.info("Pledgee Maker login");
 	    }
 	    	 
 	     System.out.println("Initiation by Maker");
@@ -81,7 +81,7 @@ public class PledgeRedemption {
        utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
        Thread.sleep(2000);
        utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
-       logger.info("Click on Fetch button");
+       //logger.info("Click on Fetch button");
        
        Thread.sleep(2000);   		   		
        utility.scrolldown1(); 
@@ -92,7 +92,7 @@ public class PledgeRedemption {
        utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
        
        utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
-       logger.info("Click on select button");
+       //logger.info("Click on select button");
        
        Thread.sleep(2000);
        
@@ -110,7 +110,7 @@ public class PledgeRedemption {
  		 Thread.sleep(2000);     
         
         utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
-        logger.info("Click on save button");
+        //logger.info("Click on save button");
         utility.XY_PageScrollUp();
         
          Thread.sleep(2000);
@@ -124,7 +124,7 @@ public class PledgeRedemption {
          
          /*utility.scrolldown1();*/
          utility.clickOnWebElement(Withdrawal_Cons.Submit_Redeem,driver);
-         logger.info("Click on submit button");
+         //logger.info("Click on submit button");
          Thread.sleep(3000);
     //##############################################################
              
@@ -157,7 +157,7 @@ public class PledgeRedemption {
    		System.out.println("Step 2 Approved by checker");
    		
    		utility.Login1(Pledgee_checker, Pledgee1_pw);
-   		logger.info("Pledgee checker login");
+   		//logger.info("Pledgee checker login");
 		
 		Thread.sleep(5000);
 		
@@ -166,7 +166,7 @@ public class PledgeRedemption {
 		utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); // Click on toggle for select pending transaction
 		
 		utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); // Click on Pending transaction
-		logger.info("Click on pending Txn");			
+		//logger.info("Click on pending Txn");			
 		Thread.sleep(2000);
 		
 		driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Txn_no)).sendKeys(part2); // Enter EPR NO
@@ -174,7 +174,7 @@ public class PledgeRedemption {
 		utility.clickOnWebElement(Withdrawal_Cons.Redeem_Txn,driver);
 		
 		utility.clickOnWebElement(Withdrawal_Cons.Approve_redeem,driver);	  
-		logger.info("Click on Approve button");
+		//logger.info("Click on Approve button");
 		
 		 //**********************Validation Message************************************ 	     
 	     
@@ -206,14 +206,14 @@ public class PledgeRedemption {
      		    {
      		    	System.out.println("User Role is RP");
      		       utility.RP_Maker(RP_maker, RP_PW);
-     		      logger.info("RP MAKER login- Discard");
+     		      //logger.info("RP MAKER login- Discard");
      		    	
      		    }
      		    else
      		    {
      		    	System.out.println("User Role is Pledgee");
      		    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
-     		       logger.info("Pledgee checker login- Discard");
+     		       //logger.info("Pledgee checker login- Discard");
      		    }
      		    	 
      		     //System.out.println("Initiation by Maker-2");
@@ -227,7 +227,7 @@ public class PledgeRedemption {
      	         utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
      	         Thread.sleep(2000);
      	         utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
-     	        logger.info("Click on Fetch button");
+     	        //logger.info("Click on Fetch button");
      	         
      	         Thread.sleep(2000);   		   		
      	         utility.scrolldown1(); 
@@ -238,7 +238,7 @@ public class PledgeRedemption {
      	         utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
      	         
      	        utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
-     	       logger.info("Click on select button");
+     	       //logger.info("Click on select button");
      	       
      	       Thread.sleep(2000);
      	       
@@ -256,7 +256,7 @@ public class PledgeRedemption {
      	 		 Thread.sleep(2000);     
      	 //**************************************************************************	  
      	        utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
-     	       logger.info("Click on save button- Discard");
+     	       //logger.info("Click on save button- Discard");
      	        utility.XY_PageScrollUp();
      	        
      	         Thread.sleep(2000);
@@ -284,7 +284,7 @@ public class PledgeRedemption {
      			 driver.findElement(By.xpath(Withdrawal_Cons.Remark_textfield1)).sendKeys("enter remark"); //Enter remark
      				
      			 driver.findElement(By.xpath(Withdrawal_Cons.Discard_redeem)).click(); //Now again  click on discard button 
-     		     logger.info("Click on Discard button- Discard");
+     		     //logger.info("Click on Discard button- Discard");
      			 utility.CaptureScreenshot(driver, "Discard by maker", R_No);
      			 
      			 utility.logout1();
@@ -308,14 +308,14 @@ public class PledgeRedemption {
      	    {
      	    	System.out.println("User Role is RP");
      	       utility.RP_Maker(RP_maker, RP_PW);
-     	      logger.info("RP Maker login -Reject");
+     	      //logger.info("RP Maker login -Reject");
      	    	
      	    }	
      	    else
      	    {
      	    	System.out.println("User Role is Pledgee");
      	    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
-     	    	  logger.info("Pledgee maker login -Reject");
+     	    	  //logger.info("Pledgee maker login -Reject");
      	    }
      	    	 
      	     System.out.println("Initiation by Maker");
@@ -330,7 +330,7 @@ public class PledgeRedemption {
             utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
             Thread.sleep(2000);
             utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
-            logger.info("Fetch button-Resubmit Reject");
+            //logger.info("Fetch button-Resubmit Reject");
             
             Thread.sleep(2000);   		   		
             utility.scrolldown1(); 
@@ -341,7 +341,7 @@ public class PledgeRedemption {
             utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
             
             utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
-            logger.info("Select button -Resubmit Reject");
+            //logger.info("Select button -Resubmit Reject");
             
             Thread.sleep(2000);
             
@@ -359,7 +359,7 @@ public class PledgeRedemption {
       		 Thread.sleep(2000);     
              
              utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
-             logger.info("Save button -Resubmit Reject");
+             //logger.info("Save button -Resubmit Reject");
              utility.XY_PageScrollUp();
              
               Thread.sleep(2000);
@@ -373,7 +373,7 @@ public class PledgeRedemption {
               
               utility.scrolldown1();
               utility.clickOnWebElement(Withdrawal_Cons.Submit_Redeem,driver);
-              logger.info("Submit button-Resubmit Reject");
+              //logger.info("Submit button-Resubmit Reject");
               Thread.sleep(2000);
               
              //----------------------------
@@ -411,7 +411,7 @@ public class PledgeRedemption {
       		System.out.println("Step 5 Rejeced by Pledgee checker");
       		
       		utility.Login1(Pledgee_checker, Pledgee1_pw);
-      		logger.info("Pledgee Checker login -Reject");
+      		//logger.info("Pledgee Checker login -Reject");
       		Thread.sleep(5000);
       		
       		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -419,7 +419,7 @@ public class PledgeRedemption {
       		utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); // Click on toggle for select pending transaction
       		
       		utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); // Click on Pending transaction
-      		logger.info("Click on Pending Txn -Reject");		
+      		//logger.info("Click on Pending Txn -Reject");		
       		Thread.sleep(2000);
       		
       		driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Txn_no)).sendKeys(part2); // Enter EPR NO
@@ -427,7 +427,7 @@ public class PledgeRedemption {
       		utility.clickOnWebElement(Withdrawal_Cons.Redeem_Txn,driver);
       		 
       		utility.clickOnWebElement(Withdrawal_Cons.Redeem_Reject_button,driver);
-      		logger.info("-Reject");
+      		//logger.info("-Reject");
       	  //*****************Validation Message******************
       
 			 String actual_result_remark= driver.findElement(By.xpath(Withdrawal_Cons.Remark_message)).getText();
@@ -441,7 +441,7 @@ public class PledgeRedemption {
 			 driver.findElement(By.xpath(Withdrawal_Cons.Remark_textfield1)).sendKeys("enter remark"); //Enter remark
 				
 			 driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Reject_button1)).click(); //Now again  click on discard button 
-			 logger.info("Click on Reject Button-Reject");
+			 //logger.info("Click on Reject Button-Reject");
       	     utility.CaptureScreenshot(driver, "Rejection of EWR Successfully.", R_No);
       			
       	//************ Validation Message*********
@@ -469,20 +469,20 @@ public class PledgeRedemption {
  		
  		
  		 utility.Login1(RP_maker, RP_PW);
- 		logger.info("RP Maker Login- Go to pending Txn and submit");
+ 		//logger.info("RP Maker Login- Go to pending Txn and submit");
             // driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
              
              utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); //Click on toggle for select pending transaction	
              
              utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver);//Click on Pending transaction
-             logger.info("Click on pendinG tXN -Submit");
+             //logger.info("Click on pendinG tXN -Submit");
              Thread.sleep(2000);
              driver.findElement(By.xpath(Withdrawal_Cons.Txn_no)).sendKeys(part2); // 
              Thread.sleep(3000);
              utility.clickOnWebElement(Withdrawal_Cons.Click_Txn_no,driver); //click on txn no
               	      
              utility.clickOnWebElement(Withdrawal_Cons.Click_submit_button_pledgee2,driver);	
-             logger.info("Click on Submit button -Submit by RP MAKER");
+             //logger.info("Click on Submit button -Submit by RP MAKER");
           //*********************** Validation Message *****************
               	
              String Actual_Validation_9 = driver.findElement(By.cssSelector(Withdrawal_Cons.Validation_message_pledgee2)).getText();
@@ -502,7 +502,7 @@ public class PledgeRedemption {
  		System.out.println("Step 7 Discard by Pledgee checker");
  		
  		utility.Login1(Pledgee_checker, Pledgee1_pw);
- 		logger.info("Pledgee Checker login -Discard process");
+ 		//logger.info("Pledgee Checker login -Discard process");
  		Thread.sleep(5000);
  		
  		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -510,7 +510,7 @@ public class PledgeRedemption {
  		utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); // Click on toggle for select pending transaction
  		
  		utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); // Click on Pending transaction
- 		logger.info("Click on Pending Txn- Pledgee checker");		
+ 		//logger.info("Click on Pending Txn- Pledgee checker");		
  		Thread.sleep(2000);
  		
  		driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Txn_no)).sendKeys(part2); // Enter EPR NO
@@ -533,7 +533,7 @@ public class PledgeRedemption {
 		 driver.findElement(By.xpath(Withdrawal_Cons.Remark_textfield1)).sendKeys("enter remark"); //Enter remark
 			
 		 driver.findElement(By.xpath(Withdrawal_Cons.pledgee_discard_checker1)).click(); //Now again  click on discard button 
-		 logger.info("Click on Discard button - Discard by pledgee checker");	
+		 //logger.info("Click on Discard button - Discard by pledgee checker");	
    
 		//************ Validation Message*********
   	     
@@ -560,14 +560,14 @@ public class PledgeRedemption {
  	    {
  	    	System.out.println("User Role is RP");
  	       utility.RP_Maker(RP_maker, RP_PW);
- 	      logger.info(" RP maker Login - Resubmit process");	
+ 	      //logger.info(" RP maker Login - Resubmit process");	
  	    	
  	    }	
  	    else
  	    {
  	    	System.out.println("User Role is Pledgee");
  	    	utility.Pledgee_Maker(pledgee_M, pledgee_pw);
- 	    	logger.info(" Pledgee Maker login- ");	
+ 	    	//logger.info(" Pledgee Maker login- ");	
  	    }
  	    	 
  	     System.out.println("Initiation by Maker");
@@ -582,7 +582,7 @@ public class PledgeRedemption {
         utility.clickOnWebElement(Withdrawal_Cons.Checkbox_loan_account,driver);
         Thread.sleep(2000);
         utility.clickOnWebElement(Withdrawal_Cons.Fetch_redem,driver);  
-        logger.info("Click on Fetch Button");	
+        //logger.info("Click on Fetch Button");	
         Thread.sleep(2000);   		   		
         utility.scrolldown1(); 
          
@@ -592,7 +592,7 @@ public class PledgeRedemption {
         utility.clickOnWebElement(Withdrawal_Cons.Select_EWR,driver);   //Select checkbox4
         
         utility.clickOnWebElement(Withdrawal_Cons.Click_select_button,driver);
-        logger.info("Click on select button");	
+        //logger.info("Click on select button");	
         Thread.sleep(2000);
         
         //Select ENWR--> Double Click on Redeem qnt
@@ -609,7 +609,7 @@ public class PledgeRedemption {
   		 Thread.sleep(2000);     
          
          utility.clickOnWebElement(Withdrawal_Cons.Click_save,driver); 
-         logger.info("Click on save button");	
+         //logger.info("Click on save button");	
          utility.XY_PageScrollUp();
          
           Thread.sleep(2000);
@@ -623,7 +623,7 @@ public class PledgeRedemption {
           
           utility.scrolldown1();
           utility.clickOnWebElement(Withdrawal_Cons.Submit_Redeem,driver);
-          logger.info("Click on Submit button");	
+          //logger.info("Click on Submit button");	
           Thread.sleep(3000);
      //##############################################################
               
@@ -660,7 +660,7 @@ public class PledgeRedemption {
      		System.out.println(" Step 9 Final Approvel by checker");
      		
      		utility.Login1(Pledgee_checker, Pledgee1_pw);
-     		 logger.info("Pledgee Checker login- Approved ");	
+     		 //logger.info("Pledgee Checker login- Approved ");	
      		Thread.sleep(5000);
      		
      		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -668,7 +668,7 @@ public class PledgeRedemption {
      		utility.clickOnWebElement(Withdrawal_Cons.Click_toggle,driver); // Click on toggle for select pending transaction
      		
      		utility.clickOnWebElement(Withdrawal_Cons.Click_Pending_transaction,driver); // Click on Pending transaction
-     		logger.info("Click on Pending Txn ");				
+     		//logger.info("Click on Pending Txn ");				
      		Thread.sleep(2000);
      		
      		driver.findElement(By.xpath(Withdrawal_Cons.Redeem_Txn_no)).sendKeys(part2); // Enter EPR NO
@@ -676,7 +676,7 @@ public class PledgeRedemption {
      		utility.clickOnWebElement(Withdrawal_Cons.Redeem_Txn,driver);
      		
      		utility.clickOnWebElement(Withdrawal_Cons.Approve_redeem,driver);	
-     		logger.info("Click on Approvel Button-> Approved ");	
+     		//logger.info("Click on Approvel Button-> Approved ");	
      		
      		 //**********************Validation Message************************************ 	     
      	     

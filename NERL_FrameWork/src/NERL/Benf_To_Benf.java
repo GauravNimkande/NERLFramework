@@ -11,9 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.Assert;
+/*import org.slf4j.//logger;
+import org.slf4j.//loggerFactory;
+*/import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class Benf_To_Benf {
 	private static WebDriver driver;
 	private Utility utility;
 	public Exceldataconfig config;
-	private final static Logger logger = LoggerFactory.getLogger(Benf_To_Benf.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Benf_To_Benf.class);
 	
 
 	@BeforeMethod
@@ -36,7 +36,7 @@ public class Benf_To_Benf {
 		
 		driver = new ChromeDriver();
 		
-		logger.info("New Driver Initiated");
+		//logger.info("New Driver Initiated");
 		
 	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  
@@ -47,7 +47,7 @@ public class Benf_To_Benf {
 		
 		driver.manage().window().maximize();
 		
-		 logger.info("URL Open");
+		 //logger.info("URL Open");
 		
 		 utility = new Utility(driver);
 
@@ -63,7 +63,7 @@ public class Benf_To_Benf {
 		//Login With RP Maker		
 		utility.Login(User_ID_1,Passw_1);
 		
-		logger.info("RP maker Login");
+		//logger.info("RP maker Login");
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		// Click on Menu Icon
@@ -77,12 +77,12 @@ public class Benf_To_Benf {
 		Thread.sleep(2000);
 
 		driver.findElement(By.xpath(NERLConstants.Back_Button)).click();
-		 logger.info("Benf To Benf Window Open");
+		 //logger.info("Benf To Benf Window Open");
 		 
 		Thread.sleep(2000);
 		// Click on Popup (Warehouse Code)Button[...]
 		driver.findElement(By.xpath(NERLConstants.Popup_Win_Button)).click();
-		 logger.info("Warehouse Code Popup open");
+		 //logger.info("Warehouse Code Popup open");
 		Thread.sleep(3000);
 
 		// Send Text Into Search Text box on Popup Window (Warehouse List)
@@ -92,20 +92,20 @@ public class Benf_To_Benf {
 		// Select A 1st record From Popup Win
 	    driver.findElement(By.xpath(NERLConstants.Select_Record)).click();
 	
-		logger.info("Warehouse code Selected");
+		//logger.info("Warehouse code Selected");
 	
 		 Thread.sleep(2000);
 		
 		// Click on Popup Button[...] Commodity ID
 		driver.findElement(By.xpath(NERLConstants.Popup_Win_Button2)).click();
-		 logger.info("Commodity ID Popup open");
+		 //logger.info("Commodity ID Popup open");
 		Thread.sleep(3000);
 		// Search Commodity ID
 		driver.findElement(By.xpath(NERLConstants.Popup_Send_Txt2)).sendKeys(Comm_ID);
 		Thread.sleep(2000);
 		// Select Serched Commodity Record
 		driver.findElement(By.xpath(NERLConstants.Select_Record2)).click();
-		logger.info("Commodity ID Selected");
+		//logger.info("Commodity ID Selected");
 		Thread.sleep(2000);
 
 		// Click on From Beneficiary ID Button
@@ -114,7 +114,7 @@ public class Benf_To_Benf {
 		driver.findElement(By.xpath(NERLConstants.Popup_Send_Txt3)).sendKeys(From_Benf);
 		// Select First Record
 		driver.findElement(By.xpath(NERLConstants.Select_Record3)).click();
-		logger.info("From Benficiary Selected");
+		//logger.info("From Benficiary Selected");
 		Thread.sleep(2000);
        
 		// RP Send To Rp Id
@@ -124,7 +124,7 @@ public class Benf_To_Benf {
 		driver.findElement(By.xpath(NERLConstants.To_Beneficiary_Id)).sendKeys(To_Benf);
 		Thread.sleep(2000);
 		driver.findElement(By.xpath(NERLConstants.EWR_Type_Span)).click();
-		logger.info("To RP Id Selcted");
+		//logger.info("To RP Id Selcted");
 		Thread.sleep(2000);
 		//Type of ENWR
 		driver.findElement(By.xpath(NERLConstants.EWR_Type_Search)).sendKeys(ENWR_Type);
@@ -132,7 +132,7 @@ public class Benf_To_Benf {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath(NERLConstants.EWR_Type_Record)).click();
 		// Click on Fetch Button
-		logger.info("EWR Type Is Selected");
+		//logger.info("EWR Type Is Selected");
 		driver.findElement(By.xpath(NERLConstants.Fetch_Button)).click();
 
 		// Page Scroll upto 0,750
@@ -148,7 +148,7 @@ public class Benf_To_Benf {
 
 		String Actual_Validation = driver.findElement(
 				By.xpath(NERLConstants.EWR_Add_Validation_Message)).getText();
-		logger.info(Actual_Validation);
+		//logger.info(Actual_Validation);
 		
 		Assert.assertEquals(Actual_Validation,
 				"EWR added successfully for beneficiary transfer.",

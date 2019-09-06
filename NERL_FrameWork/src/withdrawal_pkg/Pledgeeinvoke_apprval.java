@@ -3,8 +3,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/*import org.slf4j.////////logger;
+import org.slf4j.////////loggerFactory;*/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,7 +33,7 @@ public class Pledgeeinvoke_apprval {
 	public String EPC_No;
 	private static Deposit ENWR;
 	
-	private final static Logger logger = LoggerFactory.getLogger(Pledgee_invocation_main.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Pledgee_invocation_main.class);
 @BeforeMethod
 
 public void Befour() throws InterruptedException, MalformedURLException 
@@ -48,7 +48,7 @@ public void Befour() throws InterruptedException, MalformedURLException
 	
 	driver = new ChromeDriver();
 	
-	logger.info("New Driver Initiated");
+	//logger.info("New Driver Initiated");
 	
 	//driver.get("https://interrepotest.erepository.in/");
 	
@@ -56,7 +56,7 @@ public void Befour() throws InterruptedException, MalformedURLException
 	
 	//driver.get("https://test.erepository.in");
 	
-	 logger.info("Browser open Succesfully and Url is open");
+	 //logger.info("Browser open Succesfully and Url is open");
     driver.manage().window().maximize();
     
     PI=new Com_page_Invoke(driver);

@@ -5,57 +5,25 @@
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/seleniumjars"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/cglib-nodep-3.2.4.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/client-combined-3.4.0-nodeps.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-collections4-4.1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-exec-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-io-2.5.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-lang3-3.5.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/cssparser-0.9.22.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/curvesapi-1.04.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/groovy-all-2.4.3-groovydoc.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/gson-2.8.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/guava-21.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/htmlunit-2.26.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/htmlunit-core-js-2.26.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/htmlunit-driver-2.26.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/httpclient-4.5.3.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/httpcore-4.4.6.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/httpmime-4.5.3.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/jackson-databind-2.9.4.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/javax.servlet-api-3.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/jetty-io-9.4.1.v20170120.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/jetty-util-9.4.1.v20170120.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/jna-platform-4.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/log4j.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/neko-htmlunit-2.25.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/phantomjsdriver-1.4.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-examples-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-excelant-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-ooxml-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-ooxml-schemas-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/poi-scratchpad-3.17-beta1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/selenium-server-standalone-3.8.1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/serializer-2.7.2.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/slf4j-log4j12-1.7.21.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/websocket-api-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/websocket-client-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/websocket-common-9.4.3.v20170317.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/xalan-2.7.2.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/xml-apis-1.4.01.jar"/>
-	<classpathentry kind="lib" path="D:/My Framework/NERL_FrameWork/Lib/xmlbeans-2.6.0.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/ooxml-lib/curvesapi-1.04.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/ooxml-lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/client-combined-3.0.0-nodeps.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/cglib-nodep-3.2.4.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/hamcrest-library-1.3.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/httpmime-4.5.2.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/jna-4.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/netty-3.5.7.Final.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium 3.0/lib/phantomjsdriver-1.3.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/commons.io_2.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/selenium-server-standalone-3.4.0.jar"/>
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/poi-3.17.jar"/>
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/poi-examples-3.17.jar"/>
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/poi-excelant-3.17.jar"/>
@@ -67,28 +35,9 @@
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/lib/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/lib/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/bsh-2.0b4.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/cglib-nodep-2.1_3.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/commons-codec-1.10.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/commons-exec-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/gson-2.3.1.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/guava-19.0.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/hamcrest-library-1.3.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/httpclient-4.5.1.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/httpcore-4.4.3.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/httpmime-4.5.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/jcommander-1.48.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/jna-4.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/jna-platform-4.1.0.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/netty-3.5.7.Final.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/phantomjsdriver-1.2.1.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/libs/testng-6.9.9.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/selenium-java-2.53.0.jar"/>
-	<classpathentry kind="lib" path="D:/All SElenium/selenium main/selenium-2.53.0/selenium-java-2.53.0-srcs.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/ooxml-lib/curvesapi-1.04.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/Excel Apachi poi/poi-3.17/ooxml-lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="D:/All SElenium/selenium jars and drivers/log4j-1.2.17.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

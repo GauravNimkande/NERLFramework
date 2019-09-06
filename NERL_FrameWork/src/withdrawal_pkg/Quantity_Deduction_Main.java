@@ -5,10 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.apache.poi.EncryptedDocumentException;
+/*
+import org.slf4j.//logger;
+import org.slf4j.//loggerFactory;
+*/import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -38,7 +38,7 @@ public class Quantity_Deduction_Main {
 	public Exceldataconfig config;
 	private static WebDriver driver;
 	private Utility utility;
-	private final static Logger logger = LoggerFactory.getLogger(Quantity_Deduction_Main.class);
+	//private final static //logger //logger = //loggerFactory.get//logger(Quantity_Deduction_Main.class);
 
 	@BeforeMethod
 	
@@ -57,7 +57,7 @@ public class Quantity_Deduction_Main {
 		
 		 //driver.get("https://interrepotest.erepository.in/");
 		
-		logger.info("Web application launched");
+		//logger.info("Web application launched");
 		
         driver.manage().window().maximize();	
        
@@ -74,12 +74,12 @@ public class Quantity_Deduction_Main {
 		
 			utility.Login(RP_Maker, RP1_PW);
 			
-			logger.info("Click action performed on login key RP Maker");
+			//logger.info("Click action performed on login key RP Maker");
 			
 	       //Thread.sleep(4000);
 	        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 	        
-	        logger.info("Implicit wait applied on the driver for 20 seconds");
+	        //logger.info("Implicit wait applied on the driver for 20 seconds");
 	      
 	      // driver.findElement(By.xpath(Withdrawal_Cons.Menu_List_icon)).click(); //Click on menu list icon
 	      utility.clickOnWebElement(Withdrawal_Cons.Menu_List_icon, driver);
@@ -139,7 +139,7 @@ public class Quantity_Deduction_Main {
 	     
 	      //click on fetch button 
 	      driver.findElement(By.xpath(Withdrawal_Cons.Fetch_button)).click();
-	      logger.info("Click on Fetch button");
+	      //logger.info("Click on Fetch button");
 	      Thread.sleep(2000);
 	    //Enter EWR NO
 	      driver.findElement(By.xpath(Withdrawal_Cons.Enter_EWR_NO)).sendKeys(EWR_No);
@@ -155,7 +155,7 @@ public class Quantity_Deduction_Main {
 	      //Click on select button
 	      driver.findElement(By.xpath(Withdrawal_Cons.Select_button)).click();
 	      
-	      logger.info("Clicked on select button");
+	      //logger.info("Clicked on select button");
 	      
 	      Thread.sleep(2000);
 		String Actual_Validation = driver.findElement(By.xpath(Withdrawal_Cons.EWR_Add_Validation_Message)).getText();
@@ -184,7 +184,7 @@ public class Quantity_Deduction_Main {
 		//Click on save button 
 	    Thread.sleep(2000);
 	    driver.findElement(By.xpath(Withdrawal_Cons.Save_button)).click();
-	    logger.info("Clicked on save button");
+	    //logger.info("Clicked on save button");
 	    Thread.sleep(3000);
 	  //Validation message for save button 
 	    String actual_result=driver.findElement(By.xpath(Withdrawal_Cons.Validation_Message1)).getText();
@@ -198,7 +198,7 @@ public class Quantity_Deduction_Main {
 	     //Now click on Submit button 
 		     driver.findElement(By.xpath(Withdrawal_Cons.Submit_Button)).click();
 		     
-		     logger.info("Click on Submit button");
+		     //logger.info("Click on Submit button");
 		     Thread.sleep(3000);
 		     String DOW_no=driver.findElement(By.xpath(Withdrawal_Cons.DOW_No_Capture2)).getText();
 			// System.out.println(DOW_no); 		
@@ -226,7 +226,7 @@ public class Quantity_Deduction_Main {
 	System.out.println("Test Case-2 Approverd by RP-checker");
 
 	 utility.Login(RP_Checker,RP2_PW);
-	 logger.info("Click action performed on login key RP Checker");
+	 //logger.info("Click action performed on login key RP Checker");
 	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 	  //Click on toggle for select pending transaction
 	  driver.findElement(By.xpath(Withdrawal_Cons.Click_toggle)).click();
@@ -242,7 +242,7 @@ public class Quantity_Deduction_Main {
 	  Thread.sleep(2000);
 	  //Click on Approve button
 	  driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button)).click();
-	  logger.info("Click on Approve button");
+	  //logger.info("Click on Approve button");
 	  
 	  //validation message -"Quantity Deduction Transaction has been Approved successfully.
 	  Thread.sleep(3000);
@@ -261,7 +261,7 @@ public class Quantity_Deduction_Main {
 	System.out.println("Test Case-3 Approverd by RP-checker");
 
 	utility.Login1(WSP_Maker,WSP1_PW);
-	logger.info("Click action performed on login key WSP Maker");
+	//logger.info("Click action performed on login key WSP Maker");
 	
 	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 	Thread.sleep(3000); 
@@ -316,7 +316,7 @@ public class Quantity_Deduction_Main {
 	    Thread.sleep(2000);
 	    //Click on save button 
 	   driver.findElement(By.xpath(Withdrawal_Cons.save_button1)).click(); 
-	   logger.info("Click on save button");
+	   //logger.info("Click on save button");
 	   
 	 //validation message -WOW Transaction has been saved successfully
 	   Thread.sleep(3000); 
@@ -328,7 +328,7 @@ public class Quantity_Deduction_Main {
 	  
 		//Now click on submit button  
 		driver.findElement(By.xpath(Withdrawal_Cons.Click_submit_button2)).click();   
-		logger.info("Click on submit button");
+		//logger.info("Click on submit button");
 		Thread.sleep(3000);
 	//-------------------------------------------------------------------------------------------------
 		
@@ -350,7 +350,7 @@ public class Quantity_Deduction_Main {
 	System.out.println("Tes Case - 4 Approverd by WSP2002 checker");
 
 	utility.Login(WSP_Checker,WSP2_PW);
-	logger.info(" Login by WSP Checker");
+	//logger.info(" Login by WSP Checker");
 	
 	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 	//Click on toggle for select pending transaction
@@ -367,7 +367,7 @@ public class Quantity_Deduction_Main {
 	Thread.sleep(2000);
 	//Click on Approve button
 	driver.findElement(By.xpath(Withdrawal_Cons.Click_Approve_button1)).click();
-	logger.info("Click on Approved button");
+	//logger.info("Click on Approved button");
 
 	//Validation message "WOW Transaction has been Approved successfully.
 	Thread.sleep(3000);
@@ -378,10 +378,10 @@ public class Quantity_Deduction_Main {
 	Assert.assertEquals(actual_result6,"WOW Transaction has been Approved successfully.");
 	Thread.sleep(2000);
 	driver.findElement(By.xpath(Withdrawal_Cons.Download_Receipt)).click();
-	logger.info("download receipt");
+	//logger.info("download receipt");
 	Thread.sleep(3000);
 	utility.logout1();
-	logger.info("download receipt");
+	//logger.info("download receipt");
 	Thread.sleep(3000);
 	driver.close();
 	}

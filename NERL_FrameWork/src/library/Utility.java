@@ -15,8 +15,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import Com.Wordpress.pages.PayINpageElement;
 import NERL.Benf_To_Benf_Main;
@@ -32,7 +32,7 @@ public class Utility {
 	
 	private WebDriver webDriver;
 //Utility utility=new Utility(webDriver);
-	private final static Logger logger = LoggerFactory.getLogger(Benf_To_Benf_Main.class);	
+//	private final static Logger logger = LoggerFactory.getLogger(Benf_To_Benf_Main.class);	
 
 	public Utility(WebDriver webDriver) {
 		this.webDriver = webDriver;
@@ -224,14 +224,14 @@ public void Login(String UserName,String Password) throws InterruptedException{
    		
    		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[3]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(Transaction_Number);    
    		                                                                                              	
-   		logger.info("Print Txn no");
+   		//logger.info("Print Txn no");
    		Thread.sleep(2000);
    		//Click On EDP No
    		//webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
    		  webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/a/input")).click();
    		  //webDriver.findElement(By.xpath("//button[data-ng-click='approvePledge()']")).click();                              
    		                                         
-   		logger.info("Transection Approve Successfully");
+   		//logger.info("Transection Approve Successfully");
    		
    		Thread.sleep(2000);
    		
@@ -258,14 +258,14 @@ public void Login(String UserName,String Password) throws InterruptedException{
    		
    		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[3]/div[1]/div/div/div/div/div/div[1]/div[1]/div[3]/div/div/input")).sendKeys(Transaction_Number);    
    		                                                                                              	
-   		logger.info("Print Txn no");
+   		//logger.info("Print Txn no");
    		Thread.sleep(2000);
    		//Click On EDP No
    		//webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
    		  webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[3]/div[2]/div/div/div/div[1]/div/a/input")).click();
    		  //webDriver.findElement(By.xpath("//button[data-ng-click='approvePledge()']")).click();                              
    		                                         
-   		logger.info("Transection Approve Successfully");
+   		//logger.info("Transection Approve Successfully");
    		
    		Thread.sleep(2000);
    		
@@ -301,7 +301,7 @@ public void Login(String UserName,String Password) throws InterruptedException{
       webDriver.findElement(By.xpath("//*[@id='content']/div/data/div[1]/div[3]/div/div[7]/div[5]/textarea")).sendKeys("Abc");
                                          
       webDriver.findElement(By.xpath(RejectButtonXpath)).click();
-      logger.info("Rejected Successfully");     
+      //logger.info("Rejected Successfully");     
 	}
 	
 	
@@ -319,7 +319,7 @@ public void Login(String UserName,String Password) throws InterruptedException{
   		webDriver.findElement(By.xpath("html/body/section/section/div/data/div/div[2]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div[1]/div/a/input")).click();
    		Thread.sleep(3000);
       webDriver.findElement(By.xpath(REsubmitButton)).click();
-      logger.info("Rejected_Submit");
+      //logger.info("Rejected_Submit");
 	}
 	
 	public void Checker_Discard(String Transaction_Number) throws InterruptedException{
@@ -338,7 +338,7 @@ public void Login(String UserName,String Password) throws InterruptedException{
   		webDriver.findElement(By.xpath("//textarea[@placeholder='Remarks']")).sendKeys("Discard Txn");
  	  
      webDriver.findElement(By.xpath("//button[@class='btn btn-primary waves-effect'][@data-ng-show='pledge.dataNGHideShow.ngDiscard']")).click();
-     logger.info("Pledge discarded successfully - Checker");
+     //logger.info("Pledge discarded successfully - Checker");
                XY_PageScrollUp();
 	}
 	
@@ -403,7 +403,7 @@ public void Login(String UserName,String Password) throws InterruptedException{
 		      Thread.sleep(1000);
 		      //Click on Login arrow key 
 		      webDriver.findElement(By.xpath(Withdrawal_Cons.Login_Arrow_Key)).click();
-		      logger.info("Login Successfully");
+		//      logger.info("Login Successfully");
 		      webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS); 
 		
 		 }
@@ -426,7 +426,7 @@ public void Login(String UserName,String Password) throws InterruptedException{
 				webDriver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/a/div")).click();
 				// Logout Button
 				webDriver.findElement(By.xpath("//*[@id='mCSB_1_container']/div/ul/li[1]/a")).click();
-				logger.info("Logout Successfully");
+			//	logger.info("Logout Successfully");
 				// -------------------------------------------------------
 				Thread.sleep(2000);
 			}
